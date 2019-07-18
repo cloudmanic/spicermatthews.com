@@ -629,6 +629,9 @@ video {
   }
 }
 
+a { color: #3182ce
+}
+
 /* Social Icons */
 
 .social-icon svg { fill: rgba(54,71,78,.7);

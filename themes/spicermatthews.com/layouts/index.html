@@ -1,14 +1,17 @@
 {{ partial "header.html" . }}
 
-<div class="bg-white w-full rounded-lg md:w-3/4">
-	<img src="https://s3.amazonaws.com/spicermatthews.com/images/38550_1506771996770_6369406_n_5.jpg" alt="Spicer Matthews" class="rounded-t-lg" />
+<div class="bg-white w-full rounded-lg md:w-1/2">
+	<img src="{{ .Site.BaseURL }}images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="rounded-t-lg" />
 
 	<div class="py-10 px-8">
 		<p class="font-sans font-normal">
-			Greetings, I’m <a href="https://twitter.com/spicermatthews" class="text-blue-600">Spicer</a>. I’m a web developer living in <a class="text-blue-600" href="https://www.google.com/maps?q=Newberg,+Oregon&um=1&ie=UTF-8&sa=X&ved=0ahUKEwjE8ovgt8HWAhVSymMKHaB4DTEQ_AUICigB">Newberg,
+
+			{{ .File.Path }}
+
+			Greetings, I’m <a href="https://twitter.com/spicermatthews">Spicer</a>. I’m a web developer living in <a href="https://www.google.com/maps?q=Newberg,+Oregon&um=1&ie=UTF-8&sa=X&ved=0ahUKEwjE8ovgt8HWAhVSymMKHaB4DTEQ_AUICigB">Newberg,
 				Oregon</a>. I
-			am a fan of technology, options trading, snowboarding, skateboarding, and tennis. I am the founder of <a class="text-blue-600" href="https://cloudmanic.com">Cloudmanic Labs</a>. We made <a class="text-blue-600" href="https://options.cafe">Options
-				Cafe</a> and <a class="text-blue-600" href="https://skyclerk.com">Skyclerk</a>.
+			am a fan of technology, options trading, snowboarding, skateboarding, and tennis. I am the founder of <a href="https://cloudmanic.com">Cloudmanic Labs</a>. We made <a href="https://options.cafe">Options
+				Cafe</a> and <a href="https://skyclerk.com">Skyclerk</a>.
 		</p>
 
 		<div class="text-center mt-8">
