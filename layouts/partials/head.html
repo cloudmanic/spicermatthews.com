@@ -4,5 +4,5 @@
 	<title>{{ .Title }}</title>
 	<meta name="description" content="{{ .Description }}" />
 	<link rel="shortcut icon" type="image/png" href="{{ .Site.BaseURL }}images/favicon.ico" />
-	<link href="{{ .Site.BaseURL }}css/build.css" media="all" rel="stylesheet" />
+	<link href="{{ .Site.BaseURL }}css/build.css?v={{ slicestr (readFile "static/css/build.css" | md5) 0 10 }}" media="all" rel="stylesheet" />
 </head>
