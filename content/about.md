@@ -5,6 +5,11 @@ date: "2018-02-11"
 draft: true
 ---
 
-## about me
-
 Hi there, you just reached my blog.
+
+
+![Example image](/static/images/spicer-matthews-wine-drinking.jpg)
+
+<img src="/static/images/spicer-matthews-wine-drinking.jpg" />
+
+<a href="{{< ref "blog/hello-world-my-new-blog.md" >}}">Woots<a>
