@@ -1,4 +1,5 @@
 baseURL = "https://spicermatthews.com"
 languageCode = "en-us"
+publishDir = "docs"
 title = "Spicer Matthews Personal Site"
 theme = "spicermatthews.com"
