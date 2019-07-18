@@ -1,5 +1,5 @@
 ---
-title: "about"
+title: "About"
 description: "about this blog"
 date: "2018-02-11"
 ---

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spicer Matthews Personal Site</title>
+    <link>https://spicermatthews.com/</link>
+    <description>Recent content on Spicer Matthews Personal Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Jul 2019 19:02:38 -0700</lastBuildDate>
+    
+	<atom:link href="https://spicermatthews.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello World: My New Blog</title>
+      <link>https://spicermatthews.com/blog/hello-world-my-new-blog/</link>
+      <pubDate>Wed, 17 Jul 2019 19:02:38 -0700</pubDate>
+      
+      <guid>https://spicermatthews.com/blog/hello-world-my-new-blog/</guid>
+      <description>This is my first blog post. Spicer</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://spicermatthews.com/about/</link>
+      <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://spicermatthews.com/about/</guid>
+      <description>about me Hi there, you just reached my blog.</description>
+    </item>
+    
+  </channel>
+</rss>
