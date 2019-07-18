@@ -3,7 +3,7 @@
 <h1 class="font-sans text-lg my-5 font-extrabold">Pages</h1>
 
 <ul>
-	<li><a href="/blog" class="font-sans text-blue-900 font-bold">Blog</a></li>
+	<li><a href="{{ .Site.BaseURL }}/blog" class="font-sans text-blue-900 font-bold">Blog</a></li>
 	{{ range first 10 .Data.Pages }}
 	{{ if eq .Type "page"}}
 	<li><a href={{ .Permalink }} class="font-sans text-blue-900 font-bold">{{ .Title }}</a></li>
