@@ -12,4 +12,4 @@ Hi there, you just reached my blog.
 
 <img src="/images/spicer-matthews-wine-drinking.jpg" />
 
-<a href="{{< ref "blog/hello-world-my-new-blog.md" >}}">Woots<a>
+<a href="{{< ref "blog/hello-world-my-new-blog-hugo-tailwind-css-and-more.html" >}}">Woots<a>

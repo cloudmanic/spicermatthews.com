@@ -1,8 +1,19 @@
 {{ define "main" }}
 
-<h1>{{ .Title }}</h1>
-<h2>{{ .Date.Format "Sun, Feb 11, 2018" }}</h2>
-{{ .Content }}
-(blog/single.html)
+<div class="py-5 px-5  justify-center">
+	<div class="bg-white w-2/3 mx-auto rounded-lg">
+
+		<div class="py-5 px-8">
+			<h1 class="text-center">{{ .Title }}</h1>
+			<p><b>Date:</b> {{ .Date.Format "Jan 02, 2006" }}</p>
+
+			<div class="my-5">
+				{{ .Content }}
+			</div>
+
+			{{- partial "social-bar.html" . -}}
+		</div>
+	</div>
+</div>
 
 {{ end }}

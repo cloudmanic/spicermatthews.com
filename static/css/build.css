@@ -632,7 +632,16 @@ video {
 a { color: #3182ce
 }
 
-h1 { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-size: 1.125rem; margin-top: 1.25rem; margin-bottom: 1.25rem; font-weight: 800
+p { margin-top: 1rem; margin-bottom: 1rem
+}
+
+ul { list-style-position: inside; list-style-type: disc; margin-left: 1.25rem
+}
+
+h1 { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-size: 1.25rem; margin-top: 1.25rem; margin-bottom: 1.25rem; font-weight: 800
+}
+
+h2 { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-size: 1.125rem; margin-top: 1.25rem; margin-bottom: 1.25rem; font-weight: 800
 }
 
 /* Social Icons */

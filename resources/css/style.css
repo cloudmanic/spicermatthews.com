@@ -3,7 +3,10 @@
 @tailwind components;
 
 a { @apply text-blue-600 }
-h1 { @apply font-sans text-lg my-5 font-extrabold }
+p { @apply my-4 }
+ul { @apply list-inside list-disc ml-5 }
+h1 { @apply font-sans text-xl my-5 font-extrabold }
+h2 { @apply font-sans text-lg my-5 font-extrabold }
 
 /* Social Icons */
 .social-icon svg { fill: rgba(54,71,78,.7); }
