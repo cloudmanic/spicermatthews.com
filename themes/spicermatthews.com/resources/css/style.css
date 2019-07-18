@@ -2,4 +2,9 @@
 
 @tailwind components;
 
+/* Social Icons */
+.social-icon svg { fill: rgba(54,71,78,.7); }
+.social-icon:hover { color: #36474e; border-color: #36474e; }
+.social-icon svg:hover { fill: #36474e; }
+
 @tailwind utilities;
