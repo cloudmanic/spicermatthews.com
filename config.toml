@@ -3,7 +3,4 @@ languageCode = "en-us"
 publishDir = "docs"
 title = "Spicer Matthews Personal Site"
 disableHugoGeneratorInject = true
-
-[taxonomies]
-  tag = ""
-  category = ""
+disableKinds = ["taxonomy", "taxonomyTerm"]
