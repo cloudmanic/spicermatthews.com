@@ -8,8 +8,8 @@ draft: true
 Hi there, you just reached my blog.
 
 
-![Example image](/static/images/spicer-matthews-wine-drinking.jpg)
+![Example image](/images/spicer-matthews-wine-drinking.jpg)
 
-<img src="/static/images/spicer-matthews-wine-drinking.jpg" />
+<img src="/images/spicer-matthews-wine-drinking.jpg" />
 
 <a href="{{< ref "blog/hello-world-my-new-blog.md" >}}">Woots<a>
