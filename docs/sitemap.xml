@@ -4,19 +4,24 @@
   
   <url>
     <loc>https://spicermatthews.com/blog/</loc>
-    <lastmod>2019-07-17T19:02:38-07:00</lastmod>
+    <lastmod>2019-07-30T12:18:58-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://spicermatthews.com/blog/delighting-customers-with-airbnb/</loc>
+    <lastmod>2019-07-30T12:18:58-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://spicermatthews.com/</loc>
+    <lastmod>2019-07-30T12:18:58-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://spicermatthews.com/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</loc>
     <lastmod>2019-07-17T19:02:38-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://spicermatthews.com/</loc>
-    <lastmod>2019-07-17T19:02:38-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>
