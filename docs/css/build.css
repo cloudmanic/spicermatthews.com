@@ -644,6 +644,15 @@ h1 { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvet
 h2 { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-size: 1.125rem; margin-top: 1.25rem; margin-bottom: 1.25rem; font-weight: 800
 }
 
+ol { list-style-type: decimal; margin-left: 2.5rem
+}
+
+li { padding-bottom: 0.25rem
+}
+
+blockquote { padding: 1rem; border-left-width: 4px; font-style: italic; font-weight: 600; color: #2d3748
+}
+
 /* Social Icons */
 
 .social-icon svg { fill: rgba(54,71,78,.7);

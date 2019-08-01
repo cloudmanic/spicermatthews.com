@@ -2,7 +2,7 @@
 <html><head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Spicer Matthews Personal Site</title>
+	<title>Using Hugo with Google Docs</title>
 	<meta name="description" content="" />
 	<link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
 	<link href="https://spicermatthews.com/css/build.css?v=97330dcb81" media="all" rel="stylesheet" />
@@ -10,41 +10,51 @@
 <body class="bg-siteBackground h-screen font-sans">
 <div class="container h-full">
 
-<div class="py-5 px-5 md:px-20 mx-auto h-full flex justify-center items-center">
-	<div class="bg-white w-full rounded-lg md:w-1/2">
-		<img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="rounded-t-lg" />
+<div class="py-5 px-5 justify-center">
+	<div class="bg-white w-2/3 mx-auto rounded-lg">
+		<div class="bg-gray-600 w-full rounded-t-lg text-center">
+			<span class="hidden md:inline font-light">Click here ----></span>
+			<a href="/" class="text-white ml-5 hover:text-black">The thoughts of Spicer Matthews</a>
+			<span class="hidden lg:inline font-light">
+				&nbsp; &nbsp; &nbsp;&lt;---- I dare you!</span> </div> <div class="py-5 px-8">
+					<h1 class="text-center">Using Hugo with Google Docs</h1>
+					<p><b>Date:</b> Aug 01, 2019</p>
 
-		<div class="py-10 px-8">
-			<p class="font-sans font-normal">
-				Greetings, I’m <a href="https://twitter.com/spicermatthews">Spicer</a>. I’m a web developer living in <a href="https://www.google.com/maps?q=Newberg,+Oregon&um=1&ie=UTF-8&sa=X&ved=0ahUKEwjE8ovgt8HWAhVSymMKHaB4DTEQ_AUICigB">Newberg,
-					Oregon</a>. I
-				am a fan of technology, options trading, snowboarding, skateboarding, and tennis. I am the founder of <a href="https://cloudmanic.com">Cloudmanic Labs</a>. We made <a href="https://options.cafe">Options
-					Cafe</a> and <a href="https://skyclerk.com">Skyclerk</a>.
-			</p>
+					<div class="my-5">
+						
+<blockquote><b>Quick tip alert!</b> This is how I import Google docs into Hugo.</blockquote>
 
-			<h2 class="font-semibold">Blog Posts</h2>
+<p>I am becoming a big fan of <a href="https://gohugo.io">Hugo</a> to
+	build static sites like <a href="https://spicermatthews.com">this one</a> and <a href="https://bendmountbachelorvillage.com">this one</a>.
+	Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you
+	produce your content within your text editor such as <a href="https://atom.io">Atom</a>.</p>
 
-			<ul>
-				
-				
-				<li>
-					<a href=https://spicermatthews.com/blog/using-hugo-with-google-docs/> Using Hugo with Google Docs</a>
-				</li>
-				
-				
-				
-				<li>
-					<a href=https://spicermatthews.com/blog/delighting-customers-with-airbnb/> Delighting Customers With Airbnb</a>
-				</li>
-				
-				
-				
-				<li>
-					<a href=https://spicermatthews.com/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/> Hello World: My New Blog, Hugo, Tailwind CSS, and More</a>
-				</li>
-				
-				
-			</ul><div class="text-center mt-8">
+<p>
+	<img src="/images/editing-hugo-post-in-atom.png" alt="Editing Hugo Post in Atom" />
+</p>
+
+<p>Text editors are great but they are not ideal for producing well-thought-out written content. I like to produce my content in Google docs and then import it into Hugo. Below is a video showing how I do it. The basic
+	steps are as follows:</p>
+
+<ol>
+	<li>Write your post within Google docs. Adding any basic formatting you want. </li>
+	<li>Export the document to HTML (File -&gt; Download as -&gt; Web page).</li>
+	<li>Open the HTML in your text editor and copy the content of the body.</li>
+	<li>Visit <a href="https://imperavi.com/redactor">https://imperavi.com/redactor</a> and
+		clear the content of the sample editor on the home page.</li>
+	<li>Copy your HTML body into the editor. Then click view source. You now have clean HTML.</li>
+	<li>Copy the clean HTML into your Hugo post and make any tweaks you need. </li>
+</ol>
+
+<p>
+	<iframe width="100%" height="450" src="https://www.youtube.com/embed/G1ZIv_lQEQk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+
+<p>Hope you find this helpful. </p>
+
+<p>Happy coding!! </p>
+
+					</div><div class="text-center mt-8">
 
 	<a class="inline-block h-10 w-10 mx-4 md:mx-6 pt-1 social-icon" title="Send Me Email" href="mailto:me+website@spicermatthews.com">
 		<span class="SVGInline">
@@ -73,6 +83,7 @@
 </div>
 	</div>
 </div>
+
 
 	</div><script type="text/javascript">
 	var _paq = window._paq || [];

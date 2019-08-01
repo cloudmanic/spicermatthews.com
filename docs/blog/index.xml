@@ -6,10 +6,20 @@
     <description>Recent content in Blogs on Spicer Matthews Personal Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jul 2019 12:18:58 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 12:18:58 -0700</lastBuildDate>
     
 	<atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using Hugo with Google Docs</title>
+      <link>https://spicermatthews.com/blog/using-hugo-with-google-docs/</link>
+      <pubDate>Thu, 01 Aug 2019 12:18:58 -0700</pubDate>
+      
+      <guid>https://spicermatthews.com/blog/using-hugo-with-google-docs/</guid>
+      <description>Quick tip alert! This is how I import Google docs into Hugo. I am becoming a big fan of Hugo to build static sites like this one and this one. Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you produce your content within your text editor such as Atom.
+ Text editors are great but they are not ideal for producing well-thought-out written content.</description>
+    </item>
     
     <item>
       <title>Delighting Customers With Airbnb</title>

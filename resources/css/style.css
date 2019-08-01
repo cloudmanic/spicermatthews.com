@@ -7,6 +7,10 @@ p { @apply my-4 }
 ul { @apply list-inside list-disc ml-5 }
 h1 { @apply font-sans text-xl my-5 font-extrabold }
 h2 { @apply font-sans text-lg my-5 font-extrabold }
+ol { @apply list-decimal ml-10 }
+li { @apply pb-1 }
+blockquote { @apply p-4 border-l-4 italic font-semibold text-gray-800 }
+
 
 /* Social Icons */
 .social-icon svg { fill: rgba(54,71,78,.7); }
