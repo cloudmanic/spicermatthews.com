@@ -1,0 +1,225 @@
+---
+title: "Spicer's Rules on How and When To Test Your Code"
+date: 2019-09-15T12:18:58-07:00
+draft: false
+---
+
+<p>
+	I just marked my 20th year as a professional software developer - meaning I received my first paycheck for writing code 20 years ago. I have to admit it has been a wild ride of successes, failures, crazy ideas, and immense learning. Throughout
+	this journey, the topic of <a href="http://softwaretestingfundamentals.com/unit-testing/">unit tests</a>, or any kind of testing for that matter, has always been front and center for me. This topic has led countless barroom debates and even more <a
+	 href="https://en.wikipedia.org/wiki/Internet_Relay_Chat">IRC</a> fights - yep, showing my age here. After some reflection, I think I have finally settled on my rules for how and when to unit test through the lens of business objectives.
+</p>
+
+<p>
+	<img src="/images/talk-code-to-me.png" alt="Talk Code to me" width="300" class="m-auto" />
+</p>
+
+<p>
+	As a side note, this post is inspired by a podcast I recently listened to: <a href="https://artofproductpodcast.com/episode-103">103: Code Quality and Balancing TDD</a>. Co-host <a href="https://www.benorenstein.com/">Ben Orenstein</a>, by all
+	accounts, has had a very successful software development career, and recently he became CEO of his new start-up <a href="https://tuple.app">Tuple</a>. In the podcast, he describes how as a software developer in the past he was hard and fast with
+	his unit testing rules, always insisting on a strong testing policy with any project he worked on. He mentioned now that he is a CEO and is balancing time, budget, and progress, and he has taken a more subjective approach to unit testing. While he
+	did not go into great detail, this has been a topic I have been thinking about for a while now. This podcast has encouraged me to write down my thoughts on how to balance good software development principles with business goals through the lens of
+	code testing.
+</p>
+
+<p><strong>Rule #1: If you have money, time, and passion, unit test is everything. </strong></p>
+
+<p>
+	The preaching of people in the “test everything” camp always brings me back to my college days listening to a professor teaching what you “should” do every time in software development. Many of my professors taught me that always testing everything
+	with 100% coverage with no exceptions was the correct thing to do. Yeah, in a textbook that makes tons of sense. Professors will often point out that you will write less buggy software and because of that, your users will be much happier. I agree
+	with these concepts under 3 conditions.
+</p>
+
+<ul>
+	<li class="pb-2"><em class="font-semibold">The software you are working on has an unlimited timeline.</em> Testing everything requires time. If you want full and complete coverage it is not just a few minutes here and there. </li>
+	<li class="pb-2"><em class="font-semibold">Your project has a big budget. </em>Time and money tend to go together. If you want true 100% coverage with matching integration testing, be prepared to spend money on paying highly paid developers. </li>
+	<li class="pb-2"><em class="font-semibold">Passion for testing.</em> This is a topic that is not talked about very much. If you are a software manager and you are non-negligible on testing and your team gets a little burned out writing tests for
+		frivolous
+		things, then your team is
+		going to be disengaged or this will lead to a revolving door at your company. The act of demotivating a talented software developer is far worse than not having 100% coverage.</li>
+</ul>
+
+<p>
+	If you have unlimited time and money, and your team is nutty for testing, I say go nuts! If not proceed to Rule #2 :).
+</p>
+
+<p>
+	I do acknowledge there is certain software that should be 100% tested. Maybe 200% tested. Software running self-driving cars or satellites should be tested no matter what as bugs lead to expensive or deadly mistakes. Just be careful not to convince
+	yourself that your little SaaS app is as important as self-driving car software.
+</p>
+
+<p><strong>Rule #2: If you have a monolithic app with a big team, invest in testing.</strong></p>
+
+<p>
+	If your software application is big in scope and is designed to be a monolithic application developed over many years, testing becomes important. Testing becomes even more important if you have a big team of developers working on it. It is very
+	easy for some developers to unknowingly break some features just because they did not recall the original requirements of the functionality.
+</p>
+
+<p>
+	Pretty simple rule: More people + bigger codebase = more testing required.
+</p>
+
+<p>
+	With that said, IMHO, monolithic applications are pretty old school. Yes, there are some pros to a big monolithic application but there are plenty of cons when working in a big team. Jeff Bezos has the <a href="https://www.rd.com/food/fun/two-pizza-rule-work-hack/">2
+		pizza rule</a>, I think this is a great concept to consider when building software teams.
+</p>
+
+<p>
+	If you have a big application built by many developers, consider microservices. Break up the monolithic app into smaller modules or separate applications. Given the smaller nature of the codebases, testing might be able to be relaxed. Often, a
+	manager might decide to invest in testing more important microservices and relaxing on less important services. With monolithic applications, we tend to overgeneralize when it comes to setting testing policies.
+</p>
+
+
+<p><strong>Rule #3: Test-driven development is a great win-win. </strong></p>
+
+<p>Test-driven development (TDD) is the process of writing your tests first then writing your code. Everyone does this differently. In my world, I consider TDD a change in how you develop where you use your unit tests to help develop your code. </p>
+
+<p>Maybe my TDD approach is better described in an example. Say you are building a web application. Traditionally you would write some code, compile your app, then hit refresh in the browser to see if your code worked. The process of recompiling and
+	refreshing can be time-consuming. A different approach might be to write some tests, write some code, then run the test. You can use the test to debug certain things as you develop giving you the same level of verification a browser refresh gives
+	you. </p>
+
+<p>With test-driven development, a 3 step development processed could be reduced down to 2. The result can be the time you waste compiling and refreshing could mirror the time it takes to write unit tests instead. At the end of the day, you have
+	spent the same amount of time developing but with TDD you also end up with unit tests you can run forever to verify your app continues to work as planned.</p>
+
+
+
+
+<blockquote className="p-4 bg-neutral-100 text-neutral-600 border-l-4 border-neutral-500 italic quote">
+	<p className="mb-2">"With test-driven development, a 3 step development processed could be reduced down to 2."</p>
+</blockquote>
+
+
+<p>By using a TDD approach you will most likely get a big chunk of your tests written without any additional time spent. Managers that keep a strong eye on timelines and budget love this approach. It is a great hybrid. </p>
+
+
+
+<p><strong>Rule #4: Don’t waste time testing stuff that is hard to test.</strong></p>
+
+<p>Some programming languages are hard to test, looking at you Javascript! In languages like Javascript, I find the TDD approach I mentioned in Rule #3 simply does not work. There is no way to use your tests as a way to support your development. I
+	find developing the software to be one distinct task and writing tests to be another distinct task. This often doubles the development time. </p>
+
+<p>Often these difficult to test languages such as Javascript tend to be UI based. There is so much to test from HTML to CSS to the Javascript logic it is nearly impossible to get 100% coverage in the sense you are testing for every possible
+	outcome. Testing can lead to a false sense of security at the price of doubling your development time. To me, it is not worth it.</p>
+
+
+<p>
+	<img src="/images/results-not-excuses.jpg" alt="Results not Excuses" />
+</p>
+
+
+<p>It is always good to have some tests in place. So with frontend development, I often suggest <a href="http://softwaretestingfundamentals.com/integration-testing/">integration tests</a> vs <a href="http://softwaretestingfundamentals.com/unit-testing/">unit
+		tests</a>. Test the final product, not each method. Yes, I am fully aware a professor would tell you to do both, but it comes down to time and money. I tend to think in terms of “bang for your buck”. </p>
+
+<p>Lastly, I do not think unit testing poorly designed languages is something you should never do. I tend to think you should add unit tests as you fix bugs or make minor tweaks. I promote skipping the unit tests during the core feature development.
+	See Rule #5 for more information. </p>
+
+
+
+<p><strong>Rule #5: When you open a file always make it better.</strong></p>
+
+<p>I think <a href="https://dhh.dk/">David Heinemeier Hansson</a> originally put this idea in my head. That every time you open a file you should make it better. It is very common to develop a core feature, deploy that feature, and then come back
+	weeks or months later and need to make modifications to that original code. Maybe a bug popped up, or the feature needs to be tweaked. David suggests that every time you open a file you make it better. </p>
+
+
+<blockquote className="p-4 bg-neutral-100 text-neutral-600 border-l-4 border-neutral-500 italic quote">
+	<p className="mb-2">"That every time you open a file you should make it better."</p>
+</blockquote>
+
+
+
+<p>When you make a file better you might review the code for style, better comments, or things to do that never got finished. I much prefer this approach over a hardcore code review process. Getting hung up on small things like style takes away from
+	the core engineering task when originally developing the feature. I will post more of my thoughts on code reviews in another blog post. For now, this concept of always making a file better applies to testing as well.</p>
+
+
+
+
+
+<p>Whenever you circle back to add small features or fix bugs you have fewer balls in the air meaning when you are building a feature from the ground up, there is a lot to consider vs when you’re fixing a small bug, there is less to manage. Since
+	you have less on your plate why not take a few extra minutes and add a few more tests (or in the case of Javascript, write your first test)? </p>
+
+<p>My general rule is when a bug is reported, or a feature requires a small tweak, I will take the extra time to add a test for that. Just a little insurance that this bug will never happen again. </p>
+
+<p>This incremental approach to increase test coverage at the end of the day might cost the same as doing it all at once but think about it in terms of cash flow. When you are a start-up you just want to get out the door so you can get some
+	customers paying you. If you get out the door faster and earn revenue you can then reinvest that revenue into these incremental changes. Often, time matters when making decisions to invest in test coverage, good software managers always take this
+	into account. </p>
+
+
+<blockquote className="p-4 bg-neutral-100 text-neutral-600 border-l-4 border-neutral-500 italic quote">
+	<p className="mb-2">"This incremental approach to increase test coverage at the end of the day might cost the same as doing it all at once but think about it in terms of cash flow."</p>
+</blockquote>
+
+
+
+<p><strong>Rule #6: Test using the services you use in production</strong></p>
+
+<p>A unit testing zealot will tell you every test is its own time and should not have dependencies on other things. Sure, this is a nice non-subjective approach to unit testing, but it often leads to extra work to support. </p>
+
+<p>A great example would be many people will use SQLite as a database when unit testing, and a MySql database in production. The idea is you can spin up SQLite on the fly since it is just a file vs starting a MySql database. Yes, this isolates the
+	test to have no other dependencies, but I have seen it have more issues than they are worth. </p>
+
+<p>If you are using MySql in production, you should run your unit tests against MySql. SQLite is not the same as MySql and the subtle differences will haunt you and add more time to the development process. With docker containers for everything
+	these days, you can almost always find a solution that is close to being “pure” unit testing and match what you run in production.</p>
+
+
+
+<p><strong>Rule #7: Don’t be a unit testing purist</strong></p>
+
+<p>The unit testing purist out there will call me out on this, but I simply disagree. Don’t be afraid to put “if testing” code into your core codebase. Of course, you should not do this often, but if you are a senior software developer with good
+	judgment, go for it.</p>
+
+<p>It might be best to explain this with an example. In <a href="https://golang.org/">Golang</a> you can fire up a goroutine (which is more or less a <a href="https://stackoverflow.com/questions/5201852/what-is-a-thread-really">thread</a>) by
+	putting the keyword “<a href="https://pragmacoders.com/blog/multithreading-in-go-a-tutorial">go</a>” in front of a function. This is handy for backgrounding the process of sending a <a href="https://www.mailgun.com/transactional-email">transactional
+		email</a> (since the user should not have to wait for that to go through). The problem is the unit test will likely finish before the thread finishes and you have no way of testing if there were issues with that transactional email. I think it is
+	ok to simply put an “if testing” statement in front of it and while we are unit testing, so we do not run the method in a different thread. Pretty minor, but it saves writing ugly code just to make the code more testable. </p>
+
+<p>
+	<img src="/images/go-code-testing-example.png" alt="Go code testing example" />
+</p>
+
+
+<p>Of course, if you have a number of junior developers on your team it may be best to have less subjective hard and fast rules about testing code. It can get out of hand if it’s fast with poor judgment.</p>
+
+<p>Textbooks will argue there are rules on how you should unit test. Don’t be afraid to break those rules if they make better business sense for you and your project. </p>
+
+<p>I would remind you that the “book on testing” was written a long time ago. When shipping code was expensive and could not happen on the fly. These purist rules were smarter then because repercussions were greater if buggy software was shipped. In
+	the modern web era if a mistake got shipped it could very quickly get fixed. Hence, converting textbook rules of unit testing to mere suggestions and applying your own judgment can pay big dividends in terms of cost and time. </p>
+
+
+
+<p><strong>Rule #8: Take a top-down approach to testing.</strong></p>
+
+<p>Testing nerds will say what I am describing is integration testing, not unit testing, and good developers do both. Whatever you want to call it, there are only so many hours in a day and I think you should focus on the low hanging fruit first.</p>
+
+<p>Most apps I build these days are <a href="https://restfulapi.net/">REST API</a> backends. Meaning front-end applications call some HTTP endpoint and JSON data is returned. Normally, many sections of your application are called with every
+	endpoint. For example, the following functionality might be called: authentication, controller, model, database, helper libraries, user analytics, and so on. You could unit test every method called in one HTTP endpoint request, but I say that is
+	cumbersome. </p>
+
+<p>With a less cumbersome approach, you could write tests that make a call to the endpoint and verifies what it returns. By default, all the functions mentioned above are tested as well. If any of them fail, the endpoint will not return what is
+	expected.</p>
+
+
+<p>
+	<img src="/images/software-and-making-money.jpg" alt="Software and making money" />
+</p>
+
+
+
+<p>I can tell you by taking this approach you give your application a massive amount of test coverage. However, your test coverage tools will tell you that you have low coverage, and your purist unit testing friends will tell you that you are
+	getting a false sense of security. I claim you are getting a massive bang for your buck. If your goal is to build software that makes money, this is a great place to have some savings.</p>
+
+<p>To my point in Rule #5. I do think you should add unit tests further down the stack in a more isolated manner. Just do them over time. When you circle back to make updates adding more isolated tests as you have time, it can’t hurt. I just don’t
+	think you need them on day one.</p>
+
+
+
+<h2>Summary</h2>
+
+<p>Many reading this might jump to calling me an amateur claiming my relaxed approach to testing is not what real developers do. To my point in Rule #1, if your business case supports unwavering from all forms of testing, great. I agree this is
+	best. Personally, I have never worked on a project that would not benefit from applying some judgment vs. sticking to hard and fast rules.</p>
+
+<p>I have never worked for a big company like Google or Apple. I know these companies tend to do things by the book with little exception. Maybe on their scale, it is required, but as an outsider looking in it seems their innovation has slowed a
+	great deal since the early days. However, a company like Amazon, which is known for rapid innovation, continues with no decrease in pace. It is my thought Amazon thinks outside of the box when building software. I have no idea what Amazon’s unit
+	testing policies are, (I am sure they are rather good), I do think they optimize their development teams whenever possible throwing out standard rules and building custom rules for their business goals. </p>
+
+<p>My major point here, while using testing to illustrate, software development should proceed in conjunction with business objectives. Often, software developer ideologies and business goals run in conflict with each other, and I believe they
+	should be in sync. Testing is just one area where synchronization is important.</p>
