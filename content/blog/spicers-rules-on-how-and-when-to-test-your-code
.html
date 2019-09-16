@@ -127,7 +127,7 @@ draft: false
 
 
 
-<p>When you make a file better you might review the code for style, better comments, or things to do that never got finished. I much prefer this approach over a hardcore code review process. Getting hung up on small things like style takes away from
+<p>When you make a file better you might review the code for style, better comments, or todos that never got finished. I much prefer this approach over a hardcore code review process. Getting hung up on small things like style takes away from
 	the core engineering task when originally developing the feature. I will post more of my thoughts on code reviews in another blog post. For now, this concept of always making a file better applies to testing as well.</p>
 
 
@@ -152,7 +152,7 @@ draft: false
 
 <p><strong>Rule #6: Test using the services you use in production</strong></p>
 
-<p>A unit testing zealot will tell you every test is its own time and should not have dependencies on other things. Sure, this is a nice non-subjective approach to unit testing, but it often leads to extra work to support. </p>
+<p>A unit testing zealot will tell you every test is its own "thing" and should not have dependencies on other things. Sure, this is a nice non-subjective approach to unit testing, but it often leads to extra work to support. </p>
 
 <p>A great example would be many people will use SQLite as a database when unit testing, and a MySql database in production. The idea is you can spin up SQLite on the fly since it is just a file vs starting a MySql database. Yes, this isolates the
 	test to have no other dependencies, but I have seen it have more issues than they are worth. </p>
@@ -177,7 +177,7 @@ draft: false
 </p>
 
 
-<p>Of course, if you have a number of junior developers on your team it may be best to have less subjective hard and fast rules about testing code. It can get out of hand if it’s fast with poor judgment.</p>
+<p>Of course, if you have a number of junior developers on your team it may be best to have less subjective hard and fast rules about testing code. It can get out of hand fast with poor judgment.</p>
 
 <p>Textbooks will argue there are rules on how you should unit test. Don’t be afraid to break those rules if they make better business sense for you and your project. </p>
 
