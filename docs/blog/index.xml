@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on Spicer Matthews Personal Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Aug 2019 12:18:58 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 15 Sep 2019 12:18:58 -0700</lastBuildDate>
     
 	<atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spicer&#39;s Rules on How and When To Test Your Code</title>
+      <link>https://spicermatthews.com/blog/spicers-rules-on-how-and-when-to-test-your-code-/</link>
+      <pubDate>Sun, 15 Sep 2019 12:18:58 -0700</pubDate>
+      
+      <guid>https://spicermatthews.com/blog/spicers-rules-on-how-and-when-to-test-your-code-/</guid>
+      <description>I just marked my 20th year as a professional software developer - meaning I received my first paycheck for writing code 20 years ago. I have to admit it has been a wild ride of successes, failures, crazy ideas, and immense learning. Throughout this journey, the topic of unit tests, or any kind of testing for that matter, has always been front and center for me. This topic has led countless barroom debates and even more IRC fights - yep, showing my age here.</description>
+    </item>
     
     <item>
       <title>Using Hugo with Google Docs</title>
