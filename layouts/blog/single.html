@@ -12,6 +12,8 @@
 
 					<div class="my-5">
 						{{ .Content }}
+
+						{{- partial "newsletter.html" . -}}
 					</div>
 
 					{{- partial "social-bar.html" . -}}
