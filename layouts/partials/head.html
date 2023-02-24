@@ -1,30 +1,28 @@
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>{{ .Title }}</title>
-	<meta name="description" content="{{ .Description }}" />
-	<link rel="shortcut icon" type="image/png" href="{{ .Site.BaseURL }}images/favicon.ico" />
-	<link href="{{ .Site.BaseURL }}css/build.css?v={{ slicestr (readFile "static/css/build.css" | md5) 0 10 }}" media="all" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Description }}" />
+  <link rel="shortcut icon" type="image/png" href="{{ .Site.BaseURL }}images/favicon.ico" />
+  <link href="{{ .Site.BaseURL }}css/build.css?v={{ slicestr (readFile "static/css/build.css" | md5) 0 10 }}" media="all" rel="stylesheet" />
 
-	<!-- open graph -->
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{{ .Title }}" />
-	<meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
-	<meta property="og:site_name" content="{{ .Site.Title }}" />
-	<meta property="og:url" content="{{ .Permalink }}" />
-	<meta property="og:locale" content="en">
+  <!-- open graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <meta property="og:site_name" content="{{ .Site.Title }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:locale" content="en" />
 
-	{{ if $.Param "og_image" }}
-	<meta property="og:image" content="{{ $.Param "og_image" | absURL  }}" />
-	<meta property="og:image:secure_url" content="{{ $.Param "og_image" | absURL }}" />
-	{{ end }}
-	<meta property="og:type" content="website" />
+  {{ if $.Param "og_image" }} <meta property="og:image" content="{{ $.Param "og_image" | absURL }}" /> <meta property="og:image:secure_url" content="{{ $.Param "og_image" | absURL
+  }}" /> {{ end }}
+  <meta property="og:type" content="website" />
 
-	<!-- twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	{{ if $.Param "og_image" }}
-	<meta name="twitter:image:src" content="{{ $.Param "og_image" | absURL  }}" />
-	{{ end }}
-	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <!-- twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  {{ if $.Param "og_image" }} <meta name="twitter:image:src" content="{{ $.Param "og_image" | absURL }}" /> {{ end }}
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+
+  <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
 </head>

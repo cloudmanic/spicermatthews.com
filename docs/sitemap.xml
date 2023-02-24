@@ -1,42 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://spicermatthews.com/blog/am-over-vendors-that-are-not-transparent-in-pricing/</loc>
     <lastmod>2020-04-21T20:18:58-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://spicermatthews.com/blog/</loc>
     <lastmod>2020-04-21T20:18:58-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://spicermatthews.com/</loc>
     <lastmod>2020-04-21T20:18:58-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://spicermatthews.com/blog/spicers-rules-on-how-and-when-to-test-your-code/</loc>
     <lastmod>2019-09-15T12:18:58-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://spicermatthews.com/blog/using-hugo-with-google-docs/</loc>
     <lastmod>2019-08-01T12:18:58-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://spicermatthews.com/blog/delighting-customers-with-airbnb/</loc>
     <lastmod>2019-07-30T12:18:58-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://spicermatthews.com/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</loc>
     <lastmod>2019-07-17T19:02:38-07:00</lastmod>
   </url>
-  
 </urlset>
