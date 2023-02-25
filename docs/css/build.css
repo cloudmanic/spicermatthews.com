@@ -2557,16 +2557,20 @@ blockquote {
     display: inline;
   }
 
-  .md\:w-1\/2 {
-    width: 50%;
-  }
-
   .md\:w-2\/3 {
     width: 66.666667%;
   }
 
   .md\:w-3\/5 {
     width: 60%;
+  }
+
+  .md\:w-\[550px\] {
+    width: 550px;
+  }
+
+  .md\:w-\[600px\] {
+    width: 600px;
   }
 
   .md\:px-10 {
@@ -2577,6 +2581,11 @@ blockquote {
   .md\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .md\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .md\:py-5 {
