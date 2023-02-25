@@ -1,6 +1,6 @@
 # Spicer Matthews Personal Site
 
-* `npx tailwind build resources/css/style.css -o static/css/build.css`
+* `npx tailwindcss -i  resources/css/style.css -o static/css/build.css`
 
 * `hugo server -D`
 

@@ -1,4 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
+  content: ["./**/*.{html,js}"],
   theme: {
     container: {
       center: true,
@@ -6,11 +8,10 @@ module.exports = {
 
     extend: {
       colors: {
-        svgFillIcon: 'rgba(54,71,78,.7)',        
-        siteBackground: '#4A4A4A'
-      }
-    }
+        svgFillIcon: "rgba(54,71,78,.7)",
+        siteBackground: "#4A4A4A",
+      },
+    },
   },
-  variants: {},
-  plugins: []
-}
+  plugins: [],
+};

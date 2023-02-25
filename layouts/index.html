@@ -1,32 +1,26 @@
 {{ define "main" }}
 
 <div class="py-5 px-5 md:px-20 mx-auto h-full flex justify-center items-center">
-	<div class="bg-white w-full rounded-lg md:w-1/2">
-		<img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="rounded-t-lg" />
+  <div class="bg-white w-full rounded-lg md:w-3/5">
+    <img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="rounded-t-lg" />
 
-		<div class="py-10 px-8">
-			<p class="font-sans font-normal">
-				Greetings, I’m <a href="https://twitter.com/spicermatthews">Spicer</a>. I’m a web developer living in <a href="https://www.google.com/maps?q=Newberg,+Oregon&um=1&ie=UTF-8&sa=X&ved=0ahUKEwjE8ovgt8HWAhVSymMKHaB4DTEQ_AUICigB">Newberg,
-					Oregon</a>. I
-				am a fan of technology, options trading, snowboarding, skateboarding, and tennis. I founded <a href="https://cloudmanic.com">Cloudmanic Labs</a>. We made <a href="https://options.cafe">Options
-					Cafe</a> and <a href="https://skyclerk.com">Skyclerk</a>. I also invest in stuff via <a href="https://matthews-etc.com">Matthews Etc.</a>
-			</p>
+    <div class="py-10 px-8">
+      <p class="font-sans font-normal">
+        Greetings, I’m <a href="https://twitter.com/spicermatthews">Spicer</a>. I’m a web developer living in
+        <a href="https://www.google.com/maps?q=Newberg,+Oregon&um=1&ie=UTF-8&sa=X&ved=0ahUKEwjE8ovgt8HWAhVSymMKHaB4DTEQ_AUICigB">Newberg, Oregon</a>. I am a fan of technology,
+        options trading, snowboarding, skateboarding, and tennis. I founded <a href="https://cloudmanic.com">Cloudmanic Labs</a>. We made
+        <a href="https://options.cafe">Options Cafe</a> and <a href="https://skyclerk.com">Skyclerk</a>. I also invest in stuff via
+        <a href="https://matthews-etc.com">Matthews Etc.</a>
+      </p>
 
-			<h2 class="font-semibold">Blog Posts</h2>
+      <h2 class="font-semibold">Want to raise your IQ by at least 100 points?</h2>
+      <p class="font-sans font-normal">Read my <a href="/blog">Blog</a>. I write about software development, options trading, and other stuff.</p>
 
-			<ul>
-				{{ range first 10 .Data.Pages }}
-				{{ if eq .Type "blog"}}
-				<li>
-					<a href={{ .Permalink }}> {{ .Title }}</a>
-				</li>
-				{{ end }}
-				{{ end }}
-			</ul>
+      <h2 class="font-semibold">Are you you already brilliant?</h2>
+      <p class="font-sans font-normal">Maybe just <a href="https://twitter.com/spicermatthews">follow me</a> on Twitter.</p>
 
-			{{- partial "social-bar.html" . -}}
-
-		</div>
-	</div>
+      {{- partial "social-bar.html" . -}}
+    </div>
+  </div>
 </div>
 {{ end }}
