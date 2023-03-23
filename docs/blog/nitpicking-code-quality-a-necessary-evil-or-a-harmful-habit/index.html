@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?</title>
+  <meta name="description" content="While Ed and I would agree on almost every software development principle in a perfect world, for me, the perfect world comes at a cost that I don&#39;t believe is worth it for most projects." />
+  <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
+  <link href="https://spicermatthews.com/css/build.css?v=4eb9317083" media="all" rel="stylesheet" />
+
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?" />
+  <meta property="og:description" content="While Ed and I would agree on almost every software development principle in a perfect world, for me, the perfect world comes at a cost that I don&#39;t believe is worth it for most projects." />
+  <meta property="og:site_name" content="Spicer Matthews Personal Site" />
+  <meta property="og:url" content="https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/" />
+  <meta property="og:locale" content="en" />
+
+   <meta property="og:image" content="https://spicermatthews.com/images/computer-code.jpg" /> <meta property="og:image:secure_url" content="https://spicermatthews.com/images/computer-code.jpg" /> 
+  <meta property="og:type" content="website" />
+
+  
+  <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:image:src" content="https://spicermatthews.com/images/computer-code.jpg" /> 
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="While Ed and I would agree on almost every software development principle in a perfect world, for me, the perfect world comes at a cost that I don&#39;t believe is worth it for most projects." />
+
+  <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-siteBackground h-screen font-sans">
+<div class="container h-full">
+
+<div class="md:py-5 md:px-5 justify-center">
+  <div class="bg-white md:w-2/3 mx-auto rounded-lg">
+    <div class="bg-gray-600 w-full rounded-t-lg text-center">
+      <span class="hidden md:inline font-light">Click here ----></span>
+      <a href="/blog" class="text-white ml-5 hover:text-black">The thoughts of Spicer Matthews</a>
+      <span class="hidden lg:inline font-light"> &nbsp; &nbsp; &nbsp;&lt;---- I dare you!</span>
+    </div>
+    <div class="py-5 px-8">
+      <h1 class="text-center">Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?</h1>
+      <p><b>Date:</b> Mar 22, 2023</p>
+
+      <div class="my-5">
+<p>
+  I have a close friend, whom we will call Ed, who has been both a work colleague and a close friend for years. However, there are some aspects of code quality on which Ed and I
+  strongly disagree. Before delving into this further, I must admit that there may be something that I am overlooking. Ed has had a long and successful career working at some of
+  the top tech companies. Even to this day, he has a long list of tech companies vying for his services, while none have ever approached me.
+</p>
+
+<p>This post is not about Ed's "dumb" ideas versus my "brilliant" ideas. Instead, it's about the difference between the big corporate mindset and the small business mindset.</p>
+
+<p>
+  To illustrate this point, let's use an example. Ed strongly believes that not properly ordering your imports at the top of a Golang file is a sign of poor code quality. In
+  contrast, I do not think that it's that important. I am not saying that correctly ordered imports are not important; it is. But, in my opinion, they are not worth getting hung up
+  on. Ed has blocked many of my PRs in the past due to such nitpicky issues, arguing that these things are vital to code quality. If not addressed early on, they can snowball into
+  more significant problems and slow down developers.
+</p>
+
+<p>
+  While I am using go imports as an example, I am highlighting all sorts of nitpicky code quality issues. Poorly designed code is undoubtedly a showstopper that can snowball into
+  more significant problems and should be addressed at the PR level.
+</p>
+
+<p>
+  My biggest argument against nitpicky style issues is that it demotivates developers. When a developer is in flow, you want to maximize their focus on the problem they are trying
+  to solve. When a software developer finishes their work and is eager to share their work with the team, slowing down the cadence through nitpicky PRs ruins the excitement of the
+  bigger task at hand.
+</p>
+
+<p>
+  In my observation, the difference between a normal software developer and a 10x developer is how giddy they are about their craft. There is a reason why we do not see tons of
+  blog posts, Twitter conversations, side projects, and so on from big tech employees. I think working in big tech may ruin the giddiness of a craft that many of us learned alone
+  at the terminal.
+</p>
+
+<p>
+  While being nitpicky about code quality is textbook proper coding, it neglects to take into account the second-order effects of developer satisfaction and the importance of
+  keeping a developer motivated.
+</p>
+
+<p>
+  You may ask how not being nitpicky in the early days will not snowball into unreadable code. I combat this by subscribing to a philosophy that you should never open a file
+  without leaving it better. During my development cycles, I often browse code, maybe even code I have never written, to understand what I need to do to complete a task. It is
+  during these non-flow states that I might notice things like import orders not being proper, and I'll fix them. If everyone on your team has the philosophy that they never open a
+  file without leaving it better, code quality will naturally improve over time.
+</p>
+
+<p>
+  If you're a big tech company with a large budget and many developers, you may be able to afford not to groom every software engineer to be a 10x engineer. However, if you are a
+  small or medium-sized business, you cannot afford not to have your developers excited and in the flow every day.
+</p>
+
+<p>
+  While Ed and I would agree on almost every software development principle in a perfect world, for me, the perfect world comes at a cost that I don't believe is worth it for most
+  projects.
+</p>
+<div class="mt-8 mb-8">
+  <h2 class="font-semibold">Did you enjoy this read?</h2>
+  <p class="font-sans font-normal">Help a brother out -- <a href="https://twitter.com/spicermatthews">follow me</a> on Twitter.</p>
+</div>
+<div class="bg-orange-200 px-1 py-1 md:px-10 md:py-5">
+	<form action="https://sendy.cloudmanic.com/subscribe" method="POST" accept-charset="utf-8" class="pb-3 pt-3 md:ml-8">
+		<h1 class="m-0">Join My Newsletter</h1>
+
+		<p>1,000+ people have joined to following along as I share on software and bussiness.</p>
+
+		<input type="email" name="email" class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white w-full md:w-2/3" placeholder="your@mail.com" />
+		<button id="submit" class="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r" style="margin-left: -5px;">
+			Subscribe
+		</button>
+
+		<div style="display:none;">
+			<label for="hp">HP</label><br />
+			<input type="text" name="hp" id="hp" />
+		</div>
+
+		<input type="hidden" name="name" id="name" />
+		<input type="hidden" name="list" value="d6NCbNvNND97RBlw7B67cA" />
+		<input type="hidden" name="subform" value="yes" />
+		<input type="hidden" name="submit" id="submit" />
+	</form>
+</div>
+</div><div class="text-center mt-8">
+
+	<a class="inline-block h-10 w-10 mx-4 md:mx-6 pt-1 social-icon" title="Send Me Email" href="mailto:me+website@spicermatthews.com">
+		<span class="SVGInline">
+			<svg class="SVGInline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 2 37 30">
+				<path d="M17.9864841,17.7442683 L35.9560572,4.24918119 C35.9560572,2.99963608 34.9577476,2 33.7098606,2 L2.26310764,2 C1.01522062,2 0.0169109976,2.99963608 0.0169109976,4.24918119 L17.9864841,17.7442683 Z M17.9864841,21.7844641 L0.0169109976,8.28937702 L0.0777647581,29.7508188 C0.0777647581,31.0003639 1.07607438,32 2.3239614,32 L33.7707144,32 C35.0186014,32 36.016911,31.0003639 36.016911,29.7508188 L35.9560572,8.28937702 L17.9864841,21.7844641 Z" />
+			</svg>
+		</span>
+	</a>
+
+	<a class="inline-block h-10 w-10 mx-4 md:mx-6 social-icon" title="Visit me on Twitter" href="https://twitter.com/spicermatthews">
+		<span class="SVGInline">
+			<svg class="SVGInline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+				<path d="M1000 500c0 277-223 500-500 500s-500-223-500-500 223-500 500-500 500 223 500 500zm-125-183c-25 11-53 18-82 22 30-17 51-45 61-79-28 17-57 28-89 35-25-28-62-45-103-45-78 0-141 63-141 142 0 10 1 22 3 32-118-5-223-62-294-149-11 22-18 46-18 72 0 50 24 93 62 118-23 0-45-7-64-18v2c0 69 49 126 114 140-12 3-24 4-37 4-9 0-19-1-27-2 18 57 71 95 132 96-48 38-108 65-176 65-11 0-23-1-33-2 62 40 138 62 217 62 262 0 404-216 404-404v-18c28-19 51-45 71-73z" />
+			</svg>
+		</span>
+	</a>
+
+	<a class="inline-block h-10 w-10 mx-4 md:mx-6 social-icon" title="Visit me on GitHub" href="https://github.com/cloudmanic" target="_blank">
+		<span class="SVGInline"><svg class="SVGInline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+				<path d="M1000 508c0 232-160 429-375 485v-131c0-41-10-98-52-131 134-20 239-99 239-223 0-51-21-102-58-144 11-47 17-105-4-148-53 5-106 32-145 56-33-8-67-14-105-14s-73 6-106 14c-39-24-91-51-144-56-21 43-16 101-5 148-37 42-57 93-57 144 0 124 105 203 239 223-20 15-32 36-40 57-105 2-189-81-190-81-5-4-12-5-16-2-6 3-9 10-7 16 2 5 44 124 201 172v100c-215-56-375-253-375-485 0-275 223-500 500-500 275 0 500 225 500 500z" />
+			</svg>
+		</span>
+	</a>
+
+</div>
+</div>
+  </div>
+</div>
+
+
+	</div><script type="text/javascript">
+	var _paq = window._paq || [];
+	 
+	_paq.push(['trackPageView']);
+	_paq.push(['enableLinkTracking']);
+	(function() {
+		var u = "//piwik.cloudmanic.com/";
+		_paq.push(['setTrackerUrl', u + 'matomo.php']);
+		_paq.push(['setSiteId', '8']);
+		var d = document,
+			g = d.createElement('script'),
+			s = d.getElementsByTagName('script')[0];
+		g.type = 'text/javascript';
+		g.async = true;
+		g.defer = true;
+		g.src = u + 'matomo.js';
+		s.parentNode.insertBefore(g, s);
+	})();
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+---
+title: "Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?"
+date: 2023-03-22T13:18:58-07:00
+draft: false
+description: "While Ed and I would agree on almost every software development principle in a perfect world, for me, the perfect world comes at a cost that I don't believe is worth it for most
+projects."
+og_image: "/images/computer-code.jpg"
+---
+
+<p>
+  I have a close friend, whom we will call Ed, who has been both a work colleague and a close friend for years. However, there are some aspects of code quality on which Ed and I
+  strongly disagree. Before delving into this further, I must admit that there may be something that I am overlooking. Ed has had a long and successful career working at some of
+  the top tech companies. Even to this day, he has a long list of tech companies vying for his services, while none have ever approached me.
+</p>
+
+<p>This post is not about Ed's "dumb" ideas versus my "brilliant" ideas. Instead, it's about the difference between the big corporate mindset and the small business mindset.</p>
+
+<p>
+  To illustrate this point, let's use an example. Ed strongly believes that not properly ordering your imports at the top of a Golang file is a sign of poor code quality. In
+  contrast, I do not think that it's that important. I am not saying that correctly ordered imports are not important; it is. But, in my opinion, they are not worth getting hung up
+  on. Ed has blocked many of my PRs in the past due to such nitpicky issues, arguing that these things are vital to code quality. If not addressed early on, they can snowball into
+  more significant problems and slow down developers.
+</p>
+
+<p>
+  While I am using go imports as an example, I am highlighting all sorts of nitpicky code quality issues. Poorly designed code is undoubtedly a showstopper that can snowball into
+  more significant problems and should be addressed at the PR level.
+</p>
+
+<p>
+  My biggest argument against nitpicky style issues is that it demotivates developers. When a developer is in flow, you want to maximize their focus on the problem they are trying
+  to solve. When a software developer finishes their work and is eager to share their work with the team, slowing down the cadence through nitpicky PRs ruins the excitement of the
+  bigger task at hand.
+</p>
+
+<p>
+  In my observation, the difference between a normal software developer and a 10x developer is how giddy they are about their craft. There is a reason why we do not see tons of
+  blog posts, Twitter conversations, side projects, and so on from big tech employees. I think working in big tech may ruin the giddiness of a craft that many of us learned alone
+  at the terminal.
+</p>
+
+<p>
+  While being nitpicky about code quality is textbook proper coding, it neglects to take into account the second-order effects of developer satisfaction and the importance of
+  keeping a developer motivated.
+</p>
+
+<p>
+  You may ask how not being nitpicky in the early days will not snowball into unreadable code. I combat this by subscribing to a philosophy that you should never open a file
+  without leaving it better. During my development cycles, I often browse code, maybe even code I have never written, to understand what I need to do to complete a task. It is
+  during these non-flow states that I might notice things like import orders not being proper, and I'll fix them. If everyone on your team has the philosophy that they never open a
+  file without leaving it better, code quality will naturally improve over time.
+</p>
+
+<p>
+  If you're a big tech company with a large budget and many developers, you may be able to afford not to groom every software engineer to be a 10x engineer. However, if you are a
+  small or medium-sized business, you cannot afford not to have your developers excited and in the flow every day.
+</p>
+
+<p>
+  While Ed and I would agree on almost every software development principle in a perfect world, for me, the perfect world comes at a cost that I don't believe is worth it for most
+  projects.
+</p>

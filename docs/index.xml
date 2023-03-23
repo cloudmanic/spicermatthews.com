@@ -6,7 +6,16 @@
     <description>Recent content on Spicer Matthews Personal Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Mar 2023 20:18:58 -0700</lastBuildDate><atom:link href="https://spicermatthews.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Mar 2023 13:18:58 -0700</lastBuildDate><atom:link href="https://spicermatthews.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?</title>
+      <link>https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</link>
+      <pubDate>Wed, 22 Mar 2023 13:18:58 -0700</pubDate>
+      
+      <guid>https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</guid>
+      <description>I have a close friend, whom we will call Ed, who has been both a work colleague and a close friend for years. However, there are some aspects of code quality on which Ed and I strongly disagree. Before delving into this further, I must admit that there may be something that I am overlooking. Ed has had a long and successful career working at some of the top tech companies.</description>
+    </item>
+    
     <item>
       <title>Prioritizing TDD Friendly Languages and Frameworks</title>
       <link>https://spicermatthews.com/blog/prioritizing-tdd-friendly-languages-and-frameworks/</link>
