@@ -6,16 +6,7 @@
     <description>Recent content in Blogs on Spicer Matthews Personal Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Mar 2023 20:18:58 -0700</lastBuildDate><atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title></title>
-      <link>https://spicermatthews.com/blog/post/</link>
-      <pubDate>Thu, 23 Mar 2023 20:18:58 -0700</pubDate>
-      
-      <guid>https://spicermatthews.com/blog/post/</guid>
-      <description>As someone who takes an unorthodox approach to software development, I wanted to share my thoughts on pull requests. While they can be helpful for having another developer review your code, I find the traditional approach to be a bit cumbersome and demotivating. Throughout my career, I have worked on many teams with varying company cultures around pull requests. However, I have noticed similar problems arise time and time again, such as developers not responding to pull requests in a timely manner, leaving the original author unable to commit their code.</description>
-    </item>
-    
+    <lastBuildDate>Wed, 22 Mar 2023 13:18:58 -0700</lastBuildDate><atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?</title>
       <link>https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</link>
