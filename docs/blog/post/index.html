@@ -2,27 +2,27 @@
 <html><head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Using Hugo with Google Docs</title>
-  <meta name="description" content="I am becoming a big fan of Hugo to build static sites like this one and this one. Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you produce your content within your text editor such as Atom." />
+  <title></title>
+  <meta name="description" content="" />
   <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
   <link href="https://spicermatthews.com/css/build.css?v=4eb9317083" media="all" rel="stylesheet" />
 
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Using Hugo with Google Docs" />
-  <meta property="og:description" content="I am becoming a big fan of Hugo to build static sites like this one and this one. Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you produce your content within your text editor such as Atom." />
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="" />
   <meta property="og:site_name" content="Spicer Matthews Personal Site" />
-  <meta property="og:url" content="https://spicermatthews.com/blog/using-hugo-with-google-docs/" />
+  <meta property="og:url" content="https://spicermatthews.com/blog/post/" />
   <meta property="og:locale" content="en" />
 
-   <meta property="og:image" content="https://spicermatthews.com/images/editing-hugo-post-in-atom.png" /> <meta property="og:image:secure_url" content="https://spicermatthews.com/images/editing-hugo-post-in-atom.png" /> 
+   <meta property="og:image" content="https://spicermatthews.com/images/computer-code.jpg" /> <meta property="og:image:secure_url" content="https://spicermatthews.com/images/computer-code.jpg" /> 
   <meta property="og:type" content="website" />
 
   
   <meta name="twitter:card" content="summary_large_image" />
-   <meta name="twitter:image:src" content="https://spicermatthews.com/images/editing-hugo-post-in-atom.png" /> 
+   <meta name="twitter:image:src" content="https://spicermatthews.com/images/computer-code.jpg" /> 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description" content="I am becoming a big fan of Hugo to build static sites like this one and this one. Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you produce your content within your text editor such as Atom." />
+  <meta name="twitter:description" content="" />
 
   <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
 </head>
@@ -37,41 +37,52 @@
       <span class="hidden lg:inline font-light"> &nbsp; &nbsp; &nbsp;&lt;---- I dare you!</span>
     </div>
     <div class="py-5 px-8">
-      <h1 class="text-center">Using Hugo with Google Docs</h1>
-      <p><b>Date:</b> Aug 01, 2019</p>
+      <h1 class="text-center"></h1>
+      <p><b>Date:</b> Mar 23, 2023</p>
 
       <div class="my-5">
-<blockquote><b>Quick tip alert!</b> This is how I import Google docs into Hugo.</blockquote>
-
-<p>I am becoming a big fan of <a href="https://gohugo.io">Hugo</a> to
-	build static sites like <a href="https://spicermatthews.com">this one</a> and <a href="https://bendmountbachelorvillage.com">this one</a>.
-	Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you
-	produce your content within your text editor such as <a href="https://atom.io">Atom</a>.</p>
-
 <p>
-	<img src="/images/editing-hugo-post-in-atom.png" alt="Editing Hugo Post in Atom" />
+  As someone who takes an unorthodox approach to software development, I wanted to share my thoughts on pull requests. While they can be helpful for having another developer review
+  your code, I find the traditional approach to be a bit cumbersome and demotivating.
 </p>
 
-<p>Text editors are great but they are not ideal for producing well-thought-out written content. I like to produce my content in Google docs and then import it into Hugo. Below is a video showing how I do it. The basic
-	steps are as follows:</p>
-
-<ol>
-	<li>Write your post within Google docs. Adding any basic formatting you want. </li>
-	<li>Export the document to HTML (File -&gt; Download as -&gt; Web page).</li>
-	<li>Open the HTML in your text editor and copy the content of the body.</li>
-	<li>Visit <a href="https://imperavi.com/redactor">https://imperavi.com/redactor</a> and
-		clear the content of the sample editor on the home page.</li>
-	<li>Copy your HTML body into the editor. Then click view source. You now have clean HTML.</li>
-	<li>Copy the clean HTML into your Hugo post and make any tweaks you need. </li>
-</ol>
-
 <p>
-	<iframe width="100%" height="450" src="https://www.youtube.com/embed/G1ZIv_lQEQk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  Throughout my career, I have worked on many teams with varying company cultures around pull requests. However, I have noticed similar problems arise time and time again, such as
+  developers not responding to pull requests in a timely manner, leaving the original author unable to commit their code. Additionally, I have seen pull requests get blocked over
+  nitpicky issues or developers simply rubberstamping them to avoid a thorough review.
 </p>
 
-<p>Hope you find this helpful. </p>
+<p>
+  In my experience, less than 5% of my pull requests actually surface fundamental bugs or issues in my code. Most issues are discovered during a QA phase or even after release to
+  production. This makes me question whether the overhead of pull requests is worth the little impact they have.
+</p>
 
-<p>Happy coding!! </p>
+<p>
+  I have also noticed that many developers simply skim through the changes on GitHub without actually running the code. This approach often misses important things and renders the
+  code review ineffective.
+</p>
+
+<p>
+  Personally, I find pull requests to be more effective when required reviews are at the discretion of the developer. Pull requests are useful for new developers who need their
+  work reviewed and for more complicated sections of code. However, for basic changes, waiting for a coworker to review your code can be demotivating and slow down overall
+  progress.
+</p>
+
+<p>
+  While shipping broken code is never ideal, I believe a stronger QA workflow is more important than pest-driven code reviews. Many development shops downplay the QA process,
+  thinking that the pull request/code review process is enough. But if you're a smaller company with limited resources, sometimes you need to move fast and break things.
+</p>
+
+<p>
+  Of course, I know that not everyone will agree with my relaxed standards for code review. However, I believe we could be entering an era where this is a moot point. With the rise
+  of strong AI models, such as ChatGPT, someone is bound to be working on software to automate code reviews. An AI-driven model could review code better than any human and mitigate
+  all the current problems caused by humans during a traditional code review process.
+</p>
+
+<p>
+  Until that day comes, I will continue to advocate for a code review process that is less stringent, more at the discretion of the developer, and equally impactful as it is
+  cumbersome.
+</p>
 <div class="mt-8 mb-8">
   <h2 class="font-semibold">Did you enjoy this read?</h2>
   <p class="font-sans font-normal">Help a brother out -- <a href="https://twitter.com/spicermatthews">follow me</a> on Twitter.</p>
