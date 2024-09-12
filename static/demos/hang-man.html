@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hangman Game</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+      <h1 class="text-4xl font-bold text-center mb-8">Hangman Game</h1>
+      <div class="flex flex-col items-center">
+        <!-- Hangman drawing -->
+        <svg id="hangmanDrawing" width="200" height="250" class="mb-8 mx-auto">
+          <!-- Base -->
+          <line x1="20" y1="230" x2="180" y2="230" stroke="#000" stroke-width="4" />
+          <!-- Pole -->
+          <line x1="50" y1="230" x2="50" y2="20" stroke="#000" stroke-width="4" />
+          <!-- Beam -->
+          <line x1="50" y1="20" x2="130" y2="20" stroke="#000" stroke-width="4" />
+          <!-- Rope -->
+          <line x1="130" y1="20" x2="130" y2="50" stroke="#000" stroke-width="4" />
+
+          <!-- Head -->
+          <circle id="head" cx="130" cy="70" r="20" stroke="#000" stroke-width="4" fill="none" style="display: none" />
+          <!-- Body -->
+          <line id="body" x1="130" y1="90" x2="130" y2="150" stroke="#000" stroke-width="4" style="display: none" />
+          <!-- Left Arm -->
+          <line id="leftArm" x1="130" y1="110" x2="100" y2="130" stroke="#000" stroke-width="4" style="display: none" />
+          <!-- Right Arm -->
+          <line id="rightArm" x1="130" y1="110" x2="160" y2="130" stroke="#000" stroke-width="4" style="display: none" />
+          <!-- Left Leg -->
+          <line id="leftLeg" x1="130" y1="150" x2="110" y2="190" stroke="#000" stroke-width="4" style="display: none" />
+          <!-- Right Leg -->
+          <line id="rightLeg" x1="130" y1="150" x2="150" y2="190" stroke="#000" stroke-width="4" style="display: none" />
+        </svg>
+
+        <!-- Word display -->
+        <div id="wordDisplay" class="text-2xl font-mono tracking-widest mb-8 text-center">
+          <!-- Word letters will be displayed here -->
+        </div>
+
+        <!-- Letter buttons -->
+        <div id="letterButtons" class="mb-8">
+          <!-- Letter buttons will be generated here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Result overlay -->
+    <div id="resultOverlay" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+      <div class="bg-white rounded-lg p-8 text-center">
+        <h2 id="resultMessage" class="text-2xl font-bold mb-4"></h2>
+        <button id="restartButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Play Again</button>
+      </div>
+    </div>
+
+    <!-- JavaScript code -->
+    <script>
+      const words = [
+        "JAVASCRIPT",
+        "HANGMAN",
+        "PROGRAMMING",
+        "DEVELOPMENT",
+        "FUNCTION",
+        "VARIABLE",
+        "CONSTANT",
+        "ARRAY",
+        "OBJECT",
+        "STRING",
+        "NUMBER",
+        "BOOLEAN",
+        "UNDEFINED",
+        "NULL",
+        "SYMBOL",
+        "CLASS",
+        "INHERITANCE",
+        "PROTOTYPE",
+        "CLOSURE",
+        "SCOPE",
+        "CONTEXT",
+        "ASYNC",
+        "AWAIT",
+        "PROMISE",
+        "CALLBACK",
+        "EVENT",
+        "LISTENER",
+        "DOCUMENT",
+        "WINDOW",
+        "ELEMENT",
+        "ATTRIBUTE",
+        "NODE",
+        "STYLE",
+        "SELECTOR",
+        "CASCADE",
+        "INHERIT",
+        "BOXMODEL",
+        "MARGIN",
+        "PADDING",
+        "BORDER",
+        "BACKGROUND",
+        "COLOR",
+        "FONT",
+        "DISPLAY",
+        "POSITION",
+        "FLEX",
+        "GRID",
+        "RESPONSIVE",
+        "MEDIAQUERY",
+        "ANIMATION",
+        "TRANSITION",
+        "TRANSFORM",
+        "DATABASE",
+        "QUERY",
+        "SERVER",
+        "CLIENT",
+        "REQUEST",
+        "RESPONSE",
+        "JSON",
+        "API",
+        "REST",
+        "HTTP",
+        "HTTPS",
+        "COOKIE",
+        "SESSION",
+        "AUTHENTICATION",
+        "AUTHORIZATION",
+        "ENCRYPTION",
+        "SECURITY",
+        "FRAMEWORK",
+        "LIBRARY",
+        "MODULE",
+        "PACKAGE",
+        "DEPENDENCY",
+        "VERSION",
+        "CONTROL",
+        "GIT",
+        "REPOSITORY",
+        "BRANCH",
+        "COMMIT",
+        "MERGE",
+        "PULL",
+        "PUSH",
+        "FETCH",
+        "ORIGIN",
+        "REMOTE",
+        "FORK",
+        "CLONE",
+        "ISSUE",
+        "BUG",
+        "FEATURE",
+        "DEPLOY",
+        "BUILD",
+        "TEST",
+        "DEBUG",
+        "OPTIMIZE",
+        "PERFORMANCE",
+        "MEMORY",
+        "LEAK",
+        "EXCEPTION",
+        "ERROR",
+      ];
+
+      let selectedWord = "";
+      let guessedLetters = [];
+      let wrongGuesses = 0;
+      const maxWrongGuesses = 6; // For the hangman drawing stages
+
+      function initializeGame() {
+        // Select a random word
+        selectedWord = words[Math.floor(Math.random() * words.length)];
+        guessedLetters = [];
+        wrongGuesses = 0;
+
+        // Reset the display
+        updateWordDisplay();
+        generateLetterButtons();
+        updateHangmanDrawing();
+      }
+
+      function updateWordDisplay() {
+        const wordDisplay = document.getElementById("wordDisplay");
+        wordDisplay.innerHTML = "";
+
+        for (let letter of selectedWord) {
+          if (guessedLetters.includes(letter)) {
+            wordDisplay.innerHTML += `<span class="mx-1 border-b-2 border-gray-500">${letter}</span>`;
+          } else {
+            wordDisplay.innerHTML += `<span class="mx-1 border-b-2 border-gray-500">&nbsp;</span>`;
+          }
+        }
+      }
+
+      function generateLetterButtons() {
+        const letterButtonsDiv = document.getElementById("letterButtons");
+        letterButtonsDiv.innerHTML = "";
+        const rows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
+
+        for (let row of rows) {
+          const rowDiv = document.createElement("div");
+          rowDiv.className = "flex justify-center mb-2";
+          for (let letter of row) {
+            const button = document.createElement("button");
+            button.textContent = letter;
+            button.className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded mx-1";
+            button.addEventListener("click", () => guessLetter(letter));
+            rowDiv.appendChild(button);
+          }
+          letterButtonsDiv.appendChild(rowDiv);
+        }
+      }
+
+      function guessLetter(letter) {
+        // Disable the button
+        const buttons = document.getElementById("letterButtons").getElementsByTagName("button");
+        for (let btn of buttons) {
+          if (btn.textContent === letter) {
+            btn.disabled = true;
+            btn.classList.add("opacity-50", "cursor-not-allowed");
+          }
+        }
+
+        if (selectedWord.includes(letter)) {
+          guessedLetters.push(letter);
+          updateWordDisplay();
+          checkWin();
+        } else {
+          wrongGuesses++;
+          updateHangmanDrawing();
+          checkLose();
+        }
+      }
+
+      function updateHangmanDrawing() {
+        // Hide all parts first
+        document.getElementById("head").style.display = "none";
+        document.getElementById("body").style.display = "none";
+        document.getElementById("leftArm").style.display = "none";
+        document.getElementById("rightArm").style.display = "none";
+        document.getElementById("leftLeg").style.display = "none";
+        document.getElementById("rightLeg").style.display = "none";
+
+        if (wrongGuesses >= 1) {
+          document.getElementById("head").style.display = "block";
+        }
+        if (wrongGuesses >= 2) {
+          document.getElementById("body").style.display = "block";
+        }
+        if (wrongGuesses >= 3) {
+          document.getElementById("leftArm").style.display = "block";
+        }
+        if (wrongGuesses >= 4) {
+          document.getElementById("rightArm").style.display = "block";
+        }
+        if (wrongGuesses >= 5) {
+          document.getElementById("leftLeg").style.display = "block";
+        }
+        if (wrongGuesses >= 6) {
+          document.getElementById("rightLeg").style.display = "block";
+        }
+      }
+
+      function checkWin() {
+        let won = true;
+        for (let letter of selectedWord) {
+          if (!guessedLetters.includes(letter)) {
+            won = false;
+            break;
+          }
+        }
+        if (won) {
+          // Game won
+          setTimeout(() => {
+            showResult(true);
+          }, 500);
+        }
+      }
+
+      function checkLose() {
+        if (wrongGuesses >= maxWrongGuesses) {
+          // Game lost
+          setTimeout(() => {
+            showResult(false);
+          }, 500);
+        }
+      }
+
+      function showResult(won) {
+        const resultOverlay = document.getElementById("resultOverlay");
+        const resultMessage = document.getElementById("resultMessage");
+        if (won) {
+          resultMessage.textContent = "Congratulations! You won!";
+          resultMessage.classList.add("text-green-600");
+          resultMessage.classList.remove("text-red-600");
+        } else {
+          resultMessage.textContent = `Sorry, you lost! The word was ${selectedWord}.`;
+          resultMessage.classList.add("text-red-600");
+          resultMessage.classList.remove("text-green-600");
+        }
+        resultOverlay.classList.remove("hidden");
+      }
+
+      document.getElementById("restartButton").addEventListener("click", () => {
+        document.getElementById("resultOverlay").classList.add("hidden");
+        initializeGame();
+      });
+
+      // Start the game
+      initializeGame();
+    </script>
+  </body>
+</html>
