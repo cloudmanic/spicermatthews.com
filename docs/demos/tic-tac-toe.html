@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tic-Tac-Toe Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <h1 class="text-3xl font-bold text-center mt-8">Tic-Tac-Toe</h1>
+    <div id="game" class="grid grid-cols-3 gap-4 max-w-xs mx-auto mt-10">
+      <div id="cell-0" class="cell border border-gray-500 h-24 flex items-center justify-center text-5xl cursor-pointer hover:bg-gray-200"></div>
+      <div id="cell-1" class="cell border border-gray-500 h-24 flex items-center justify-center text-5xl cursor-pointer hover:bg-gray-200"></div>
+      <div id="cell-2" class="cell border border-gray-500 h-24 flex items-center justify-center text-5xl cursor-pointer hover:bg-gray-200"></div>
+      <div id="cell-3" class="cell border border-gray-500 h-24 flex items-center justify-center text-5xl cursor-pointer hover:bg-gray-200"></div>
+      <div id="cell-4" class="cell border border-gray-500 h-24 flex items-center justify-center text-5xl cursor-pointer hover:bg-gray-200"></div>
+      <div id="cell-5" class="cell border border-gray-500 h-24 flex items-center justify-center text-5xl cursor-pointer hover:bg-gray-200"></div>
+      <div id="cell-6" class="cell border border-gray-500 h-24 flex items-center justify-center text-5xl cursor-pointer hover:bg-gray-200"></div>
+      <div id="cell-7" class="cell border border-gray-500 h-24 flex items-center justify-center text-5xl cursor-pointer hover:bg-gray-200"></div>
+      <div id="cell-8" class="cell border border-gray-500 h-24 flex items-center justify-center text-5xl cursor-pointer hover:bg-gray-200"></div>
+    </div>
+    <div id="message" class="text-center mt-6 text-2xl font-semibold"></div>
+    <button id="restart" class="hidden mx-auto mt-4 px-4 py-2 bg-blue-500 text-white rounded">Start Again</button>
+    <script>
+      let board = ["", "", "", "", "", "", "", "", ""];
+      const player = "X";
+      const computer = "O";
+      let gameOver = false;
+
+      const cells = document.querySelectorAll(".cell");
+
+      cells.forEach((cell, index) => {
+        cell.addEventListener("click", () => playerMove(index));
+      });
+
+      function playerMove(index) {
+        if (board[index] === "" && !gameOver) {
+          board[index] = player;
+          updateBoard();
+          if (checkWin(player)) {
+            endGame("You win!");
+          } else if (boardFull()) {
+            endGame("It's a draw!");
+          } else {
+            setTimeout(computerMove, 500); // Add delay for better UX
+          }
+        }
+      }
+
+      function updateBoard() {
+        board.forEach((mark, index) => {
+          cells[index].textContent = mark;
+          if (mark === player) {
+            cells[index].classList.add("text-blue-500");
+          } else if (mark === computer) {
+            cells[index].classList.add("text-red-500");
+          } else {
+            cells[index].classList.remove("text-blue-500", "text-red-500");
+          }
+        });
+      }
+
+      function checkWin(mark) {
+        const winConditions = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6],
+        ];
+        return winConditions.some((condition) => {
+          return condition.every((index) => board[index] === mark);
+        });
+      }
+
+      function boardFull() {
+        return board.every((cell) => cell !== "");
+      }
+
+      function computerMove() {
+        if (gameOver) return;
+        let emptyCells = [];
+        board.forEach((cell, index) => {
+          if (cell === "") {
+            emptyCells.push(index);
+          }
+        });
+        if (emptyCells.length > 0) {
+          let randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+          board[randomIndex] = computer;
+          updateBoard();
+          if (checkWin(computer)) {
+            endGame("Computer wins!");
+          } else if (boardFull()) {
+            endGame("It's a draw!");
+          }
+        }
+      }
+
+      function endGame(message) {
+        gameOver = true;
+        document.getElementById("message").textContent = message;
+        document.getElementById("restart").classList.remove("hidden");
+      }
+
+      document.getElementById("restart").addEventListener("click", restartGame);
+
+      function restartGame() {
+        board = ["", "", "", "", "", "", "", "", ""];
+        gameOver = false;
+        updateBoard();
+        document.getElementById("message").textContent = "";
+        document.getElementById("restart").classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>

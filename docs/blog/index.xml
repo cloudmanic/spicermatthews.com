@@ -4,99 +4,79 @@
     <title>Blogs on Spicer Matthews Personal Site</title>
     <link>https://spicermatthews.com/blog/</link>
     <description>Recent content in Blogs on Spicer Matthews Personal Site</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Mar 2024 12:18:58 -0700</lastBuildDate><atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Mar 2024 12:18:58 -0700</lastBuildDate>
+    <atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reimagining Real Estate: A Call for Excellence Over Exclusivity</title>
       <link>https://spicermatthews.com/blog/reimagining-real-estate-a-call-for-excellence-over-exclusivity/</link>
       <pubDate>Tue, 26 Mar 2024 12:18:58 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/reimagining-real-estate-a-call-for-excellence-over-exclusivity/</guid>
       <description>Nearly two decades ago, I embarked on my real estate journey with my first property purchase. Over the years, I&#39;ve been involved in more than fifty transactions, working closely with real estate brokers affiliated with The National Association of Realtors (NAR). My extensive experience has led me to a stark realization: the NAR seems to prioritize creating barriers (&#34;moats&#34;) over fostering excellence, a practice I find deeply troubling. This critique is not aimed at individual Realtors or the profession at large, many of whom are exceptional and have provided invaluable insights and assistance throughout my ventures.</description>
     </item>
-    
     <item>
       <title>Streamlining Code Reviews: Maximize Efficiency and Effectiveness</title>
       <link>https://spicermatthews.com/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</link>
       <pubDate>Thu, 30 Mar 2023 20:18:58 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</guid>
       <description>As I delve into unconventional approaches to software development, I think it&#39;s worthwhile to share my thoughts on pull requests. While they are undoubtedly helpful, having another developer review your code after you&#39;ve completed it, I find the traditional approach to pull requests to be somewhat cumbersome and potentially demotivating. Throughout my years of experience, I&#39;ve worked with numerous teams, each with a distinct company culture surrounding pull requests. Time and again, I&#39;ve observed common issues such as developers not responding to pull requests promptly, leaving the original author unable to commit code.</description>
     </item>
-    
     <item>
       <title>Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?</title>
       <link>https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</link>
       <pubDate>Wed, 22 Mar 2023 13:18:58 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</guid>
       <description>I have a close friend, whom we will call Frank, who has been both a work colleague and a close friend for years. However, there are some aspects of code quality on which Frank and I strongly disagree. Before delving into this further, I must admit that there may be something that I am overlooking. Frank has had a long and successful career working at some of the top tech companies.</description>
     </item>
-    
     <item>
       <title>Prioritizing TDD Friendly Languages and Frameworks</title>
       <link>https://spicermatthews.com/blog/prioritizing-tdd-friendly-languages-and-frameworks/</link>
       <pubDate>Sat, 18 Mar 2023 20:18:58 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/prioritizing-tdd-friendly-languages-and-frameworks/</guid>
       <description>Unit testing and Test-driven development (TDD) are crucial elements of software development. Unit tests ensure individual code units function correctly, while TDD emphasizes writing tests before writing code to meet expected requirements. As someone who enjoys TDD but dislikes writing unit tests, I appreciate the importance of testing and value an efficient development process. Unit tests should make development more enjoyable and not be an extra burden. They should be tools that help developers work faster, rather than additional tasks.</description>
     </item>
-    
     <item>
       <title>The Stock Market Is a Drunken Idiot -- You Should Profit From It</title>
       <link>https://spicermatthews.com/blog/the-stock-market-is-a-drunken-idiot-you-should-profit-from-it/</link>
       <pubDate>Fri, 24 Feb 2023 20:18:58 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/the-stock-market-is-a-drunken-idiot-you-should-profit-from-it/</guid>
       <description>Have you ever noticed that when someone drinks too much, they become predictable? They might start talking louder or acting crazier than usual. It&#39;s as if the alcohol has unlocked a different side of their personality. Most people are pretty steady and predictable creatures when they&#39;re sober, but when they get drunk, all bets are off. The same can be said for the stock market. Sometimes, stocks in the stock market behave like they&#39;re drunk.</description>
     </item>
-    
     <item>
       <title>Am Over Vendors That Are Not Transparent in Pricing</title>
       <link>https://spicermatthews.com/blog/am-over-vendors-that-are-not-transparent-in-pricing/</link>
       <pubDate>Tue, 21 Apr 2020 20:18:58 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/am-over-vendors-that-are-not-transparent-in-pricing/</guid>
       <description>Once upon a time, I was a home builder before I turned computer geek. This was a time before the Internet provided a transparent world. To get the materials I needed, at a good price I had to have good relationships and contacts. The key to good service and pricing was making your sales rep like you. Also, doing a lot of business with him (or her) was helpful too.</description>
     </item>
-    
     <item>
       <title>Spicer&#39;s Rules on How and When To Test Your Code</title>
       <link>https://spicermatthews.com/blog/spicers-rules-on-how-and-when-to-test-your-code/</link>
       <pubDate>Sun, 15 Sep 2019 12:18:58 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/spicers-rules-on-how-and-when-to-test-your-code/</guid>
       <description>I just marked my 20th year as a professional software developer - meaning I received my first paycheck for writing code 20 years ago. I have to admit it has been a wild ride of successes, failures, crazy ideas, and immense learning. Throughout this journey, the topic of unit tests, or any kind of testing for that matter, has always been front and center for me. This topic has led countless barroom debates and even more IRC fights - yep, showing my age here.</description>
     </item>
-    
     <item>
       <title>Using Hugo with Google Docs</title>
       <link>https://spicermatthews.com/blog/using-hugo-with-google-docs/</link>
       <pubDate>Thu, 01 Aug 2019 12:18:58 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/using-hugo-with-google-docs/</guid>
-      <description>Quick tip alert! This is how I import Google docs into Hugo. I am becoming a big fan of Hugo to build static sites like this one and this one. Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you produce your content within your text editor such as Atom.
-Text editors are great but they are not ideal for producing well-thought-out written content.</description>
+      <description>Quick tip alert! This is how I import Google docs into Hugo. I am becoming a big fan of Hugo to build static sites like this one and this one. Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you produce your content within your text editor such as Atom.&#xA;Text editors are great but they are not ideal for producing well-thought-out written content.</description>
     </item>
-    
     <item>
       <title>Delighting Customers With Airbnb</title>
       <link>https://spicermatthews.com/blog/delighting-customers-with-airbnb/</link>
       <pubDate>Tue, 30 Jul 2019 12:18:58 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/delighting-customers-with-airbnb/</guid>
       <description>This week, we launched bendmountbachelorvillage.com for really no good reason. For years now, we have been using Airbnb to rent out our vacation rental in Bend, OR. The truth is, we designed this website back in 2012 when we were using Craigslist to find nightly renters. Before we had time to launch the site, Airbnb became a thing and changed our rental business in the best possible ways. This past weekend I decided I was sick of looking at this linger todo and I launched the site.</description>
     </item>
-    
     <item>
       <title>Hello World: My New Blog, Hugo, Tailwind CSS, and More</title>
       <link>https://spicermatthews.com/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</link>
       <pubDate>Wed, 17 Jul 2019 19:02:38 -0700</pubDate>
-      
       <guid>https://spicermatthews.com/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</guid>
       <description>Today, I am launching, once again, my personal blog. Starting over. Hopefully, this is my last reboot (more on that below). I could not even begin to count the number of blogs I have had in my life. Currently, I blog for Options Cafe, Skyclerk, and Cloudmanic. However, in the past, I have had all sorts of personal blogs. Just for fun here are some of my past blogs.</description>
     </item>
-    
   </channel>
 </rss>
