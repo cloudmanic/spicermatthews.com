@@ -1,0 +1,513 @@
+---
+title: "My New AI-First Development Workflow - Github Issues"
+date: 2025-12-29T10:00:00-07:00
+draft: false
+description: "How I transformed my development workflow by treating GitHub Issues as both my project management system and planning document, with Claude at the command line as my primary collaborator."
+og_image: "/images/ai-workflow.png"
+---
+
+<!--
+  Date: 2025-12-29
+  Copyright (c) 2025 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">
+  Over the last few months, I've quietly but completely changed how I build software.
+</p>
+
+<p>
+  This wasn't a single "aha" moment. It was more like a slow realization that a lot of the friction I'd accepted as normal—planning overhead, missing context, endless clicking, poorly scoped tasks—wasn't actually required anymore.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-lg font-medium text-blue-900 m-0">
+    The biggest shift? I now treat <strong>GitHub Issues as both my project management system and my planning document</strong>, and I use <strong>Claude at the command line</strong> as my primary collaborator to get work scoped, built, reviewed, and shipped.
+  </p>
+</div>
+
+<p>
+  This post walks through that workflow end-to-end, why it works so well, and why some tools I expected to matter (Jira, Asana, MCP servers) ended up being mostly unnecessary.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Why I Moved Away from Jira and Asana</h2>
+
+<p>
+  I've used Jira and Asana for years. They're fine tools. Powerful, even.
+</p>
+
+<p>
+  But once I started doing serious work with AI agents, they stopped fitting the way I actually work.
+</p>
+
+<p>
+  The issues I ran into weren't philosophical—they were practical:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li>Too much clicking</li>
+  <li>Weak or awkward CLI tooling</li>
+  <li>Context lives outside the repo</li>
+  <li>Hard to programmatically create or update tasks exactly the way I want</li>
+  <li>Planning and execution feel disconnected</li>
+</ul>
+
+<p>
+  I <em>can</em> make Jira or Asana work. With enough effort, plugins, or MCP servers, I'm sure I could recreate parts of this workflow.
+</p>
+
+<p>
+  But GitHub Issues and GitHub Projects have quietly become <strong>very good</strong>.
+</p>
+
+<p>
+  And more importantly: They live <em>where the code lives</em>.
+</p>
+
+<p class="text-gray-600 italic">
+  That matters a lot once AI enters the picture.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Core Idea: Treat the GitHub Issue as the Planning Document</h2>
+
+<p>
+  I don't do a separate "planning phase" anymore.
+</p>
+
+<p>
+  I don't switch into some explicit AI planning mode.
+</p>
+
+<p>
+  Instead, <strong>planning naturally happens during the conversation with Claude</strong>, and the final output of that planning is a fully-fleshed-out GitHub issue.
+</p>
+
+<p>
+  That issue becomes:
+</p>
+
+<div class="grid grid-cols-2 md:grid-cols-5 gap-2 my-6">
+  <div class="bg-green-100 text-green-800 text-center py-2 px-3 rounded font-medium text-sm">The spec</div>
+  <div class="bg-green-100 text-green-800 text-center py-2 px-3 rounded font-medium text-sm">The context dump</div>
+  <div class="bg-green-100 text-green-800 text-center py-2 px-3 rounded font-medium text-sm">Acceptance criteria</div>
+  <div class="bg-green-100 text-green-800 text-center py-2 px-3 rounded font-medium text-sm">The handoff doc</div>
+  <div class="bg-green-100 text-green-800 text-center py-2 px-3 rounded font-medium text-sm">Source of truth</div>
+</div>
+
+<p>
+  If a junior developer were handed the issue, they'd have <em>everything</em> they need.
+</p>
+
+<p class="font-semibold text-gray-800">
+  That's the bar.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Step 1: Start With Claude <em>Inside</em> the Repo</h2>
+
+<p>
+  My workflow almost always starts at the command line, inside the repository I'm working on.
+</p>
+
+<p>
+  I launch Claude CLI right there. <span class="font-medium">This is important.</span>
+</p>
+
+<p>
+  Claude now has:
+</p>
+
+<ul>
+  <li>The repo structure</li>
+  <li>The existing code</li>
+  <li>Access to CLI tools</li>
+  <li>Access to GitHub via <code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">gh</code></li>
+  <li>Whatever local context I choose to give it</li>
+</ul>
+
+<p>
+  If I'm working on a frontend feature that depends on a backend API, I'll feed Claude everything relevant:
+</p>
+
+<ul>
+  <li>Links to backend pull requests</li>
+  <li>API docs</li>
+  <li>Code references</li>
+  <li>Existing functions I want reused</li>
+  <li>Prior implementation patterns</li>
+</ul>
+
+<blockquote>
+  "Here's everything you'd need if you were another senior dev joining this project."
+</blockquote>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Step 2: Brainstorming, Outlining, and Over-Explaining (On Purpose)</h2>
+
+<p>
+  This is where things start to feel different from traditional task creation.
+</p>
+
+<p class="text-lg font-medium">We talk.</p>
+
+<p>
+  I'll brainstorm out loud:
+</p>
+
+<ul>
+  <li>Different implementation approaches</li>
+  <li>Tradeoffs</li>
+  <li>Edge cases</li>
+  <li>Things I'm unsure about</li>
+</ul>
+
+<p>
+  Claude might:
+</p>
+
+<ul>
+  <li>Suggest alternatives</li>
+  <li>Surface related code</li>
+  <li>Propose pseudocode</li>
+  <li>Identify risks I missed</li>
+</ul>
+
+<p>
+  I'll often ask for:
+</p>
+
+<ol>
+  <li>High-level architecture first</li>
+  <li>Then progressively lower-level detail</li>
+  <li>Then pseudocode</li>
+  <li>Then concrete steps</li>
+</ol>
+
+<p>
+  At this point, I'm wearing two hats:
+</p>
+
+<div class="flex flex-col md:flex-row gap-4 my-6">
+  <div class="flex-1 bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">Project Manager</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Defining goals and constraints</p>
+  </div>
+  <div class="flex-1 bg-indigo-50 border border-indigo-200 p-4 rounded-lg">
+    <p class="font-bold text-indigo-800 m-0">Lead Developer</p>
+    <p class="text-indigo-700 text-sm m-0 mt-1">Highlighting technical expectations</p>
+  </div>
+</div>
+
+<blockquote>
+  Flesh this out so thoroughly that a junior developer could pick it up and succeed without interrupting anyone.
+</blockquote>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Step 3: Have Claude Create the GitHub Issue <em>For Me</em></h2>
+
+<p>
+  Once the task is fully thought through, I tell Claude to create the GitHub issue.
+</p>
+
+<p class="text-lg font-medium text-green-700">
+  This is where the magic really kicks in.
+</p>
+
+<p>
+  Claude:
+</p>
+
+<ul>
+  <li>Uses the GitHub CLI</li>
+  <li>Applies my exact formatting rules</li>
+  <li>Assigns the issue correctly</li>
+  <li>Sets the right status</li>
+  <li>Adds it to the right project</li>
+  <li>Links related PRs or docs</li>
+</ul>
+
+<p class="bg-gray-100 p-3 rounded font-medium">
+  No copying. No pasting. No forgetting to assign something. No "I'll fix that later."
+</p>
+
+<p>
+  The output is simply:
+</p>
+
+<blockquote>
+  "Here's the issue: [link]"
+</blockquote>
+
+<p>
+  I click it. I review it.
+</p>
+
+<p>
+  If something's off, I tell Claude:
+</p>
+
+<ul class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+  <li>"Tweak this section"</li>
+  <li>"Add more detail here"</li>
+  <li>"Change the acceptance criteria"</li>
+</ul>
+
+<p>
+  Claude updates the issue directly.
+</p>
+
+<p>
+  The issue <em>evolves</em> through conversation, not clicking.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>A Small but Powerful Hack: Voice-to-Text</h2>
+
+<p>
+  One thing that dramatically improved this workflow is using <a href="https://wisprflow.ai/"><strong>Wispr Flow</strong></a> on macOS.
+</p>
+
+<p>
+  It's near-perfect voice-to-text.
+</p>
+
+<p>
+  So instead of typing long explanations, I often just <em>talk</em>.
+</p>
+
+<p>
+  It feels like:
+</p>
+
+<ul>
+  <li>Pair programming</li>
+  <li>Explaining a task to another developer</li>
+  <li>Whiteboarding verbally</li>
+</ul>
+
+<p>
+  While Claude is thinking or working (sometimes for several minutes), I'll jump to something else.
+</p>
+
+<p class="italic text-gray-600">
+  Parallelism—both human and AI—is a real productivity unlock.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Step 4: Turn the Issue Into Code With One Command</h2>
+
+<p>
+  Once the issue is ready and I decide to work on it, I run a single command:
+</p>
+
+<div class="bg-gray-900 text-green-400 p-4 rounded-lg font-mono my-6">
+  <span class="text-gray-500">$</span> /get-issue &lt;issue-number&gt;
+</div>
+
+<p>
+  From there, Claude already knows:
+</p>
+
+<ul>
+  <li>How I pull from <code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">main</code></li>
+  <li>How I name branches</li>
+  <li>How I structure commits</li>
+  <li>How I prefer PRs to look</li>
+</ul>
+
+<p>
+  Claude reads the GitHub issue exactly like a junior developer would—and then starts coding.
+</p>
+
+<p>
+  Depending on the task:
+</p>
+
+<ul>
+  <li>It might take a few minutes</li>
+  <li>It might take much longer</li>
+</ul>
+
+<p>
+  Eventually, Claude pushes a PR and gives me the link.
+</p>
+
+<p>
+  I also have a notification system that tells me when it's done.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Step 5: Review the PR Like a Normal Code Review</h2>
+
+<p>
+  This part is important: I <em>do not</em> treat Claude's code as magical.
+</p>
+
+<p>
+  I review it exactly how I would another human's PR.
+</p>
+
+<ul>
+  <li>Sometimes I run the code</li>
+  <li>Sometimes I just read it</li>
+  <li>Sometimes I spot issues immediately</li>
+</ul>
+
+<p>
+  Instead of inline comments, I usually go back to the CLI and just tell Claude:
+</p>
+
+<ul class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+  <li>"This part should be refactored"</li>
+  <li>"This logic is wrong"</li>
+  <li>"Edge case here"</li>
+  <li>"This naming feels off"</li>
+</ul>
+
+<p>
+  Claude updates the PR.
+</p>
+
+<p>
+  We go back and forth—just like real life.
+</p>
+
+<p>
+  Once I'm happy:
+</p>
+
+<div class="flex gap-3 my-4">
+  <span class="bg-green-500 text-white px-4 py-2 rounded font-medium">Approve</span>
+  <span class="bg-purple-500 text-white px-4 py-2 rounded font-medium">Merge</span>
+  <span class="bg-gray-500 text-white px-4 py-2 rounded font-medium">Done</span>
+</div>
+
+<p>
+  GitHub automation moves the issue to the correct state automatically.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Screenshots, Databases, and Treating Claude Like a Real Dev</h2>
+
+<p>
+  A few other small but powerful patterns:
+</p>
+
+<div class="space-y-4 my-6">
+  <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
+    <p class="font-medium m-0">I frequently paste screenshots into Claude</p>
+    <p class="text-gray-600 text-sm m-0 mt-1">Errors, UI bugs, logs—Claude is very good at reading them.</p>
+  </div>
+  <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
+    <p class="font-medium m-0">I'll sometimes let Claude inspect a local database</p>
+    <p class="text-gray-600 text-sm m-0 mt-1">Never production, obviously.</p>
+  </div>
+  <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
+    <p class="font-medium m-0">Debugging API mismatches together</p>
+    <p class="text-gray-600 text-sm m-0 mt-1">"Here's the JSON response. Now go look at the DB and tell me what's wrong."</p>
+  </div>
+</div>
+
+<p>
+  This feels <em>exactly</em> like working with a junior developer—except faster and always available.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Why I Don't Find MCP Servers Very Useful (Yet)</h2>
+
+<p>
+  I've experimented with MCP servers.
+</p>
+
+<p>
+  They're interesting.
+</p>
+
+<p>
+  But honestly? If there's a CLI, I almost always prefer that.
+</p>
+
+<p>
+  The GitHub CLI alone can:
+</p>
+
+<ul>
+  <li>Create and edit issues</li>
+  <li>Manage PRs</li>
+  <li>Assign projects</li>
+  <li>Handle metadata</li>
+</ul>
+
+<p>
+  Claude using real tools feels more reliable than abstract integrations.
+</p>
+
+<p class="font-medium">
+  Less glue. Less indirection. More leverage.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Real Win: No More Under-Scoped Tasks</h2>
+
+<p>
+  The biggest frustration of my career hasn't been hard problems.
+</p>
+
+<p>
+  It's been starting a task without enough context.
+</p>
+
+<p>
+  That's usually not negligence—it's time pressure.
+</p>
+
+<p class="text-lg font-medium">
+  AI changes this.
+</p>
+
+<div class="bg-green-50 border border-green-200 p-6 rounded-lg my-6">
+  <p class="text-lg text-green-800 m-0">
+    A lead developer plus Claude can create a task with <strong>150% of the needed context</strong> for roughly the same effort it used to take to create one with 10%.
+  </p>
+</div>
+
+<p>
+  That's a massive quality-of-life improvement for everyone.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Final Thoughts</h2>
+
+<p>
+  I've been running this workflow for months now.
+</p>
+
+<p class="text-lg">
+  It's not fragile. It doesn't feel experimental. <strong>It just works.</strong>
+</p>
+
+<p>
+  GitHub Issues became my planning docs. Claude became my project manager, junior developer, and coding partner. And I spend more time thinking, reviewing, and shipping—and less time clicking.
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-lg font-medium m-0">
+    This isn't about replacing developers.
+  </p>
+  <p class="text-gray-300 m-0 mt-2">
+    It's about finally removing the overhead that never needed to be there in the first place.
+  </p>
+</div>
