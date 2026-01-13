@@ -1,20 +1,64 @@
+/*
+  style.css - TailwindCSS styles for spicermatthews.com
+  Copyright 2026 Spicer Matthews
+  Date: 2026-01-13
+*/
+
 @tailwind base;
 
 @tailwind components;
 
-a { @apply text-blue-600 }
-p { @apply my-4 }
-ul { @apply list-inside list-disc ml-5 }
-h1 { @apply font-sans text-xl my-5 font-extrabold }
-h2 { @apply font-sans text-lg my-5 font-extrabold }
-ol { @apply list-decimal ml-10 }
-li { @apply pb-1 }
-blockquote { @apply p-4 border-l-4 italic font-semibold text-gray-800 }
+/* Base element styles */
+a { @apply text-blue-600; }
+p { @apply my-4; }
+ul { @apply list-inside list-disc ml-5; }
+h1 { @apply font-sans text-xl my-5 font-extrabold; }
+h2 { @apply font-sans text-lg my-5 font-extrabold; }
+ol { @apply list-decimal ml-10; }
+li { @apply pb-1; }
+blockquote { @apply p-4 border-l-4 italic font-semibold text-gray-800; }
 
+/* Navigation link override */
+nav a { @apply no-underline; }
 
-/* Social Icons */
+/* Prose styles for blog content */
+.prose h1 { @apply text-3xl md:text-4xl font-bold text-gray-900 mb-6; }
+.prose h2 { @apply text-2xl font-bold text-gray-900 mt-8 mb-4; }
+.prose h3 { @apply text-xl font-semibold text-gray-900 mt-6 mb-3; }
+.prose p { @apply text-gray-700 leading-relaxed; }
+.prose ul { @apply my-4 space-y-2; }
+.prose ol { @apply my-4 space-y-2; }
+.prose li { @apply text-gray-700; }
+.prose a { @apply text-blue-600 hover:underline; }
+.prose blockquote { @apply border-l-4 border-blue-500 pl-4 italic text-gray-600 my-6; }
+.prose pre { @apply bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto my-6; }
+.prose code { @apply bg-gray-100 text-gray-800 px-1 py-0.5 rounded text-sm; }
+.prose pre code { @apply bg-transparent text-gray-100 p-0; }
+.prose img { @apply rounded-lg shadow-md my-6 mx-auto; }
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Social icon styles */
 .social-icon svg { fill: rgba(54,71,78,.7); }
 .social-icon:hover { color: #36474e; border-color: #36474e; }
 .social-icon svg:hover { fill: #36474e; }
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+  transition: all 0.3s ease-in-out;
+}
 
 @tailwind utilities;

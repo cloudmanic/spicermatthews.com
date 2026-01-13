@@ -1,27 +1,99 @@
+{{/*
+  index.html - Homepage layout with hero section and recent blog posts
+  Copyright 2026 Spicer Matthews
+  Date: 2026-01-13
+*/}}
 {{ define "main" }}
 
-<div class="py-5 px-5 md:px-20 mx-auto h-full flex justify-center items-center">
-  <div class="bg-white w-full rounded-lg md:w-[550px]">
-    <img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="rounded-t-lg" />
+<!-- Hero Section -->
+<section class="bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      <!-- Profile Image -->
+      <div class="flex-shrink-0">
+        <img
+          src="/images/spicer-matthews-wine-drinking.jpg"
+          alt="Spicer Matthews"
+          class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-lg"
+        />
+      </div>
 
-    <div class="py-10 px-8">
-      <p class="font-sans font-normal">
-        Greetings, I’m <a href="https://twitter.com/spicermatthews">Spicer</a>. I’m a web developer living in
-        <a href="https://www.google.com/maps?q=Newberg,+Oregon&um=1&ie=UTF-8&sa=X&ved=0ahUKEwjE8ovgt8HWAhVSymMKHaB4DTEQ_AUICigB">Newberg, Oregon</a>. I am a fan of technology,
-        options trading, snowboarding, skateboarding, and tennis. I founded <a href="https://cloudmanic.com">Cloudmanic Labs</a>. We made
-        <a href="https://options.cafe">Options Cafe</a>, <a href="https://skyclerk.com">Skyclerk</a>, and <a href="https://oregonpastduerent.com">Oregon Past Due Rent</a> I also
-        invest in stuff via
-        <a href="https://matthews-etc.com">Matthews Etc.</a>
-      </p>
-
-      <h2 class="font-semibold">Want to raise your IQ by at least 100 points?</h2>
-      <p class="font-sans font-normal">Read my <a href="/blog">Blog</a>. I write about software development, options trading, and other stuff.</p>
-
-      <h2 class="font-semibold">Are you already brilliant?</h2>
-      <p class="font-sans font-normal">Maybe just <a href="https://twitter.com/spicermatthews">follow me</a> on Twitter.</p>
-
-      {{- partial "social-bar.html" . -}}
+      <!-- Bio Content -->
+      <div class="text-center md:text-left">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Hi, I'm Spicer</h1>
+        <p class="text-lg text-gray-600 mb-4 leading-relaxed">
+          I'm a web developer and entrepreneur living in
+          <a href="https://www.google.com/maps?q=Newberg,+Oregon" class="hover:underline">Newberg, Oregon</a>.
+          I'm passionate about technology, options trading, snowboarding, skateboarding, and tennis.
+        </p>
+        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+          I founded <a href="https://cloudmanic.com" class="hover:underline">Cloudmanic Labs</a>,
+          where we build software products like
+          <a href="https://options.cafe" class="hover:underline">Options Cafe</a>,
+          <a href="https://skyclerk.com" class="hover:underline">Skyclerk</a>, and
+          <a href="https://oregonpastduerent.com" class="hover:underline">Oregon Past Due Rent</a>.
+          I also invest in various ventures through
+          <a href="https://matthews-etc.com" class="hover:underline">Matthews Etc.</a>
+        </p>
+        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+          <a href="/projects/" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors no-underline">
+            View My Projects
+          </a>
+          <a href="/blog/" class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors no-underline">
+            Read My Blog
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- Recent Blog Posts -->
+<section class="bg-gray-50 py-12 md:py-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Recent Posts</h2>
+      <a href="/blog/" class="text-blue-600 hover:underline font-medium">View all &rarr;</a>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {{ $posts := where .Site.RegularPages "Section" "blog" }}
+      {{ range first 6 $posts }}
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+        {{ if .Params.og_image }}
+        <a href="{{ .Permalink }}" class="block no-underline">
+          <img src="{{ .Params.og_image }}" alt="{{ .Title }}" class="w-full h-48 object-cover" />
+        </a>
+        {{ end }}
+        <div class="p-6">
+          <time class="text-sm text-gray-500">{{ .Date.Format "January 2, 2006" }}</time>
+          <h3 class="mt-2 mb-3">
+            <a href="{{ .Permalink }}" class="text-xl font-semibold text-gray-900 hover:text-blue-600 no-underline">
+              {{ .Title }}
+            </a>
+          </h3>
+          {{ if .Description }}
+          <p class="text-gray-600 line-clamp-3 my-0">{{ .Description }}</p>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-blue-600 py-12">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Want to stay updated?</h2>
+    <p class="text-blue-100 text-lg mb-6">Follow me on Twitter for thoughts on software, trading, and life.</p>
+    <a href="https://twitter.com/spicermatthews" target="_blank" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors no-underline">
+      <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+      Follow @spicermatthews
+    </a>
+  </div>
+</section>
+
 {{ end }}

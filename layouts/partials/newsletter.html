@@ -1,22 +1,37 @@
-<div class="bg-orange-200 px-1 py-1 md:px-10 md:py-5">
-	<form action="https://sendy.cloudmanic.com/subscribe" method="POST" accept-charset="utf-8" class="pb-3 pt-3 md:ml-8">
-		<h1 class="m-0">Join My Newsletter</h1>
+{{/*
+  newsletter.html - Newsletter signup form
+  Copyright 2026 Spicer Matthews
+  Date: 2026-01-13
+*/}}
+<div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 md:p-8 mt-8">
+  <form action="https://sendy.cloudmanic.com/subscribe" method="POST" accept-charset="utf-8">
+    <h3 class="text-xl font-bold text-gray-900 mb-2 mt-0">Join My Newsletter</h3>
+    <p class="text-gray-600 mb-4">1,000+ people have joined to follow along as I share on software and business.</p>
 
-		<p>1,000+ people have joined to following along as I share on software and bussiness.</p>
+    <div class="flex flex-col sm:flex-row gap-3">
+      <input
+        type="email"
+        name="email"
+        class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+        placeholder="your@email.com"
+        required
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Subscribe
+      </button>
+    </div>
 
-		<input type="email" name="email" class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white w-full md:w-2/3" placeholder="your@mail.com" />
-		<button id="submit" class="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r" style="margin-left: -5px;">
-			Subscribe
-		</button>
+    <!-- Honeypot field -->
+    <div style="display:none;">
+      <label for="hp">HP</label><br />
+      <input type="text" name="hp" id="hp" />
+    </div>
 
-		<div style="display:none;">
-			<label for="hp">HP</label><br />
-			<input type="text" name="hp" id="hp" />
-		</div>
-
-		<input type="hidden" name="name" id="name" />
-		<input type="hidden" name="list" value="d6NCbNvNND97RBlw7B67cA" />
-		<input type="hidden" name="subform" value="yes" />
-		<input type="hidden" name="submit" id="submit" />
-	</form>
+    <input type="hidden" name="name" id="name" />
+    <input type="hidden" name="list" value="d6NCbNvNND97RBlw7B67cA" />
+    <input type="hidden" name="subform" value="yes" />
+  </form>
 </div>
