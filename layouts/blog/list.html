@@ -1,23 +1,88 @@
+{{/*
+  list.html - Blog list page with pagination
+  Copyright 2026 Spicer Matthews
+  Date: 2026-01-13
+*/}}
 {{ define "main" }}
 
-<div class="py-5 px-5 md:px-20 mx-auto h-full flex justify-center items-center">
-  <div class="bg-white w-full rounded-lg md:w-[680px]">
-    <img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="rounded-t-lg w-full" />
-
-    <div class="py-5 px-8">
-      <h2 class="font-semibold">Blog Posts</h2>
-
-      <ul>
-        {{ range .Data.Pages }} {{ if eq .Type "blog"}}
-        <li class="my-3">
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }} {{ end }}
-      </ul>
-
-      {{- partial "social-bar.html" . -}}
-    </div>
+<!-- Blog Header -->
+<section class="bg-white border-b">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Blog</h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+      Thoughts on software development, options trading, entrepreneurship, and life.
+    </p>
   </div>
-</div>
+</section>
+
+<!-- Blog Posts List -->
+<section class="bg-gray-50 py-12">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-8">
+      {{ $paginator := .Paginate (where .Site.RegularPages "Section" "blog") 10 }}
+      {{ range $paginator.Pages }}
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+        <div class="md:flex">
+          {{ if .Params.og_image }}
+          <div class="md:flex-shrink-0">
+            <a href="{{ .Permalink }}" class="block no-underline">
+              <img src="{{ .Params.og_image }}" alt="{{ .Title }}" class="h-48 w-full md:w-48 object-cover" />
+            </a>
+          </div>
+          {{ end }}
+          <div class="p-6 flex flex-col justify-center">
+            <time class="text-sm text-gray-500">{{ .Date.Format "January 2, 2006" }}</time>
+            <h2 class="mt-2 mb-3">
+              <a href="{{ .Permalink }}" class="text-xl font-semibold text-gray-900 hover:text-blue-600 no-underline">
+                {{ .Title }}
+              </a>
+            </h2>
+            {{ if .Description }}
+            <p class="text-gray-600 my-0">{{ .Description }}</p>
+            {{ end }}
+            <a href="{{ .Permalink }}" class="mt-4 text-blue-600 hover:underline font-medium no-underline inline-flex items-center">
+              Read more
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+
+    <!-- Pagination -->
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="mt-12 flex justify-center" aria-label="Pagination">
+      <div class="flex items-center space-x-2">
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-lg border hover:bg-gray-50 no-underline">
+          &larr; Newer
+        </a>
+        {{ else }}
+        <span class="px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 rounded-lg border cursor-not-allowed">
+          &larr; Newer
+        </span>
+        {{ end }}
+
+        <span class="px-4 py-2 text-sm text-gray-600">
+          Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+        </span>
+
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-lg border hover:bg-gray-50 no-underline">
+          Older &rarr;
+        </a>
+        {{ else }}
+        <span class="px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 rounded-lg border cursor-not-allowed">
+          Older &rarr;
+        </span>
+        {{ end }}
+      </div>
+    </nav>
+    {{ end }}
+  </div>
+</section>
 
 {{ end }}

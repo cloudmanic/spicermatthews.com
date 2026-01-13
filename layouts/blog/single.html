@@ -1,21 +1,72 @@
+{{/*
+  single.html - Single blog post layout
+  Copyright 2026 Spicer Matthews
+  Date: 2026-01-13
+*/}}
 {{ define "main" }}
 
-<div class="md:py-5 md:px-5 justify-center">
-  <div class="bg-white md:w-2/3 mx-auto rounded-lg">
-    <div class="bg-gray-600 w-full rounded-t-lg text-center">
-      <span class="hidden md:inline font-light">Click here ----></span>
-      <a href="/blog" class="text-white ml-5 hover:text-black">The thoughts of Spicer Matthews</a>
-      <span class="hidden lg:inline font-light"> &nbsp; &nbsp; &nbsp;<---- I dare you!</span>
+<article class="bg-white">
+  <!-- Article Header -->
+  <header class="bg-gray-50 border-b">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <a href="/blog/" class="inline-flex items-center text-blue-600 hover:underline mb-6 no-underline">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Blog
+      </a>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ .Title }}</h1>
+      <div class="flex items-center text-gray-600">
+        <time>{{ .Date.Format "January 2, 2006" }}</time>
+        {{ if .ReadingTime }}
+        <span class="mx-2">&middot;</span>
+        <span>{{ .ReadingTime }} min read</span>
+        {{ end }}
+      </div>
     </div>
-    <div class="py-5 px-8">
-      <h1 class="text-center">{{ .Title }}</h1>
-      <p><b>Date:</b> {{ .Date.Format "Jan 02, 2006" }}</p>
+  </header>
 
-      <div class="my-5">{{ .Content }} {{- partial "twitter-footer-upsell.html" . -}} {{- partial "newsletter.html" . -}}</div>
+  <!-- Featured Image -->
+  {{ if .Params.og_image }}
+  <div class="max-w-4xl mx-auto">
+    <img src="{{ .Params.og_image }}" alt="{{ .Title }}" class="w-full h-64 md:h-96 object-cover" />
+  </div>
+  {{ end }}
 
-      {{- partial "social-bar.html" . -}}
+  <!-- Article Content -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg max-w-none">
+      {{ .Content }}
+    </div>
+
+    <!-- Author Bio -->
+    <div class="mt-12 pt-8 border-t">
+      <div class="flex items-center">
+        <img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="w-16 h-16 rounded-full object-cover mr-4" />
+        <div>
+          <h3 class="font-semibold text-gray-900 my-0">Spicer Matthews</h3>
+          <p class="text-gray-600 my-1">Developer, entrepreneur, and options trader based in Oregon.</p>
+          <a href="https://twitter.com/spicermatthews" target="_blank" class="text-blue-600 hover:underline text-sm no-underline">@spicermatthews</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    {{- partial "newsletter.html" . -}}
+
+    <!-- Share Section -->
+    <div class="mt-8 pt-8 border-t">
+      <h3 class="font-semibold text-gray-900 mb-4">Share this post</h3>
+      <div class="flex space-x-4">
+        <a href="https://twitter.com/intent/tweet?text={{ .Title | urlquery }}&url={{ .Permalink | urlquery }}&via=spicermatthews" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 no-underline">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          Tweet
+        </a>
+      </div>
     </div>
   </div>
-</div>
+</article>
 
 {{ end }}

@@ -1,12 +1,26 @@
+{{/*
+  404.html - Not found error page
+  Copyright 2026 Spicer Matthews
+  Date: 2026-01-13
+*/}}
 {{ define "main" }}
 
-<div class="h-full">
-
-	<h1>404 Page Not Found</h1>
-
-
-	<a href="/">Back to spicermatthews.com</a>
-
-</div>
+<section class="bg-gray-50 min-h-[60vh] flex items-center">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <h1 class="text-6xl md:text-8xl font-bold text-gray-300 mb-4">404</h1>
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Page Not Found</h2>
+    <p class="text-gray-600 text-lg mb-8">
+      Sorry, the page you're looking for doesn't exist or has been moved.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="/" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors no-underline">
+        Go Home
+      </a>
+      <a href="/blog/" class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors no-underline">
+        Read Blog
+      </a>
+    </div>
+  </div>
+</section>
 
 {{ end }}
