@@ -1,0 +1,283 @@
+---
+title: "I Built a Personal AI Assistant That Lives in Slack"
+date: 2026-01-30T10:00:00-07:00
+draft: false
+description: "Inspired by OpenClaw, I built Autumn — a personal AI assistant powered by Claude Code that lives in Slack. It reads my emails, manages my reminders, runs scheduled briefings, and automates browser tasks. Here's how it works."
+og_image: "/images/autumn-ai-assistant.png"
+---
+
+<p class="text-lg text-gray-700 leading-relaxed">
+  I recently spent a few hours playing with <a href="https://openclaw.ai/" class="text-blue-600 hover:text-blue-800 underline">OpenClaw</a> (Clawdbot) — an autonomous AI agent you let loose on your machine. The concept is compelling: give an AI full access to your computer and let it do real work for you.
+</p>
+
+<p>
+  But it does too much. It gets out of control. Their own recommendation is to run it on an isolated machine and keep it away from your personal data.
+</p>
+
+<p>
+  Here's the problem with that advice: without access to your personal data, an autonomous assistant is essentially useless. The whole point is that it knows who you are, what tools you use, and how you like things done.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    "I don't need an unbounded agent. I need a scoped assistant that knows exactly how I operate."
+  </p>
+</div>
+
+<p>
+  So I built my own. I call it <strong>Autumn</strong>.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What Is Autumn?</h2>
+
+<p>
+  Autumn is a personal AI assistant that lives in a dedicated <a href="https://slack.com/" class="text-blue-600 hover:text-blue-800 underline">Slack</a> channel. It's a Go application that listens for messages, forks an isolated <a href="https://docs.anthropic.com/en/docs/claude-code/overview" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a> session for each one, and returns the response right in the Slack thread.
+</p>
+
+<p>
+  Every message gets its own session. Follow-ups in the same thread resume that session, preserving full conversational context. It's like having a hyper-capable assistant on call 24/7 — one that already knows my email addresses, my family's iMessage contacts, my calendar setup, and exactly how I want information formatted.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Key Insight: Claude Code Is the Engine</h2>
+
+<p>
+  I'm not building an agent framework. I'm not writing complex orchestration logic. The entire intelligence layer is <a href="https://docs.anthropic.com/en/docs/claude-code/overview" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a> running as a subprocess.
+</p>
+
+<p>
+  What makes it work is a file called <code>CLAUDE.md</code> — a detailed instruction document that teaches Claude how I want everything done. Think of it as a playbook. Mine is about 13KB and covers:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li>How to format messages for Slack (mrkdwn, not markdown)</li>
+  <li>How to query my Apple Calendar SQLite database</li>
+  <li>My family's iMessage contacts and group chat IDs</li>
+  <li>How to create, view, and complete Apple Reminders</li>
+  <li>My three email addresses and when to use each one</li>
+  <li>How to interact with Google Sheets, Gmail, and Google Calendar</li>
+</ul>
+
+<p>
+  Claude just follows the playbook. No custom NLP. No fine-tuning. Just a well-written instruction file and a capable model.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What Autumn Can Do</h2>
+
+<p>
+  The capabilities grew quickly once the foundation was in place. Here's what Autumn handles today:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">Email & Messaging</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Read and send emails via <a href="https://gogcli.sh/" class="text-purple-600 underline">gog CLI</a> for Gmail. Send and search iMessages via AppleScript.</p>
+  </div>
+  <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg">
+    <p class="font-bold text-indigo-800 m-0">Calendar & Reminders</p>
+    <p class="text-indigo-700 text-sm m-0 mt-1">Query Apple Calendar's SQLite database directly. Create, view, and complete reminders in Apple Reminders.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Scheduled Briefings</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Daily weather reports, pre-market and post-market recaps, and email summaries — all on a cron schedule.</p>
+  </div>
+  <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+    <p class="font-bold text-amber-800 m-0">Browser Automation</p>
+    <p class="text-amber-700 text-sm m-0 mt-1">Full web browsing via <a href="https://playwright.dev/" class="text-amber-600 underline">Playwright MCP</a>. I dropped the Claude in Chrome extension for this — Playwright is much easier and faster.</p>
+  </div>
+</div>
+
+<p>
+  It also handles images in both directions — I can attach screenshots to Slack messages and Claude will analyze them, or Claude can generate images and upload them back to the thread.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Architecture Is Dead Simple</h2>
+
+<p>
+  The entire flow looks like this:
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-lg font-mono m-0 text-center">
+    Slack message → Go bot → fork Claude Code CLI → return response to thread
+  </p>
+</div>
+
+<p>
+  That's it. The Go application connects to Slack via <a href="https://api.slack.com/apis/events-api" class="text-blue-600 hover:text-blue-800 underline">Socket Mode</a> (WebSocket), listens for messages in a dedicated channel, and spawns a Claude Code subprocess for each one. The response gets posted back as a threaded reply.
+</p>
+
+<p>
+  There's no agent framework. No vector database. No external services. The entire state layer is JSON files on disk:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li><strong>sessions.json</strong> — Maps Slack threads to Claude session IDs</li>
+  <li><strong>apple_reminders.json</strong> — Cached reminders refreshed every 10 minutes</li>
+  <li><strong>cron_jobs.json</strong> — Scheduled job definitions (hot-reloadable)</li>
+  <li><strong>cron_state.json</strong> — Last execution time for each job</li>
+  <li><strong>logs/</strong> — Per-session JSONL conversation logs with cost tracking</li>
+</ul>
+
+<p>
+  It's a single Go binary with zero external dependencies beyond the Claude CLI itself.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Cron System</h2>
+
+<p>
+  This is my favorite part. I defined scheduled jobs in a JSON file, and the bot checks every 60 seconds to see if any are due. When one fires, it spins up a fresh Claude session with a prompt and posts the result to Slack.
+</p>
+
+<p>
+  Here's what runs automatically:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+    <p class="font-bold text-blue-800 m-0">🌤 Daily Weather</p>
+    <p class="text-blue-700 text-sm m-0 mt-1">Every morning at 8 AM — current conditions, high/low, and weekly outlook.</p>
+  </div>
+  <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+    <p class="font-bold text-blue-800 m-0">📈 Pre-Market Briefing</p>
+    <p class="text-blue-700 text-sm m-0 mt-1">Weekdays at 8 AM — index levels, overnight moves, earnings, and key economic data.</p>
+  </div>
+  <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+    <p class="font-bold text-blue-800 m-0">📉 Post-Market Recap</p>
+    <p class="text-blue-700 text-sm m-0 mt-1">Weekdays at 4 PM — closes, sector performance, biggest movers, macro developments.</p>
+  </div>
+  <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+    <p class="font-bold text-blue-800 m-0">📧 Email Summaries</p>
+    <p class="text-blue-700 text-sm m-0 mt-1">Four times daily — unread emails organized into "Action Required" and "FYI."</p>
+  </div>
+</div>
+
+<p>
+  The best part: it's hot-reloadable. I edit the JSON file, and the next 60-second tick picks up the changes. No restarts required.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Why Playwright Instead of the Chrome Extension</h2>
+
+<p>
+  For browser automation, I use <a href="https://playwright.dev/" class="text-blue-600 hover:text-blue-800 underline">Playwright</a> via the <a href="https://modelcontextprotocol.io/" class="text-blue-600 hover:text-blue-800 underline">Model Context Protocol (MCP)</a> instead of the Claude in Chrome extension. It's much easier and faster.
+</p>
+
+<p>
+  Playwright runs headlessly with a persistent browser profile, so it maintains cookies and sessions across invocations. Claude can navigate pages, click buttons, fill forms, take screenshots, and interact with any website — all from the same Slack interface.
+</p>
+
+<p>
+  I use this for things like posting to social media, searching the web for real-time information, and interacting with services that don't have APIs.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Logging, Persistence, and Cost Tracking</h2>
+
+<p>
+  Every conversation gets logged to per-session JSONL files. Each entry captures the timestamp, prompt, response, cost in USD, and whether the session was new or resumed.
+</p>
+
+<p>
+  Sessions persist across bot restarts — the thread-to-session mapping is saved to disk, so you can pick up a conversation days later and Claude still has full context from the thread.
+</p>
+
+<p>
+  Background goroutines handle the rest:
+</p>
+
+<ul>
+  <li><strong>Reminder notifications</strong> — checks every 60 seconds for overdue reminders and posts them to Slack</li>
+  <li><strong>Overdue digest</strong> — every 4 hours, posts a summary of all overdue items (with quiet hours from 1-7 AM)</li>
+  <li><strong>Session cleanup</strong> — hourly purge of sessions unused for 24+ hours</li>
+  <li><strong>Cache refresh</strong> — syncs Apple Reminders every 10 minutes</li>
+</ul>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Real Unlock: CLAUDE.md</h2>
+
+<p>
+  If there's one takeaway from this project, it's the power of <code>CLAUDE.md</code>.
+</p>
+
+<p>
+  This single file is what transforms a generic AI model into a personal assistant that knows exactly how to operate in your world. Mine includes:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li>Slack formatting rules (mrkdwn syntax, emoji conventions, no markdown tables)</li>
+  <li>The exact SQLite query to read Apple Calendar events (with CoreData epoch conversion)</li>
+  <li>My family members' iMessage identifiers and known group chat GUIDs</li>
+  <li>AppleScript templates for creating and completing reminders</li>
+  <li>My three Gmail addresses and which to use for which context</li>
+  <li>How to display calendar events, reminders, and email summaries in rich Slack format</li>
+</ul>
+
+<p>
+  Claude reads this file at the start of every session and follows it precisely. The more detailed and specific your instructions, the better the results.
+</p>
+
+<div class="bg-green-50 border border-green-200 p-6 rounded-lg my-6">
+  <p class="text-lg text-green-800 font-semibold m-0">
+    You don't need to fine-tune a model. You need to write a thorough playbook.
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Concept Matters More Than the Code</h2>
+
+<p>
+  I haven't open-sourced Autumn (yet?), but the concept is straightforward enough that anyone could build their own version. The recipe is:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-2 my-6">
+  <div class="bg-green-100 text-green-800 text-center py-3 px-3 rounded font-medium">Give Claude Code a messaging interface</div>
+  <div class="bg-green-100 text-green-800 text-center py-3 px-3 rounded font-medium">Write a thorough CLAUDE.md</div>
+  <div class="bg-green-100 text-green-800 text-center py-3 px-3 rounded font-medium">Connect it to your real tools</div>
+</div>
+
+<p>
+  The messaging interface could be Slack, Discord, Telegram, or anything with an API. The tools could be AppleScript, CLI utilities, REST APIs, or browser automation. The key is the <code>CLAUDE.md</code> file that ties it all together — the detailed personal context that makes the assistant actually useful.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Focused Scope Beats Unbounded Autonomy</h2>
+
+<p>
+  The fundamental difference between Autumn and something like OpenClaw is scope.
+</p>
+
+<p>
+  OpenClaw tries to be a general-purpose autonomous agent that can do anything. That's impressive, but it's also why it gets out of control and why they recommend isolating it from your personal data.
+</p>
+
+<p>
+  Autumn is the opposite: a scoped personal assistant that knows exactly who I am, what tools I use, and how I like things done. It doesn't try to do everything. It does the specific things I need, reliably and consistently.
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-xl font-medium m-0">
+    Focused scope + rich personal context
+  </p>
+  <p class="text-gray-300 m-0 mt-2 text-lg">
+    beats unbounded autonomy every time.
+  </p>
+</div>
+
+<p>
+  If you're on a <a href="https://www.anthropic.com/claude/claude-code" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a> plan and have been looking for a way to put it to work beyond your IDE, this is the pattern. Write the playbook. Wire up the interface. Let Claude do the rest.
+</p>
