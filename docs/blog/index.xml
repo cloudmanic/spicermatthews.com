@@ -6,8 +6,15 @@
     <description>Recent content in Blogs on Spicer Matthews Personal Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Feb 2026 12:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 16 Feb 2026 10:00:00 -0700</lastBuildDate>
     <atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why I Built a CLI for Massive Financial Data</title>
+      <link>https://spicermatthews.com/blog/why-i-built-a-cli-for-massive-financial-data/</link>
+      <pubDate>Mon, 16 Feb 2026 10:00:00 -0700</pubDate>
+      <guid>https://spicermatthews.com/blog/why-i-built-a-cli-for-massive-financial-data/</guid>
+      <description>I&#39;ve been using the Massive financial data API for a while now. It&#39;s a solid API — real-time and historical market data across stocks, options, crypto, forex, futures, and indices. But every time I wanted to pull data, I was either writing throwaway scripts or wiring up an MCP server so my AI agent could fetch it for me. Both approaches had problems. Scripts are disposable. MCP servers flood your agent&#39;s context window with massive JSON payloads, eating up tokens and degrading response quality.</description>
+    </item>
     <item>
       <title>Just Do Stuff</title>
       <link>https://spicermatthews.com/blog/just-do-stuff/</link>

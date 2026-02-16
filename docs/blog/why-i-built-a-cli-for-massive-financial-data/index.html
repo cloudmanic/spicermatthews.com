@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Why I Built a CLI for Massive Financial Data</title>
+  <meta name="description" content="MCP servers flood your AI agent&#39;s context window. A CLI doesn&#39;t. I built Massive CLI — a command-line tool for the Massive financial data API — because a single binary that outputs clean tables or JSON is a better fit for both humans and AI agents." />
+  <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
+  <link href="https://spicermatthews.com/css/build.css?v=847c75b757" media="all" rel="stylesheet" />
+
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Why I Built a CLI for Massive Financial Data" />
+  <meta property="og:description" content="MCP servers flood your AI agent&#39;s context window. A CLI doesn&#39;t. I built Massive CLI — a command-line tool for the Massive financial data API — because a single binary that outputs clean tables or JSON is a better fit for both humans and AI agents." />
+  <meta property="og:site_name" content="Spicer Matthews Personal Site" />
+  <meta property="og:url" content="https://spicermatthews.com/blog/why-i-built-a-cli-for-massive-financial-data/" />
+  <meta property="og:locale" content="en" />
+
+   <meta property="og:image" content="https://spicermatthews.com/images/blog/massive-cli.jpg" /> <meta property="og:image:secure_url" content="https://spicermatthews.com/images/blog/massive-cli.jpg" /> 
+  <meta property="og:type" content="website" />
+
+  
+  <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:image:src" content="https://spicermatthews.com/images/blog/massive-cli.jpg" /> 
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="MCP servers flood your AI agent&#39;s context window. A CLI doesn&#39;t. I built Massive CLI — a command-line tool for the Massive financial data API — because a single binary that outputs clean tables or JSON is a better fit for both humans and AI agents." />
+
+  <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans antialiased">
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      
+      <div class="flex items-center">
+        <a href="/" class="text-xl font-bold text-gray-900 hover:text-blue-600 no-underline">
+          Spicer Matthews
+        </a>
+      </div>
+
+      
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-700 hover:text-blue-600 font-medium no-underline ">Home</a>
+        <a href="/blog/" class="text-gray-700 hover:text-blue-600 font-medium no-underline text-blue-600">Blog</a>
+        <a href="/projects/" class="text-gray-700 hover:text-blue-600 font-medium no-underline ">Projects</a>
+        <a href="https://twitter.com/spicermatthews" target="_blank" class="text-gray-700 hover:text-blue-600 font-medium no-underline">Twitter</a>
+      </div>
+
+      
+      <div class="md:hidden flex items-center">
+        <button type="button" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600 focus:outline-none" aria-label="Toggle menu">
+          <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <div class="px-4 py-3 space-y-3">
+      <a href="/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Home</a>
+      <a href="/blog/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Blog</a>
+      <a href="/projects/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Projects</a>
+      <a href="https://twitter.com/spicermatthews" target="_blank" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Twitter</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const closeIcon = document.getElementById('close-icon');
+      menu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+  </script>
+</nav>
+<main>
+
+<article class="bg-white">
+  
+  <header class="bg-gray-50 border-b">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <a href="/blog/" class="inline-flex items-center text-blue-600 hover:underline mb-6 no-underline">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Blog
+      </a>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why I Built a CLI for Massive Financial Data</h1>
+      <div class="flex items-center text-gray-600">
+        <time>February 16, 2026</time>
+        
+        <span class="mx-2">&middot;</span>
+        <span>7 min read</span>
+        
+      </div>
+    </div>
+  </header>
+
+  
+  
+  <div class="max-w-4xl mx-auto">
+    <img src="/images/blog/massive-cli.jpg" alt="Why I Built a CLI for Massive Financial Data" class="w-full h-64 md:h-96 object-cover" />
+  </div>
+  
+
+  
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg max-w-none">
+      
+<!--
+  Date: 2026-02-16
+  Copyright (c) 2026 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">
+  I've been using the <a href="https://massive.com" class="text-blue-600 hover:text-blue-800 underline">Massive</a> financial data API for a while now. It's a solid API — real-time and historical market data across stocks, options, crypto, forex, futures, and indices. But every time I wanted to pull data, I was either writing throwaway scripts or wiring up an MCP server so my AI agent could fetch it for me.
+</p>
+
+<p>
+  Both approaches had problems. Scripts are disposable. MCP servers flood your agent's context window with massive JSON payloads, eating up tokens and degrading response quality. And when something breaks, debugging is opaque — you can't see what the agent actually sent or received.
+</p>
+
+<p>
+  So I built a CLI instead. I call it <a href="https://github.com/cloudmanic/massive" class="text-blue-600 hover:text-blue-800 underline">Massive CLI</a>.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Why a CLI Instead of an MCP Server?</h2>
+
+<p>
+  This is the question I keep getting, so let me address it head-on. There are four reasons I chose a CLI over an MCP server:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+    <p class="font-bold text-blue-800 m-0">Context Window Friendly</p>
+    <p class="text-blue-700 text-sm m-0 mt-1">MCP servers dump entire JSON responses into your agent's context, burning through tokens fast. A CLI lets you run targeted queries and pipe just the relevant output into the conversation.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Debuggable</p>
+    <p class="text-green-700 text-sm m-0 mt-1">When an AI agent calls an API through an MCP server and something breaks, good luck figuring out what went wrong. With a CLI, you run the exact same command yourself and see the raw output in seconds.</p>
+  </div>
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">Works Everywhere</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">No SDK to install, no server to run, no configuration files to wire into your editor. Just a single binary that works in terminals, shell scripts, CI pipelines, and as a tool any AI coding assistant can shell out to.</p>
+  </div>
+  <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+    <p class="font-bold text-amber-800 m-0">Human and Machine Readable</p>
+    <p class="text-amber-700 text-sm m-0 mt-1">Every command outputs clean aligned tables for human scanning. Add <code>--output json</code> and you get machine-readable JSON for piping into <code>jq</code>, scripts, or AI context.</p>
+  </div>
+</div>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    "A CLI is the universal interface. Every language can shell out to it, every agent can call it, and every human can read its output."
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What It Covers</h2>
+
+<p>
+  Massive CLI wraps the entire Massive API into a single binary. That means access to six major asset classes, real-time WebSocket streaming, bulk historical data downloads, and partner data sources — all from your terminal.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+  <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+    <p class="font-bold text-gray-800 m-0">Stocks</p>
+    <p class="text-gray-700 text-sm m-0 mt-1">OHLC bars, snapshots, quotes, trades, news, fundamentals, corporate actions, SEC filings, technical indicators, and market status.</p>
+  </div>
+  <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+    <p class="font-bold text-gray-800 m-0">Options</p>
+    <p class="text-gray-700 text-sm m-0 mt-1">Aggregate bars, contract details, snapshots, option chains, trades, quotes, and technical indicators.</p>
+  </div>
+  <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+    <p class="font-bold text-gray-800 m-0">Crypto & Forex</p>
+    <p class="text-gray-700 text-sm m-0 mt-1">Bars, snapshots, trades, tickers, currency conversion, and technical indicators across global markets.</p>
+  </div>
+  <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+    <p class="font-bold text-gray-800 m-0">Futures & Indices</p>
+    <p class="text-gray-700 text-sm m-0 mt-1">Contracts, products, schedules, exchanges, snapshots, and aggregate data for futures and index markets.</p>
+  </div>
+  <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+    <p class="font-bold text-gray-800 m-0">WebSocket Streaming</p>
+    <p class="text-gray-700 text-sm m-0 mt-1">Real-time (or 15-minute delayed) streaming of trades, quotes, and aggregates across all asset classes.</p>
+  </div>
+  <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+    <p class="font-bold text-gray-800 m-0">Flat File Downloads</p>
+    <p class="text-gray-700 text-sm m-0 mt-1">Bulk historical data as gzipped CSV files via S3 — trades, quotes, and aggregates for backtesting and research.</p>
+  </div>
+</div>
+
+<p>
+  On top of that, there's partner data from <a href="https://www.benzinga.com/" class="text-blue-600 hover:text-blue-800 underline">Benzinga</a> (news, ratings, earnings), economic data (inflation, labor market, treasury yields), ETF analytics, and Canadian market data via TMX.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Getting Started</h2>
+
+<p>
+  Installation is straightforward. If you're on macOS or Linux, Homebrew is the easiest path:
+</p>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ brew tap cloudmanic/massive https://github.com/cloudmanic/massive</p>
+  <p class="m-0">$ brew install massive</p>
+</div>
+
+<p>
+  Then configure your API key:
+</p>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ massive config init</p>
+  <p class="m-0 text-gray-400"># Prompts for your Massive API key and optional S3 credentials</p>
+</div>
+
+<p>
+  That's it. You can also set <code>MASSIVE_API_KEY</code> as an environment variable or drop it in a <code>.env</code> file — whatever fits your workflow. Pre-built binaries for macOS, Linux, and Windows are available on the <a href="https://github.com/cloudmanic/massive/releases" class="text-blue-600 hover:text-blue-800 underline">releases page</a> if you don't use Homebrew.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>How It Works in Practice</h2>
+
+<p>
+  The command structure is intuitive. You pick an asset class, pick a command, and pass in your parameters. Here are some examples I use daily:
+</p>
+
+<h3 class="text-lg font-semibold mt-6">Pull OHLC Bars for a Stock</h3>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-4 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ massive stocks bars AAPL --from 2025-01-01 --to 2025-01-31</p>
+</div>
+
+<p>
+  This gives you a clean table of daily bars. Want weekly bars instead? Add <code>--timespan week</code>. Want JSON? Add <code>-o json</code>.
+</p>
+
+<h3 class="text-lg font-semibold mt-6">Check Today's Market Movers</h3>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-4 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ massive stocks snapshots gainers</p>
+  <p class="m-0">$ massive stocks snapshots losers</p>
+</div>
+
+<h3 class="text-lg font-semibold mt-6">Get Company Fundamentals</h3>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-4 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ massive stocks fundamentals balance-sheet AAPL</p>
+  <p class="m-0">$ massive stocks fundamentals income-statement AAPL</p>
+  <p class="m-0">$ massive stocks fundamentals ratios AAPL</p>
+</div>
+
+<h3 class="text-lg font-semibold mt-6">Stream Real-Time Trades</h3>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-4 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ massive ws stocks trades AAPL MSFT</p>
+  <p class="m-0 text-gray-400"># Press Ctrl+C to disconnect</p>
+</div>
+
+<p>
+  The WebSocket streaming is particularly useful. You can subscribe to trades, quotes, or minute/second aggregates across any asset class. By default you get 15-minute delayed data — add <code>--realtime</code> if your subscription supports it.
+</p>
+
+<h3 class="text-lg font-semibold mt-6">Download Bulk Historical Data</h3>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-4 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ massive files list stocks trades --year 2024</p>
+  <p class="m-0">$ massive files download stocks trades 2024-06-15 --output-dir ./data</p>
+</div>
+
+<p>
+  This pulls gzipped CSV files from Massive's S3-compatible storage — perfect for backtesting or building research datasets.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The AI Agent Use Case</h2>
+
+<p>
+  This is the use case I'm most excited about. I use <a href="https://docs.anthropic.com/en/docs/claude-code/overview" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a> daily, and having a CLI that Claude can shell out to is far more practical than an MCP server for financial data.
+</p>
+
+<p>
+  Here's why: when Claude needs stock data, it runs a command and gets back a focused result. It doesn't need to parse a massive JSON blob or manage an open connection. It just runs a command like any other tool:
+</p>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
+  <p class="m-0 text-gray-400"># Agent pipes JSON into its context</p>
+  <p class="m-0">$ massive stocks bars AAPL --from 2025-01-01 --to 2025-01-31 -o json | head -100</p>
+  <p class="m-0">&nbsp;</p>
+  <p class="m-0 text-gray-400"># Agent captures streaming data to a file for later analysis</p>
+  <p class="m-0">$ massive ws stocks agg-minute --all -o json > market_data.jsonl &</p>
+</div>
+
+<p>
+  The <code>--output json</code> flag is the key. Table output is great for humans; JSON output is great for agents and scripts. Same command, same data, different format. No adapter layer needed.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    "The best tool for an AI agent is the same tool that works for a human — just with a different output flag."
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Under the Hood</h2>
+
+<p>
+  The tool is written in Go and built on <a href="https://github.com/spf13/cobra" class="text-blue-600 hover:text-blue-800 underline">Cobra</a> — the same CLI framework used by Kubernetes, Hugo, and GitHub's CLI. The architecture is clean and predictable:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li><strong>REST client</strong> — A straightforward HTTP client that authenticates with your API key and returns typed Go structs. Every command follows the same pattern: build params, call the API, render output as a table or JSON.</li>
+  <li><strong>WebSocket client</strong> — Uses <a href="https://github.com/gorilla/websocket" class="text-blue-600 hover:text-blue-800 underline">gorilla/websocket</a> for streaming. Connects, subscribes to channels (trades, quotes, aggregates), and delivers messages until you hit Ctrl+C.</li>
+  <li><strong>S3 client</strong> — Uses the AWS SDK to connect to Massive's S3-compatible endpoint for flat file downloads. List files by year/month, download gzipped CSVs by date.</li>
+  <li><strong>Configuration</strong> — API keys stored at <code>~/.config/massive/config.json</code> with <code>0600</code> permissions. Environment variables take priority over the config file. Supports <code>.env</code> files.</li>
+</ul>
+
+<p>
+  The whole project compiles to a single binary with no external runtime dependencies. CI/CD automatically cross-compiles for macOS (Intel and Apple Silicon), Linux, and Windows on every push to main.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Full Command Tree</h2>
+
+<p>
+  To give you a sense of how comprehensive the coverage is, here's the full command tree. Every endpoint in the Massive API is accessible from the terminal:
+</p>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto leading-relaxed">
+  <p class="m-0">massive config init | show</p>
+  <p class="m-0">massive stocks bars | open-close | market | snapshots | quotes | trades</p>
+  <p class="m-0">massive stocks news | tickers | exchanges</p>
+  <p class="m-0">massive stocks fundamentals balance-sheet | income-statement | cash-flow | ratios | ...</p>
+  <p class="m-0">massive stocks corporate-actions dividends | splits</p>
+  <p class="m-0">massive stocks filings sections | risk-factors | risk-categories</p>
+  <p class="m-0">massive stocks indicators sma | ema | rsi | macd</p>
+  <p class="m-0">massive stocks market-ops holidays | status</p>
+  <p class="m-0">massive options bars | contracts | snapshots | trades | quotes | indicators</p>
+  <p class="m-0">massive indices bars | snapshots | tickers | indicators</p>
+  <p class="m-0">massive crypto bars | snapshots | trades | tickers | indicators</p>
+  <p class="m-0">massive forex bars | convert | quotes | snapshots | tickers | indicators</p>
+  <p class="m-0">massive futures bars | contracts | products | schedules | exchanges | snapshot</p>
+  <p class="m-0">massive ws stocks | options | indices | crypto | forex | futures</p>
+  <p class="m-0">massive files assets | types | list | download</p>
+  <p class="m-0">massive benzinga news | ratings | earnings | guidance | analysts</p>
+  <p class="m-0">massive economy inflation | labor-market | treasury-yields</p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Give It a Try</h2>
+
+<p>
+  The project is open source and available on GitHub: <a href="https://github.com/cloudmanic/massive" class="text-blue-600 hover:text-blue-800 underline">github.com/cloudmanic/massive</a>. If you have a <a href="https://massive.com" class="text-blue-600 hover:text-blue-800 underline">Massive</a> API key, you can be pulling data in under a minute.
+</p>
+
+<p>
+  If you're using AI coding assistants like Claude Code and need financial data, I think you'll find this approach — a simple CLI with table and JSON output — far more practical than an MCP server. Your agent gets exactly the data it needs without blowing up its context window, and you can debug any issue by running the same command yourself.
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-xl font-medium m-0">
+    One binary. Six asset classes. Tables for humans, JSON for machines.
+  </p>
+  <p class="text-gray-300 m-0 mt-2 text-lg">
+    That's the whole idea.
+  </p>
+</div>
+
+<p>
+  Star the repo, try it out, and <a href="https://github.com/cloudmanic/massive/issues" class="text-blue-600 hover:text-blue-800 underline">open an issue</a> if you run into anything. I'm actively developing this and shipping updates regularly.
+</p>
+
+    </div>
+
+    
+    <div class="mt-12 pt-8 border-t">
+      <div class="flex items-center">
+        <img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="w-16 h-16 rounded-full object-cover mr-4" />
+        <div>
+          <h3 class="font-semibold text-gray-900 my-0">Spicer Matthews</h3>
+          <p class="text-gray-600 my-1">Developer, entrepreneur, and options trader based in Oregon.</p>
+          <a href="https://twitter.com/spicermatthews" target="_blank" class="text-blue-600 hover:underline text-sm no-underline">@spicermatthews</a>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 md:p-8 mt-8">
+  <form action="https://sendy.cloudmanic.com/subscribe" method="POST" accept-charset="utf-8">
+    <h3 class="text-xl font-bold text-gray-900 mb-2 mt-0">Join My Newsletter</h3>
+    <p class="text-gray-600 mb-4">1,000+ people have joined to follow along as I share on software and business.</p>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <input
+        type="email"
+        name="email"
+        class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+        placeholder="your@email.com"
+        required
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Subscribe
+      </button>
+    </div>
+
+    
+    <div style="display:none;">
+      <label for="hp">HP</label><br />
+      <input type="text" name="hp" id="hp" />
+    </div>
+
+    <input type="hidden" name="name" id="name" />
+    <input type="hidden" name="list" value="d6NCbNvNND97RBlw7B67cA" />
+    <input type="hidden" name="subform" value="yes" />
+  </form>
+</div>
+
+    <div class="mt-8 pt-8 border-t">
+      <h3 class="font-semibold text-gray-900 mb-4">Share this post</h3>
+      <div class="flex space-x-4">
+        <a href="https://twitter.com/intent/tweet?text=Why&#43;I&#43;Built&#43;a&#43;CLI&#43;for&#43;Massive&#43;Financial&#43;Data&url=https%3A%2F%2Fspicermatthews.com%2Fblog%2Fwhy-i-built-a-cli-for-massive-financial-data%2F&via=spicermatthews" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 no-underline">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          Tweet
+        </a>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+  </main>
+<footer class="bg-white border-t mt-auto">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      
+      <div class="flex space-x-6">
+        <a href="mailto:me+website@spicermatthews.com" class="text-gray-500 hover:text-gray-700 no-underline" title="Email">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 2 37 30">
+            <path d="M17.9864841,17.7442683 L35.9560572,4.24918119 C35.9560572,2.99963608 34.9577476,2 33.7098606,2 L2.26310764,2 C1.01522062,2 0.0169109976,2.99963608 0.0169109976,4.24918119 L17.9864841,17.7442683 Z M17.9864841,21.7844641 L0.0169109976,8.28937702 L0.0777647581,29.7508188 C0.0777647581,31.0003639 1.07607438,32 2.3239614,32 L33.7707144,32 C35.0186014,32 36.016911,31.0003639 36.016911,29.7508188 L35.9560572,8.28937702 L17.9864841,21.7844641 Z" />
+          </svg>
+        </a>
+        <a href="https://twitter.com/spicermatthews" target="_blank" class="text-gray-500 hover:text-gray-700 no-underline" title="Twitter">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/cloudmanic" target="_blank" class="text-gray-500 hover:text-gray-700 no-underline" title="GitHub">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+
+      
+      <p class="text-gray-500 text-sm my-0">
+        &copy; 2026 Spicer Matthews. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>
