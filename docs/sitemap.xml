@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://spicermatthews.com/blog/</loc>
-    <lastmod>2026-02-16T10:00:00-07:00</lastmod>
+    <lastmod>2026-02-19T12:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://spicermatthews.com/blog/full-circle-back-to-the-terminal/</loc>
+    <lastmod>2026-02-19T12:00:00-07:00</lastmod>
   </url><url>
     <loc>https://spicermatthews.com/</loc>
-    <lastmod>2026-02-16T10:00:00-07:00</lastmod>
+    <lastmod>2026-02-19T12:00:00-07:00</lastmod>
   </url><url>
     <loc>https://spicermatthews.com/blog/why-i-built-a-cli-for-massive-financial-data/</loc>
     <lastmod>2026-02-16T10:00:00-07:00</lastmod>
