@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Full Circle: Back to the Terminal</title>
+  <meta name="description" content="I started my career in the late 90s doing everything in the terminal. Over 30 years I migrated to GUIs, web apps, and desktop tools. Now, thanks to Claude Code, Neovim, and tmux, I&#39;m back where I started — and it&#39;s never felt better." />
+  <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
+  <link href="https://spicermatthews.com/css/build.css?v=b1ebc515f0" media="all" rel="stylesheet" />
+
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Full Circle: Back to the Terminal" />
+  <meta property="og:description" content="I started my career in the late 90s doing everything in the terminal. Over 30 years I migrated to GUIs, web apps, and desktop tools. Now, thanks to Claude Code, Neovim, and tmux, I&#39;m back where I started — and it&#39;s never felt better." />
+  <meta property="og:site_name" content="Spicer Matthews Personal Site" />
+  <meta property="og:url" content="https://spicermatthews.com/blog/full-circle-back-to-the-terminal/" />
+  <meta property="og:locale" content="en" />
+
+   <meta property="og:image" content="https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg" /> <meta property="og:image:secure_url" content="https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg" /> 
+  <meta property="og:type" content="website" />
+
+  
+  <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:image:src" content="https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg" /> 
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="I started my career in the late 90s doing everything in the terminal. Over 30 years I migrated to GUIs, web apps, and desktop tools. Now, thanks to Claude Code, Neovim, and tmux, I&#39;m back where I started — and it&#39;s never felt better." />
+
+  <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans antialiased">
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      
+      <div class="flex items-center">
+        <a href="/" class="text-xl font-bold text-gray-900 hover:text-blue-600 no-underline">
+          Spicer Matthews
+        </a>
+      </div>
+
+      
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-700 hover:text-blue-600 font-medium no-underline ">Home</a>
+        <a href="/blog/" class="text-gray-700 hover:text-blue-600 font-medium no-underline text-blue-600">Blog</a>
+        <a href="/projects/" class="text-gray-700 hover:text-blue-600 font-medium no-underline ">Projects</a>
+        <a href="https://twitter.com/spicermatthews" target="_blank" class="text-gray-700 hover:text-blue-600 font-medium no-underline">Twitter</a>
+      </div>
+
+      
+      <div class="md:hidden flex items-center">
+        <button type="button" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600 focus:outline-none" aria-label="Toggle menu">
+          <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <div class="px-4 py-3 space-y-3">
+      <a href="/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Home</a>
+      <a href="/blog/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Blog</a>
+      <a href="/projects/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Projects</a>
+      <a href="https://twitter.com/spicermatthews" target="_blank" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Twitter</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const closeIcon = document.getElementById('close-icon');
+      menu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+  </script>
+</nav>
+<main>
+
+<article class="bg-white">
+  
+  <header class="bg-gray-50 border-b">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <a href="/blog/" class="inline-flex items-center text-blue-600 hover:underline mb-6 no-underline">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Blog
+      </a>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Full Circle: Back to the Terminal</h1>
+      <div class="flex items-center text-gray-600">
+        <time>February 19, 2026</time>
+        
+        <span class="mx-2">&middot;</span>
+        <span>10 min read</span>
+        
+      </div>
+    </div>
+  </header>
+
+  
+  
+  <div class="max-w-4xl mx-auto">
+    <img src="/images/blog/full-circle-back-to-the-terminal.jpg" alt="Full Circle: Back to the Terminal" class="w-full h-64 md:h-96 object-cover" />
+  </div>
+  
+
+  
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg max-w-none">
+      
+<!--
+  Date: 2026-02-19
+  Copyright (c) 2026 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">
+  I started my computer career in the late 90s. Everything happened in the terminal. I wrote bash scripts, managed servers over SSH, read my email in <a href="https://en.wikipedia.org/wiki/Pine_(email_client)" class="text-blue-600 hover:text-blue-800 underline">Pine</a>, edited files in vi, and navigated the world through a blinking cursor on a black screen. That was just how you used a computer if you were a developer.
+</p>
+
+<p>
+  Then, over the next ~30 years, I slowly migrated away. I moved to VS Code for editing. Chrome for everything web. <a href="https://superhuman.com/" class="text-blue-600 hover:text-blue-800 underline">Superhuman</a> for email. Slack, Notion, Figma — tool after tool, each one pulling me further from the terminal and deeper into the GUI world. And it felt like progress. The tools were beautiful. The workflows were mouse-driven. The terminal became something I only opened when I absolutely had to.
+</p>
+
+<p>
+  Now it's 2026, and something funny has happened.
+</p>
+
+<p>
+  I'm back in the terminal. For almost everything.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    Thanks to Claude Code, Neovim, and tmux, I find myself using fewer and fewer desktop and web apps every day. It feels powerful. It feels like coming home.
+  </p>
+</div>
+
+<p>
+  The irony isn't lost on me. I spent three decades climbing out of the terminal, and now the best tools in the world are pulling me right back in.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Migration Away</h2>
+
+<p>
+  In the late 90s and early 2000s, there wasn't really a choice. If you were building software, you lived in the terminal. GUI tools existed, but they were clunky, slow, and limited. The terminal was where the real work happened.
+</p>
+
+<p>
+  Then the world changed. Browsers got good. Desktop apps got beautiful. IDEs became genuinely useful. And one by one, I moved my workflows out of the terminal:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li><strong>Code editing</strong> — From vi to Sublime Text to VS Code</li>
+  <li><strong>Email</strong> — From Pine to Thunderbird to Gmail to Superhuman</li>
+  <li><strong>Git</strong> — From command-line git to GitHub Desktop to Tower</li>
+  <li><strong>Notes</strong> — From text files to Evernote to Notion</li>
+  <li><strong>Communication</strong> — From IRC to Slack, from Usenet to Twitter</li>
+</ul>
+
+<p>
+  Each migration felt like an upgrade. And in many cases, it was. VS Code is a remarkable editor. Superhuman genuinely made email faster. These tools earned their place.
+</p>
+
+<p>
+  But somewhere along the way, I ended up with 15 apps open, 40 browser tabs, and a nagging feeling that I was spending more time <em>managing</em> my tools than actually using them.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Migration Back</h2>
+
+<p>
+  The return didn't happen all at once. It started with <a href="https://neovim.io/" class="text-blue-600 hover:text-blue-800 underline">Neovim</a>.
+</p>
+
+<p>
+  I'd been using VS Code for years, and it's a great editor. But I kept bumping into the same friction: it's an Electron app. It's heavy. Extensions conflict with each other. Startup time grows with every plugin. And the more I used it, the more I felt like I was fighting the tool instead of using it.
+</p>
+
+<p>
+  Neovim changed that. With <a href="https://www.lazyvim.org/" class="text-blue-600 hover:text-blue-800 underline">LazyVim</a> as a starting point, I had a full IDE experience — LSP, syntax highlighting, file navigation, git integration — all running in a terminal at native speed. No Electron overhead. No waiting for windows to load. Just instant, responsive editing.
+</p>
+
+<p>
+  Then came <a href="https://github.com/tmux/tmux" class="text-blue-600 hover:text-blue-800 underline">tmux</a>. I'd used it casually for years, but once I committed to it as my primary workspace manager, everything clicked. Instead of switching between app windows, I switch between tmux sessions. Instead of arranging windows on a desktop, I split panes in a terminal. The cognitive overhead dropped dramatically.
+</p>
+
+<p>
+  And then <a href="https://docs.anthropic.com/en/docs/claude-code/overview" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a> arrived and changed everything. Suddenly, the terminal wasn't just where I edited files — it was where I had an AI pair programmer that could read my entire codebase, run tests, create commits, and build features alongside me. No browser tab. No separate app. Just right there in the terminal, in the flow.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    When your editor, your AI assistant, your git client, and your workspace manager all live in the same terminal, you stop context-switching and start flowing.
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>How I Organize My Terminal Life</h2>
+
+<p>
+  "Living in the terminal" sounds chaotic until you see how it's organized. The secret is tmux sessions — each one is a self-contained workspace for a specific project, with purpose-built windows and panes.
+</p>
+
+<p>
+  When I boot up my machine and run <code>ta_start</code>, a shell script creates all my tmux sessions automatically. On my primary machine, that's 10 separate sessions:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">algo-options-cafe</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Options trading algorithm development. Claude Code window, lazygit, and a terminal.</p>
+  </div>
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">backtest-options-cafe</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Backtesting environment. Same three-window structure.</p>
+  </div>
+  <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg">
+    <p class="font-bold text-indigo-800 m-0">web-options-cafe</p>
+    <p class="text-indigo-700 text-sm m-0 mt-1">Frontend work. Split panes for dev server and terminal side by side.</p>
+  </div>
+  <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg">
+    <p class="font-bold text-indigo-800 m-0">app-options-cafe</p>
+    <p class="text-indigo-700 text-sm m-0 mt-1">Core application development. Claude, lazygit, terminal.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">spicermatthews</p>
+    <p class="text-green-700 text-sm m-0 mt-1">This blog. Writing, building, and deploying.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">kings-loots</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Shopify development project.</p>
+  </div>
+  <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+    <p class="font-bold text-amber-800 m-0">alpaca-algo</p>
+    <p class="text-amber-700 text-sm m-0 mt-1">Additional trading algorithm work.</p>
+  </div>
+  <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+    <p class="font-bold text-amber-800 m-0">random</p>
+    <p class="text-amber-700 text-sm m-0 mt-1">Four general-purpose shells for ad-hoc tasks.</p>
+  </div>
+</div>
+
+<p>
+  Every session follows a consistent pattern: a <strong>Claude Code</strong> window for AI-assisted development, a <strong>lazygit</strong> window for version control, and one or more <strong>terminal</strong> windows for running servers, tests, or whatever else the project needs.
+</p>
+
+<p>
+  Switching between projects is instant. I hit my tmux prefix key and pick a session. No cmd-tabbing through a dozen windows. No hunting for the right browser tab. Just one keystroke and I'm in a completely different project with everything already set up exactly how I need it.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Managing Dotfiles Across Machines with Stow</h2>
+
+<p>
+  I work across multiple machines — different laptops for different clients and projects. Each machine needs a slightly different configuration: different tmux sessions, different SSH keys, different project paths. But the core setup — my shell config, my tmux keybindings, my Neovim config — should be identical everywhere.
+</p>
+
+<p>
+  The solution is <a href="https://www.gnu.org/software/stow/" class="text-blue-600 hover:text-blue-800 underline">GNU Stow</a>, a dead-simple symlink manager. My dotfiles live in a git repository organized like this:
+</p>
+
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg my-6 font-mono text-sm leading-relaxed">
+  <p class="m-0">~/.dotfiles/</p>
+  <p class="m-0 ml-4">├── shared/          <span class="text-gray-500"># Universal configs (all machines)</span></p>
+  <p class="m-0 ml-4">│   ├── .tmux.conf   <span class="text-gray-500"># Tmux keybindings &amp; theme</span></p>
+  <p class="m-0 ml-4">│   ├── .zshrc       <span class="text-gray-500"># Shell configuration</span></p>
+  <p class="m-0 ml-4">│   └── .config/nvim/ <span class="text-gray-500"># Neovim + LazyVim</span></p>
+  <p class="m-0 ml-4">├── rager/           <span class="text-gray-500"># Primary machine</span></p>
+  <p class="m-0 ml-4">│   ├── .zshrc_host  <span class="text-gray-500"># Machine-specific shell config</span></p>
+  <p class="m-0 ml-4">│   └── bin/tmux-setup.sh <span class="text-gray-500"># 10 tmux sessions</span></p>
+  <p class="m-0 ml-4">├── stowe/           <span class="text-gray-500"># Secondary machine</span></p>
+  <p class="m-0 ml-4">│   └── bin/tmux-setup.sh <span class="text-gray-500"># 1 focused session</span></p>
+  <p class="m-0 ml-4">├── gladly/          <span class="text-gray-500"># Client machine</span></p>
+  <p class="m-0 ml-4">│   └── bin/tmux-setup.sh <span class="text-gray-500"># 7 project sessions</span></p>
+  <p class="m-0 ml-4">└── ileasepro/       <span class="text-gray-500"># Another client machine</span></p>
+  <p class="m-0 ml-4 mb-0">&nbsp;&nbsp;&nbsp;&nbsp;└── bin/tmux-setup.sh <span class="text-gray-500"># 4 sessions + log tailing</span></p>
+</div>
+
+<p>
+  Setting up a new machine (or rebuilding one) is two commands:
+</p>
+
+<div class="bg-gray-900 text-green-400 p-4 rounded-lg my-6 font-mono text-sm">
+  <p class="m-0">cd ~/.dotfiles && stow -t ~ shared</p>
+  <p class="m-0 mb-0">cd ~/.dotfiles && stow -t ~ rager  <span class="text-gray-500"># or whatever hostname</span></p>
+</div>
+
+<p>
+  Stow creates symlinks from my home directory into the dotfiles repo. My <code>.zshrc</code> is a symlink. My <code>.tmux.conf</code> is a symlink. My entire Neovim config is symlinked. Every change I make is automatically version-controlled because it's happening inside a git repo.
+</p>
+
+<p>
+  The shared <code>.zshrc</code> sources a <code>.zshrc_host</code> file at the end, which is where machine-specific overrides live — different project paths, different tmux startup scripts, different API keys. Same core experience on every machine, with per-machine customization where it matters.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    Git clone, stow, and you're home. Same shell, same editor, same tmux layout — on any machine.
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Neovim: The Editor That Gets Out of the Way</h2>
+
+<p>
+  I'm not a Vim purist. I don't have a strong opinion about modal editing vs. normal editing. What I care about is speed and staying in the flow.
+</p>
+
+<p>
+  My Neovim setup is built on <a href="https://www.lazyvim.org/" class="text-blue-600 hover:text-blue-800 underline">LazyVim</a>, which gives me a full IDE experience out of the box: language servers, syntax highlighting with Treesitter, file navigation, fuzzy finding, git integration through <a href="https://github.com/pwntester/octo.nvim" class="text-blue-600 hover:text-blue-800 underline">Octo.nvim</a> — all the things I'd expect from VS Code, but running natively in the terminal.
+</p>
+
+<p>
+  The key difference is responsiveness. There's no Electron layer. No web renderer. No garbage collection pauses. When I hit a key, things happen <em>instantly</em>. After years of VS Code's occasional stutters and extension conflicts, the difference is night and day.
+</p>
+
+<p>
+  And because Neovim runs in the terminal, it composes perfectly with everything else in my workflow. It's just another pane in my tmux session, right next to lazygit and my running dev server. No window management. No alt-tabbing. Just the work.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Claude Code: The Missing Piece</h2>
+
+<p>
+  If Neovim brought me back to the terminal and tmux kept me organized, <a href="https://docs.anthropic.com/en/docs/claude-code/overview" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a> is what made the terminal feel like a superpower.
+</p>
+
+<p>
+  Every tmux session I create has a dedicated Claude Code window. It's the first window in every project. I use it constantly — to understand unfamiliar code, to scaffold new features, to debug issues, to write tests, to handle refactors across dozens of files.
+</p>
+
+<p>
+  The magic is that Claude Code operates <em>in the same terminal environment</em> as everything else. It can see my files, run my tests, make git commits, and interact with my entire development stack. There's no copy-pasting code into a browser window. No switching contexts. It's just another tool in the terminal, right where I already am.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Window 1: Claude Code</p>
+    <p class="text-green-700 text-sm m-0 mt-1">AI pair programmer with full project context. Reads the codebase, writes code, runs tests, commits.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Window 2: Lazygit</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Visual git interface in the terminal. Stage, commit, push, review diffs — all without leaving the keyboard.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Window 3: Terminal</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Running servers, executing tests, tailing logs — whatever the project needs.</p>
+  </div>
+</div>
+
+<p>
+  This three-window pattern — Claude, lazygit, terminal — has become my standard development environment for every project. It's simple, consistent, and covers 95% of what I need to do. The remaining 5%? I can always open another tmux pane.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What I Don't Need Anymore</h2>
+
+<p>
+  Here's what's gradually disappeared from my dock:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">VS Code</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Replaced by Neovim. Faster, lighter, and composes with tmux naturally.</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">GitHub Desktop / Tower</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Replaced by lazygit. Full git workflow without leaving the terminal.</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">ChatGPT / Claude.ai in the Browser</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Replaced by Claude Code. AI that works directly in my codebase, not in a browser tab.</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">Multiple Desktop Spaces</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Replaced by tmux sessions. Switching projects is a keystroke, not a swipe.</p>
+  </div>
+</div>
+
+<p>
+  I still use a browser — I haven't gone full <a href="https://en.wikipedia.org/wiki/Lynx_(web_browser)" class="text-blue-600 hover:text-blue-800 underline">Lynx</a>. And I still use Slack. But the amount of time I spend in desktop apps has dropped dramatically. Most of my day happens in a single terminal window with tmux managing everything inside it.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Why It Feels Different This Time</h2>
+
+<p>
+  I was in the terminal in 1998 because there was no alternative. The GUI world hadn't caught up yet. It wasn't a choice — it was a constraint.
+</p>
+
+<p>
+  I'm in the terminal in 2026 <em>because I chose to be</em>. The GUI tools are better than ever. VS Code is excellent. Superhuman is beautiful. The browser can do almost anything. I'm not here because the alternatives are bad. I'm here because the terminal, with modern tooling, is genuinely <em>better</em>.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-gray-100 border border-gray-300 p-4 rounded-lg">
+    <p class="font-bold text-gray-800 m-0">Terminal in 1998</p>
+    <p class="text-gray-700 text-sm m-0 mt-1">The only option. No GUI alternatives. You lived there because you had to.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Terminal in 2026</p>
+    <p class="text-green-700 text-sm m-0 mt-1">A deliberate choice. AI-assisted, beautifully themed, perfectly organized. You live there because it's the best tool for the job.</p>
+  </div>
+</div>
+
+<p>
+  That distinction matters. The terminal I work in today would be unrecognizable to my 1998 self. <a href="https://github.com/catppuccin/tmux" class="text-blue-600 hover:text-blue-800 underline">Catppuccin</a> color themes. Mouse support. True color rendering. Split panes with a keystroke. An AI that understands my entire project. It's the same blinking cursor, but everything around it has leveled up.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Full Circle</h2>
+
+<p>
+  There's something deeply satisfying about ending up where you started — but with 30 years of context about why it works.
+</p>
+
+<p>
+  In the 90s, I was in the terminal because it was all there was. In the 2000s and 2010s, I left because the GUI world offered genuinely better experiences for most tasks. In the 2020s, the terminal caught up — and then surpassed — what GUIs can do for developers.
+</p>
+
+<p>
+  The tools that brought me back aren't replacements for what I left behind. They're something new. Claude Code isn't just "vim with AI." Tmux isn't just "virtual desktops in the terminal." LazyVim isn't just "VS Code but text-based." Together, they create a workflow that's faster, more focused, and more powerful than anything I've used in 30 years of writing software.
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-xl font-medium m-0">
+    The terminal never went away. It just waited for the right tools to make it home again.
+  </p>
+  <p class="text-gray-300 m-0 mt-2 text-lg">
+    Full circle. And it's never felt better.
+  </p>
+</div>
+
+<p>
+  If you've been living in GUIs and feeling like something is missing — the speed, the focus, the sense of control — give the terminal another look. The tools have changed. The experience has changed. And you might find, like I did, that the best workspace was right where you left it.
+</p>
+
+    </div>
+
+    
+    <div class="mt-12 pt-8 border-t">
+      <div class="flex items-center">
+        <img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="w-16 h-16 rounded-full object-cover mr-4" />
+        <div>
+          <h3 class="font-semibold text-gray-900 my-0">Spicer Matthews</h3>
+          <p class="text-gray-600 my-1">Developer, entrepreneur, and options trader based in Oregon.</p>
+          <a href="https://twitter.com/spicermatthews" target="_blank" class="text-blue-600 hover:underline text-sm no-underline">@spicermatthews</a>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 md:p-8 mt-8">
+  <form action="https://sendy.cloudmanic.com/subscribe" method="POST" accept-charset="utf-8">
+    <h3 class="text-xl font-bold text-gray-900 mb-2 mt-0">Join My Newsletter</h3>
+    <p class="text-gray-600 mb-4">1,000+ people have joined to follow along as I share on software and business.</p>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <input
+        type="email"
+        name="email"
+        class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+        placeholder="your@email.com"
+        required
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Subscribe
+      </button>
+    </div>
+
+    
+    <div style="display:none;">
+      <label for="hp">HP</label><br />
+      <input type="text" name="hp" id="hp" />
+    </div>
+
+    <input type="hidden" name="name" id="name" />
+    <input type="hidden" name="list" value="d6NCbNvNND97RBlw7B67cA" />
+    <input type="hidden" name="subform" value="yes" />
+  </form>
+</div>
+
+    <div class="mt-8 pt-8 border-t">
+      <h3 class="font-semibold text-gray-900 mb-4">Share this post</h3>
+      <div class="flex space-x-4">
+        <a href="https://twitter.com/intent/tweet?text=Full&#43;Circle%3A&#43;Back&#43;to&#43;the&#43;Terminal&url=https%3A%2F%2Fspicermatthews.com%2Fblog%2Ffull-circle-back-to-the-terminal%2F&via=spicermatthews" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 no-underline">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          Tweet
+        </a>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+  </main>
+<footer class="bg-white border-t mt-auto">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      
+      <div class="flex space-x-6">
+        <a href="mailto:me+website@spicermatthews.com" class="text-gray-500 hover:text-gray-700 no-underline" title="Email">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 2 37 30">
+            <path d="M17.9864841,17.7442683 L35.9560572,4.24918119 C35.9560572,2.99963608 34.9577476,2 33.7098606,2 L2.26310764,2 C1.01522062,2 0.0169109976,2.99963608 0.0169109976,4.24918119 L17.9864841,17.7442683 Z M17.9864841,21.7844641 L0.0169109976,8.28937702 L0.0777647581,29.7508188 C0.0777647581,31.0003639 1.07607438,32 2.3239614,32 L33.7707144,32 C35.0186014,32 36.016911,31.0003639 36.016911,29.7508188 L35.9560572,8.28937702 L17.9864841,21.7844641 Z" />
+          </svg>
+        </a>
+        <a href="https://twitter.com/spicermatthews" target="_blank" class="text-gray-500 hover:text-gray-700 no-underline" title="Twitter">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/cloudmanic" target="_blank" class="text-gray-500 hover:text-gray-700 no-underline" title="GitHub">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+
+      
+      <p class="text-gray-500 text-sm my-0">
+        &copy; 2026 Spicer Matthews. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,345 @@
+---
+title: "Full Circle: Back to the Terminal"
+date: 2026-02-19T12:00:00-07:00
+draft: false
+description: "I started my career in the late 90s doing everything in the terminal. Over 30 years I migrated to GUIs, web apps, and desktop tools. Now, thanks to Claude Code, Neovim, and tmux, I'm back where I started — and it's never felt better."
+og_image: "/images/blog/full-circle-back-to-the-terminal.jpg"
+---
+
+<!--
+  Date: 2026-02-19
+  Copyright (c) 2026 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">
+  I started my computer career in the late 90s. Everything happened in the terminal. I wrote bash scripts, managed servers over SSH, read my email in <a href="https://en.wikipedia.org/wiki/Pine_(email_client)" class="text-blue-600 hover:text-blue-800 underline">Pine</a>, edited files in vi, and navigated the world through a blinking cursor on a black screen. That was just how you used a computer if you were a developer.
+</p>
+
+<p>
+  Then, over the next ~30 years, I slowly migrated away. I moved to VS Code for editing. Chrome for everything web. <a href="https://superhuman.com/" class="text-blue-600 hover:text-blue-800 underline">Superhuman</a> for email. Slack, Notion, Figma — tool after tool, each one pulling me further from the terminal and deeper into the GUI world. And it felt like progress. The tools were beautiful. The workflows were mouse-driven. The terminal became something I only opened when I absolutely had to.
+</p>
+
+<p>
+  Now it's 2026, and something funny has happened.
+</p>
+
+<p>
+  I'm back in the terminal. For almost everything.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    Thanks to Claude Code, Neovim, and tmux, I find myself using fewer and fewer desktop and web apps every day. It feels powerful. It feels like coming home.
+  </p>
+</div>
+
+<p>
+  The irony isn't lost on me. I spent three decades climbing out of the terminal, and now the best tools in the world are pulling me right back in.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Migration Away</h2>
+
+<p>
+  In the late 90s and early 2000s, there wasn't really a choice. If you were building software, you lived in the terminal. GUI tools existed, but they were clunky, slow, and limited. The terminal was where the real work happened.
+</p>
+
+<p>
+  Then the world changed. Browsers got good. Desktop apps got beautiful. IDEs became genuinely useful. And one by one, I moved my workflows out of the terminal:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li><strong>Code editing</strong> — From vi to Sublime Text to VS Code</li>
+  <li><strong>Email</strong> — From Pine to Thunderbird to Gmail to Superhuman</li>
+  <li><strong>Git</strong> — From command-line git to GitHub Desktop to Tower</li>
+  <li><strong>Notes</strong> — From text files to Evernote to Notion</li>
+  <li><strong>Communication</strong> — From IRC to Slack, from Usenet to Twitter</li>
+</ul>
+
+<p>
+  Each migration felt like an upgrade. And in many cases, it was. VS Code is a remarkable editor. Superhuman genuinely made email faster. These tools earned their place.
+</p>
+
+<p>
+  But somewhere along the way, I ended up with 15 apps open, 40 browser tabs, and a nagging feeling that I was spending more time <em>managing</em> my tools than actually using them.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Migration Back</h2>
+
+<p>
+  The return didn't happen all at once. It started with <a href="https://neovim.io/" class="text-blue-600 hover:text-blue-800 underline">Neovim</a>.
+</p>
+
+<p>
+  I'd been using VS Code for years, and it's a great editor. But I kept bumping into the same friction: it's an Electron app. It's heavy. Extensions conflict with each other. Startup time grows with every plugin. And the more I used it, the more I felt like I was fighting the tool instead of using it.
+</p>
+
+<p>
+  Neovim changed that. With <a href="https://www.lazyvim.org/" class="text-blue-600 hover:text-blue-800 underline">LazyVim</a> as a starting point, I had a full IDE experience — LSP, syntax highlighting, file navigation, git integration — all running in a terminal at native speed. No Electron overhead. No waiting for windows to load. Just instant, responsive editing.
+</p>
+
+<p>
+  Then came <a href="https://github.com/tmux/tmux" class="text-blue-600 hover:text-blue-800 underline">tmux</a>. I'd used it casually for years, but once I committed to it as my primary workspace manager, everything clicked. Instead of switching between app windows, I switch between tmux sessions. Instead of arranging windows on a desktop, I split panes in a terminal. The cognitive overhead dropped dramatically.
+</p>
+
+<p>
+  And then <a href="https://docs.anthropic.com/en/docs/claude-code/overview" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a> arrived and changed everything. Suddenly, the terminal wasn't just where I edited files — it was where I had an AI pair programmer that could read my entire codebase, run tests, create commits, and build features alongside me. No browser tab. No separate app. Just right there in the terminal, in the flow.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    When your editor, your AI assistant, your git client, and your workspace manager all live in the same terminal, you stop context-switching and start flowing.
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>How I Organize My Terminal Life</h2>
+
+<p>
+  "Living in the terminal" sounds chaotic until you see how it's organized. The secret is tmux sessions — each one is a self-contained workspace for a specific project, with purpose-built windows and panes.
+</p>
+
+<p>
+  When I boot up my machine and run <code>ta_start</code>, a shell script creates all my tmux sessions automatically. On my primary machine, that's 10 separate sessions:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">algo-options-cafe</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Options trading algorithm development. Claude Code window, lazygit, and a terminal.</p>
+  </div>
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">backtest-options-cafe</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Backtesting environment. Same three-window structure.</p>
+  </div>
+  <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg">
+    <p class="font-bold text-indigo-800 m-0">web-options-cafe</p>
+    <p class="text-indigo-700 text-sm m-0 mt-1">Frontend work. Split panes for dev server and terminal side by side.</p>
+  </div>
+  <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg">
+    <p class="font-bold text-indigo-800 m-0">app-options-cafe</p>
+    <p class="text-indigo-700 text-sm m-0 mt-1">Core application development. Claude, lazygit, terminal.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">spicermatthews</p>
+    <p class="text-green-700 text-sm m-0 mt-1">This blog. Writing, building, and deploying.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">kings-loots</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Shopify development project.</p>
+  </div>
+  <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+    <p class="font-bold text-amber-800 m-0">alpaca-algo</p>
+    <p class="text-amber-700 text-sm m-0 mt-1">Additional trading algorithm work.</p>
+  </div>
+  <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+    <p class="font-bold text-amber-800 m-0">random</p>
+    <p class="text-amber-700 text-sm m-0 mt-1">Four general-purpose shells for ad-hoc tasks.</p>
+  </div>
+</div>
+
+<p>
+  Every session follows a consistent pattern: a <strong>Claude Code</strong> window for AI-assisted development, a <strong>lazygit</strong> window for version control, and one or more <strong>terminal</strong> windows for running servers, tests, or whatever else the project needs.
+</p>
+
+<p>
+  Switching between projects is instant. I hit my tmux prefix key and pick a session. No cmd-tabbing through a dozen windows. No hunting for the right browser tab. Just one keystroke and I'm in a completely different project with everything already set up exactly how I need it.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Managing Dotfiles Across Machines with Stow</h2>
+
+<p>
+  I work across multiple machines — different laptops for different clients and projects. Each machine needs a slightly different configuration: different tmux sessions, different SSH keys, different project paths. But the core setup — my shell config, my tmux keybindings, my Neovim config — should be identical everywhere.
+</p>
+
+<p>
+  The solution is <a href="https://www.gnu.org/software/stow/" class="text-blue-600 hover:text-blue-800 underline">GNU Stow</a>, a dead-simple symlink manager. My dotfiles live in a git repository organized like this:
+</p>
+
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg my-6 font-mono text-sm leading-relaxed">
+  <p class="m-0">~/.dotfiles/</p>
+  <p class="m-0 ml-4">├── shared/          <span class="text-gray-500"># Universal configs (all machines)</span></p>
+  <p class="m-0 ml-4">│   ├── .tmux.conf   <span class="text-gray-500"># Tmux keybindings &amp; theme</span></p>
+  <p class="m-0 ml-4">│   ├── .zshrc       <span class="text-gray-500"># Shell configuration</span></p>
+  <p class="m-0 ml-4">│   └── .config/nvim/ <span class="text-gray-500"># Neovim + LazyVim</span></p>
+  <p class="m-0 ml-4">├── rager/           <span class="text-gray-500"># Primary machine</span></p>
+  <p class="m-0 ml-4">│   ├── .zshrc_host  <span class="text-gray-500"># Machine-specific shell config</span></p>
+  <p class="m-0 ml-4">│   └── bin/tmux-setup.sh <span class="text-gray-500"># 10 tmux sessions</span></p>
+  <p class="m-0 ml-4">├── stowe/           <span class="text-gray-500"># Secondary machine</span></p>
+  <p class="m-0 ml-4">│   └── bin/tmux-setup.sh <span class="text-gray-500"># 1 focused session</span></p>
+  <p class="m-0 ml-4">├── gladly/          <span class="text-gray-500"># Client machine</span></p>
+  <p class="m-0 ml-4">│   └── bin/tmux-setup.sh <span class="text-gray-500"># 7 project sessions</span></p>
+  <p class="m-0 ml-4">└── ileasepro/       <span class="text-gray-500"># Another client machine</span></p>
+  <p class="m-0 ml-4 mb-0">&nbsp;&nbsp;&nbsp;&nbsp;└── bin/tmux-setup.sh <span class="text-gray-500"># 4 sessions + log tailing</span></p>
+</div>
+
+<p>
+  Setting up a new machine (or rebuilding one) is two commands:
+</p>
+
+<div class="bg-gray-900 text-green-400 p-4 rounded-lg my-6 font-mono text-sm">
+  <p class="m-0">cd ~/.dotfiles && stow -t ~ shared</p>
+  <p class="m-0 mb-0">cd ~/.dotfiles && stow -t ~ rager  <span class="text-gray-500"># or whatever hostname</span></p>
+</div>
+
+<p>
+  Stow creates symlinks from my home directory into the dotfiles repo. My <code>.zshrc</code> is a symlink. My <code>.tmux.conf</code> is a symlink. My entire Neovim config is symlinked. Every change I make is automatically version-controlled because it's happening inside a git repo.
+</p>
+
+<p>
+  The shared <code>.zshrc</code> sources a <code>.zshrc_host</code> file at the end, which is where machine-specific overrides live — different project paths, different tmux startup scripts, different API keys. Same core experience on every machine, with per-machine customization where it matters.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    Git clone, stow, and you're home. Same shell, same editor, same tmux layout — on any machine.
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Neovim: The Editor That Gets Out of the Way</h2>
+
+<p>
+  I'm not a Vim purist. I don't have a strong opinion about modal editing vs. normal editing. What I care about is speed and staying in the flow.
+</p>
+
+<p>
+  My Neovim setup is built on <a href="https://www.lazyvim.org/" class="text-blue-600 hover:text-blue-800 underline">LazyVim</a>, which gives me a full IDE experience out of the box: language servers, syntax highlighting with Treesitter, file navigation, fuzzy finding, git integration through <a href="https://github.com/pwntester/octo.nvim" class="text-blue-600 hover:text-blue-800 underline">Octo.nvim</a> — all the things I'd expect from VS Code, but running natively in the terminal.
+</p>
+
+<p>
+  The key difference is responsiveness. There's no Electron layer. No web renderer. No garbage collection pauses. When I hit a key, things happen <em>instantly</em>. After years of VS Code's occasional stutters and extension conflicts, the difference is night and day.
+</p>
+
+<p>
+  And because Neovim runs in the terminal, it composes perfectly with everything else in my workflow. It's just another pane in my tmux session, right next to lazygit and my running dev server. No window management. No alt-tabbing. Just the work.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Claude Code: The Missing Piece</h2>
+
+<p>
+  If Neovim brought me back to the terminal and tmux kept me organized, <a href="https://docs.anthropic.com/en/docs/claude-code/overview" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a> is what made the terminal feel like a superpower.
+</p>
+
+<p>
+  Every tmux session I create has a dedicated Claude Code window. It's the first window in every project. I use it constantly — to understand unfamiliar code, to scaffold new features, to debug issues, to write tests, to handle refactors across dozens of files.
+</p>
+
+<p>
+  The magic is that Claude Code operates <em>in the same terminal environment</em> as everything else. It can see my files, run my tests, make git commits, and interact with my entire development stack. There's no copy-pasting code into a browser window. No switching contexts. It's just another tool in the terminal, right where I already am.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Window 1: Claude Code</p>
+    <p class="text-green-700 text-sm m-0 mt-1">AI pair programmer with full project context. Reads the codebase, writes code, runs tests, commits.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Window 2: Lazygit</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Visual git interface in the terminal. Stage, commit, push, review diffs — all without leaving the keyboard.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Window 3: Terminal</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Running servers, executing tests, tailing logs — whatever the project needs.</p>
+  </div>
+</div>
+
+<p>
+  This three-window pattern — Claude, lazygit, terminal — has become my standard development environment for every project. It's simple, consistent, and covers 95% of what I need to do. The remaining 5%? I can always open another tmux pane.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What I Don't Need Anymore</h2>
+
+<p>
+  Here's what's gradually disappeared from my dock:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">VS Code</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Replaced by Neovim. Faster, lighter, and composes with tmux naturally.</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">GitHub Desktop / Tower</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Replaced by lazygit. Full git workflow without leaving the terminal.</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">ChatGPT / Claude.ai in the Browser</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Replaced by Claude Code. AI that works directly in my codebase, not in a browser tab.</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">Multiple Desktop Spaces</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Replaced by tmux sessions. Switching projects is a keystroke, not a swipe.</p>
+  </div>
+</div>
+
+<p>
+  I still use a browser — I haven't gone full <a href="https://en.wikipedia.org/wiki/Lynx_(web_browser)" class="text-blue-600 hover:text-blue-800 underline">Lynx</a>. And I still use Slack. But the amount of time I spend in desktop apps has dropped dramatically. Most of my day happens in a single terminal window with tmux managing everything inside it.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Why It Feels Different This Time</h2>
+
+<p>
+  I was in the terminal in 1998 because there was no alternative. The GUI world hadn't caught up yet. It wasn't a choice — it was a constraint.
+</p>
+
+<p>
+  I'm in the terminal in 2026 <em>because I chose to be</em>. The GUI tools are better than ever. VS Code is excellent. Superhuman is beautiful. The browser can do almost anything. I'm not here because the alternatives are bad. I'm here because the terminal, with modern tooling, is genuinely <em>better</em>.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-gray-100 border border-gray-300 p-4 rounded-lg">
+    <p class="font-bold text-gray-800 m-0">Terminal in 1998</p>
+    <p class="text-gray-700 text-sm m-0 mt-1">The only option. No GUI alternatives. You lived there because you had to.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Terminal in 2026</p>
+    <p class="text-green-700 text-sm m-0 mt-1">A deliberate choice. AI-assisted, beautifully themed, perfectly organized. You live there because it's the best tool for the job.</p>
+  </div>
+</div>
+
+<p>
+  That distinction matters. The terminal I work in today would be unrecognizable to my 1998 self. <a href="https://github.com/catppuccin/tmux" class="text-blue-600 hover:text-blue-800 underline">Catppuccin</a> color themes. Mouse support. True color rendering. Split panes with a keystroke. An AI that understands my entire project. It's the same blinking cursor, but everything around it has leveled up.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Full Circle</h2>
+
+<p>
+  There's something deeply satisfying about ending up where you started — but with 30 years of context about why it works.
+</p>
+
+<p>
+  In the 90s, I was in the terminal because it was all there was. In the 2000s and 2010s, I left because the GUI world offered genuinely better experiences for most tasks. In the 2020s, the terminal caught up — and then surpassed — what GUIs can do for developers.
+</p>
+
+<p>
+  The tools that brought me back aren't replacements for what I left behind. They're something new. Claude Code isn't just "vim with AI." Tmux isn't just "virtual desktops in the terminal." LazyVim isn't just "VS Code but text-based." Together, they create a workflow that's faster, more focused, and more powerful than anything I've used in 30 years of writing software.
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-xl font-medium m-0">
+    The terminal never went away. It just waited for the right tools to make it home again.
+  </p>
+  <p class="text-gray-300 m-0 mt-2 text-lg">
+    Full circle. And it's never felt better.
+  </p>
+</div>
+
+<p>
+  If you've been living in GUIs and feeling like something is missing — the speed, the focus, the sense of control — give the terminal another look. The tools have changed. The experience has changed. And you might find, like I did, that the best workspace was right where you left it.
+</p>
