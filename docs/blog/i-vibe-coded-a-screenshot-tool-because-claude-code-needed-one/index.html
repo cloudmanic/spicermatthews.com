@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>I Vibe Coded a Screenshot Tool Because Claude Code Needed One</title>
+  <meta name="description" content="I&#39;ve been living in the terminal with Claude Code, Neovim, and tmux. But sharing screenshots with an AI that lives in a terminal session? That was broken. So I vibe coded a macOS screenshot tool that uploads to S3 and gives me a direct URL. Problem solved." />
+  <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
+  <link href="https://spicermatthews.com/css/build.css?v=b1ebc515f0" media="all" rel="stylesheet" />
+
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="I Vibe Coded a Screenshot Tool Because Claude Code Needed One" />
+  <meta property="og:description" content="I&#39;ve been living in the terminal with Claude Code, Neovim, and tmux. But sharing screenshots with an AI that lives in a terminal session? That was broken. So I vibe coded a macOS screenshot tool that uploads to S3 and gives me a direct URL. Problem solved." />
+  <meta property="og:site_name" content="Spicer Matthews Personal Site" />
+  <meta property="og:url" content="https://spicermatthews.com/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/" />
+  <meta property="og:locale" content="en" />
+
+   <meta property="og:image" content="https://spicermatthews.com/images/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one.png" /> <meta property="og:image:secure_url" content="https://spicermatthews.com/images/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one.png" /> 
+  <meta property="og:type" content="website" />
+
+  
+  <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:image:src" content="https://spicermatthews.com/images/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one.png" /> 
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="I&#39;ve been living in the terminal with Claude Code, Neovim, and tmux. But sharing screenshots with an AI that lives in a terminal session? That was broken. So I vibe coded a macOS screenshot tool that uploads to S3 and gives me a direct URL. Problem solved." />
+
+  <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans antialiased">
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      
+      <div class="flex items-center">
+        <a href="/" class="text-xl font-bold text-gray-900 hover:text-blue-600 no-underline">
+          Spicer Matthews
+        </a>
+      </div>
+
+      
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-700 hover:text-blue-600 font-medium no-underline ">Home</a>
+        <a href="/blog/" class="text-gray-700 hover:text-blue-600 font-medium no-underline text-blue-600">Blog</a>
+        <a href="/projects/" class="text-gray-700 hover:text-blue-600 font-medium no-underline ">Projects</a>
+        <a href="https://twitter.com/spicermatthews" target="_blank" class="text-gray-700 hover:text-blue-600 font-medium no-underline">Twitter</a>
+      </div>
+
+      
+      <div class="md:hidden flex items-center">
+        <button type="button" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600 focus:outline-none" aria-label="Toggle menu">
+          <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <div class="px-4 py-3 space-y-3">
+      <a href="/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Home</a>
+      <a href="/blog/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Blog</a>
+      <a href="/projects/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Projects</a>
+      <a href="https://twitter.com/spicermatthews" target="_blank" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Twitter</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const closeIcon = document.getElementById('close-icon');
+      menu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+  </script>
+</nav>
+<main>
+
+<article class="bg-white">
+  
+  <header class="bg-gray-50 border-b">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <a href="/blog/" class="inline-flex items-center text-blue-600 hover:underline mb-6 no-underline">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Blog
+      </a>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">I Vibe Coded a Screenshot Tool Because Claude Code Needed One</h1>
+      <div class="flex items-center text-gray-600">
+        <time>February 24, 2026</time>
+        
+        <span class="mx-2">&middot;</span>
+        <span>8 min read</span>
+        
+      </div>
+    </div>
+  </header>
+
+  
+  
+  <div class="max-w-4xl mx-auto">
+    <img src="/images/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one.png" alt="I Vibe Coded a Screenshot Tool Because Claude Code Needed One" class="w-full h-64 md:h-96 object-cover" />
+  </div>
+  
+
+  
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg max-w-none">
+      
+<!--
+  Date: 2026-02-24
+  Copyright (c) 2026 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">
+  If you've read my <a href="/blog/full-circle-back-to-the-terminal/" class="text-blue-600 hover:text-blue-800 underline">recent post</a> about going full circle back to the terminal, you know I've been living in <a href="https://docs.anthropic.com/en/docs/claude-code/overview" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a>, Neovim, and tmux for everything. My entire development workflow happens inside a terminal. It's fast, focused, and powerful.
+</p>
+
+<p>
+  But there was one glaring problem I kept running into. A problem so annoying that it finally pushed me to build something new.
+</p>
+
+<p>
+  I couldn't show Claude Code what I was looking at.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Problem: Screenshots in a Terminal World</h2>
+
+<p>
+  Here's the scenario. I'm deep in a Claude Code session over SSH inside tmux. I'm staring at a UI bug, a weird layout issue, an error dialog — something visual that I need Claude to see and help me fix. In any other context, I'd just take a screenshot and paste it. But in a terminal? That doesn't work.
+</p>
+
+<p>
+  I'd been a happy <a href="https://cleanshot.com/" class="text-blue-600 hover:text-blue-800 underline">CleanShot</a> user for years. It's a fantastic tool. But when I tried to use it with Claude Code, I hit a wall. CleanShot copies a link to their landing page — a nicely designed HTML page with your screenshot embedded in it. Great for sharing with humans. Completely useless for an AI agent that needs to actually <em>see</em> the image.
+</p>
+
+<p>
+  Claude Code can't do anything useful with an HTML landing page URL. It needs a direct link to an image file. And in a terminal session, you can't just paste an image from your clipboard the way you can in a browser-based chat.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    I needed pass by reference, not pass by copy. A URL that points directly to the image — not a wrapper page, not clipboard data, just the raw image.
+  </p>
+</div>
+
+<p>
+  This is a subtle but fundamental shift in how we share visual information with AI. When your AI assistant lives in a browser, you can drag and drop images, paste from clipboard, upload files. When your AI assistant lives in a terminal over SSH, none of that works. You need a URL. A real one.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What I Actually Needed</h2>
+
+<p>
+  The requirements were simple:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Capture a screen region quickly</p>
+    <p class="text-green-700 text-sm m-0 mt-1">One keyboard shortcut. Select a region. Done. No fiddling with windows or menus.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Upload to somewhere I control</p>
+    <p class="text-green-700 text-sm m-0 mt-1">My own S3 bucket. No third-party landing pages. No dependency on someone else's service staying online.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Get a direct image URL</p>
+    <p class="text-green-700 text-sm m-0 mt-1">A pre-signed S3 URL that points directly to the PNG file. Not an HTML page. Not a redirect. The actual image.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Copy it to my clipboard automatically</p>
+    <p class="text-green-700 text-sm m-0 mt-1">So I can immediately paste it into my Claude Code session. Cmd+Shift+6, then paste. That's the whole workflow.</p>
+  </div>
+</div>
+
+<p>
+  That's it. Capture, upload, URL on clipboard. Three steps that should take under two seconds.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>So I Vibe Coded It</h2>
+
+<p>
+  Let me be completely transparent about how this app was built: I vibe coded the entire thing.
+</p>
+
+<p>
+  For those unfamiliar, "vibe coding" is when you describe what you want to an AI and let it write the code. You're steering, reviewing, and testing — but the AI is doing the heavy lifting on implementation. You're the architect; the AI is the builder.
+</p>
+
+<p>
+  I sat down with Claude Code and described what I needed. A macOS menu bar app. Swift. No external dependencies. Global hotkey. S3 upload with pre-signed URLs. Keychain storage for credentials. The works.
+</p>
+
+<p>
+  And here's the thing — it's a <em>real</em> app. Not a script. Not a hack. A proper macOS application with:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li><strong>Pure Swift AWS Signature V4 implementation</strong> — no AWS SDK dependency, no external packages at all</li>
+  <li><strong>Interactive region selection</strong> with a click-drag overlay across all connected displays</li>
+  <li><strong>Keychain integration</strong> for securely storing AWS credentials</li>
+  <li><strong>A settings UI</strong> built in SwiftUI with connection testing</li>
+  <li><strong>Launch at login</strong> via macOS native login items</li>
+  <li><strong>Drag-and-drop upload</strong> — drag any image onto the menu bar icon</li>
+  <li><strong>Homebrew distribution</strong> with a proper cask formula</li>
+</ul>
+
+<p>
+  Could I have built all of this from scratch, writing every line myself? Sure. Eventually. But it would have taken days of reading Apple's documentation, fighting with Swift's AWS signing requirements, and debugging overlay windows across multiple displays. Instead, I had a working app in a fraction of the time.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    Vibe coding isn't about being lazy. It's about recognizing that the value isn't in typing the code — it's in knowing what needs to exist.
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Irony Isn't Lost on Me</h2>
+
+<p>
+  There's a delicious irony here that I want to sit with for a moment.
+</p>
+
+<p>
+  I built a tool to help me share screenshots with an AI coding assistant... <em>using that same AI coding assistant</em>. The tool exists because Claude Code needed a way to see my screen, and Claude Code is the one that built it. The snake eating its own tail, but productively.
+</p>
+
+<p>
+  This is what the AI-native development loop actually looks like in practice. You're using AI to build tools that make AI more useful, which in turn lets you build better tools faster. It's a flywheel. Every tool I build with Claude Code makes the next thing I build with Claude Code easier and faster.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>How It Works</h2>
+
+<p>
+  The app lives in your menu bar — just a small camera icon. No dock icon, no windows cluttering your desktop. It stays completely out of the way until you need it.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">1. Capture</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Press <strong>Cmd+Shift+6</strong>. A translucent overlay appears across all displays. Click and drag to select a region. Dimensions show in real-time.</p>
+  </div>
+  <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg">
+    <p class="font-bold text-indigo-800 m-0">2. Upload</p>
+    <p class="text-indigo-700 text-sm m-0 mt-1">The selected region is captured and uploaded to your S3 bucket. A progress HUD tracks the upload. Takes about a second.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">3. Paste</p>
+    <p class="text-green-700 text-sm m-0 mt-1">A pre-signed URL is copied to your clipboard with a sound notification. Paste it anywhere — Claude Code, Slack, email, wherever.</p>
+  </div>
+</div>
+
+<p>
+  You can also drag any image file onto the menu bar icon to upload it. Same flow — it goes to S3 and the URL hits your clipboard. Supports PNG, JPG, GIF, WebP, TIFF, BMP, and HEIC.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Real Reason I Built This</h2>
+
+<p>
+  On the surface, this is a screenshot tool. But the real reason it exists is deeper than that.
+</p>
+
+<p>
+  When you commit to a terminal-first workflow with Claude Code over SSH, you discover that the entire ecosystem of desktop tools was built around assumptions that no longer hold. The assumption that you're sitting in front of the machine. The assumption that you have a GUI clipboard. The assumption that sharing visual information means dragging and dropping files between windows.
+</p>
+
+<p>
+  SSH breaks all of those assumptions. And when your AI coding assistant lives in an SSH session inside tmux, you need tools that work the way terminals work — through text, through URLs, through references to things rather than copies of things.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">The old way</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Take screenshot. It's on your clipboard. Paste it into a browser-based AI chat. The image data is copied into the conversation.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">The terminal way</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Take screenshot. It uploads to S3. URL is on your clipboard. Paste the URL into Claude Code. The AI fetches the image by reference.</p>
+  </div>
+</div>
+
+<p>
+  Pass by reference instead of pass by copy. It's a small shift in mechanics, but it unlocks an entirely different workflow. And once it works, you wonder why screenshots ever needed to be anything other than URLs in the first place.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What Vibe Coding Taught Me (Again)</h2>
+
+<p>
+  Every time I vibe code a project, I learn the same lesson: the hard part was never the code. The hard part was knowing what to build and why.
+</p>
+
+<p>
+  I didn't need to know how AWS Signature V4 signing works at the byte level. I needed to know that I needed it. I didn't need to know how to create a transparent overlay window on macOS. I needed to know that the interaction model required one. I didn't need to manually implement every Swift protocol. I needed to understand the architecture — what talks to what, what gets stored where, what the user experience should feel like.
+</p>
+
+<p>
+  The code is the easy part now. The thinking is still hard. And I don't think AI changes that anytime soon.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    AI can write the code. But someone still has to feel the friction, identify the gap, and decide that a tool needs to exist. That's the job now.
+  </p>
+</div>
+
+<p>
+  This screenshot tool exists because I sat in a terminal for weeks, frustrated that I couldn't show Claude Code what was on my screen. No amount of AI-generated code would have created this tool on its own. The tool needed someone to live the problem first.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Install It</h2>
+
+<p>
+  The app is open source and available on GitHub: <a href="https://github.com/cloudmanic/screen-capture-osx" class="text-blue-600 hover:text-blue-800 underline">github.com/cloudmanic/screen-capture-osx</a>. If you're on macOS, installation is one line:
+</p>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ brew tap cloudmanic/screen-capture-osx https://github.com/cloudmanic/screen-capture-osx</p>
+  <p class="m-0">$ brew install --cask screen-capture</p>
+</div>
+
+<p>
+  You'll need an AWS S3 bucket with valid credentials. Open the settings from the menu bar icon, plug in your AWS access key, secret key, bucket name, and region, hit Test Connection, and you're good to go.
+</p>
+
+<p>
+  The app requires macOS 13.0 (Ventura) or later and will prompt for Screen Recording permission on first launch.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>A Broader Point</h2>
+
+<p>
+  We're entering an era where the friction you feel in your workflow is the blueprint for the next tool you should build. The gap between "this annoys me" and "I shipped a solution" has collapsed to hours instead of weeks. Vibe coding makes the build phase almost trivial. What remains is the insight — the lived experience of a broken workflow, the clarity to see what's missing, and the conviction to go build it.
+</p>
+
+<p>
+  For me, the missing piece was a direct image URL on my clipboard after a screenshot. For you, it might be something completely different. But if you're feeling friction in your development workflow in 2026, the answer isn't to live with it. The answer is to sit down with Claude Code and build the tool that makes the friction go away.
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-xl font-medium m-0">
+    Feel the friction. Identify the gap. Vibe code the solution.
+  </p>
+  <p class="text-gray-300 m-0 mt-2 text-lg">
+    That's the new loop. And it moves fast.
+  </p>
+</div>
+
+<p>
+  If you're using Claude Code over SSH and fighting the same screenshot problem, give <a href="https://github.com/cloudmanic/screen-capture-osx" class="text-blue-600 hover:text-blue-800 underline">ScreenCapture</a> a try. And if you're not using Claude Code in the terminal yet — well, you might want to read <a href="/blog/full-circle-back-to-the-terminal/" class="text-blue-600 hover:text-blue-800 underline">that other post</a> first.
+</p>
+
+    </div>
+
+    
+    <div class="mt-12 pt-8 border-t">
+      <div class="flex items-center">
+        <img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="w-16 h-16 rounded-full object-cover mr-4" />
+        <div>
+          <h3 class="font-semibold text-gray-900 my-0">Spicer Matthews</h3>
+          <p class="text-gray-600 my-1">Developer, entrepreneur, and options trader based in Oregon.</p>
+          <a href="https://twitter.com/spicermatthews" target="_blank" class="text-blue-600 hover:underline text-sm no-underline">@spicermatthews</a>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 md:p-8 mt-8">
+  <form action="https://sendy.cloudmanic.com/subscribe" method="POST" accept-charset="utf-8">
+    <h3 class="text-xl font-bold text-gray-900 mb-2 mt-0">Join My Newsletter</h3>
+    <p class="text-gray-600 mb-4">1,000+ people have joined to follow along as I share on software and business.</p>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <input
+        type="email"
+        name="email"
+        class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+        placeholder="your@email.com"
+        required
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Subscribe
+      </button>
+    </div>
+
+    
+    <div style="display:none;">
+      <label for="hp">HP</label><br />
+      <input type="text" name="hp" id="hp" />
+    </div>
+
+    <input type="hidden" name="name" id="name" />
+    <input type="hidden" name="list" value="d6NCbNvNND97RBlw7B67cA" />
+    <input type="hidden" name="subform" value="yes" />
+  </form>
+</div>
+
+    <div class="mt-8 pt-8 border-t">
+      <h3 class="font-semibold text-gray-900 mb-4">Share this post</h3>
+      <div class="flex space-x-4">
+        <a href="https://twitter.com/intent/tweet?text=I&#43;Vibe&#43;Coded&#43;a&#43;Screenshot&#43;Tool&#43;Because&#43;Claude&#43;Code&#43;Needed&#43;One&url=https%3A%2F%2Fspicermatthews.com%2Fblog%2Fi-vibe-coded-a-screenshot-tool-because-claude-code-needed-one%2F&via=spicermatthews" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 no-underline">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          Tweet
+        </a>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+  </main>
+<footer class="bg-white border-t mt-auto">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      
+      <div class="flex space-x-6">
+        <a href="mailto:me+website@spicermatthews.com" class="text-gray-500 hover:text-gray-700 no-underline" title="Email">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 2 37 30">
+            <path d="M17.9864841,17.7442683 L35.9560572,4.24918119 C35.9560572,2.99963608 34.9577476,2 33.7098606,2 L2.26310764,2 C1.01522062,2 0.0169109976,2.99963608 0.0169109976,4.24918119 L17.9864841,17.7442683 Z M17.9864841,21.7844641 L0.0169109976,8.28937702 L0.0777647581,29.7508188 C0.0777647581,31.0003639 1.07607438,32 2.3239614,32 L33.7707144,32 C35.0186014,32 36.016911,31.0003639 36.016911,29.7508188 L35.9560572,8.28937702 L17.9864841,21.7844641 Z" />
+          </svg>
+        </a>
+        <a href="https://twitter.com/spicermatthews" target="_blank" class="text-gray-500 hover:text-gray-700 no-underline" title="Twitter">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/cloudmanic" target="_blank" class="text-gray-500 hover:text-gray-700 no-underline" title="GitHub">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+
+      
+      <p class="text-gray-500 text-sm my-0">
+        &copy; 2026 Spicer Matthews. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>

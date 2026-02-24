@@ -6,8 +6,15 @@
     <description>Recent content in Blogs on Spicer Matthews Personal Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Feb 2026 12:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 24 Feb 2026 12:00:00 -0700</lastBuildDate>
     <atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I Vibe Coded a Screenshot Tool Because Claude Code Needed One</title>
+      <link>https://spicermatthews.com/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/</link>
+      <pubDate>Tue, 24 Feb 2026 12:00:00 -0700</pubDate>
+      <guid>https://spicermatthews.com/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/</guid>
+      <description>If you&#39;ve read my recent post about going full circle back to the terminal, you know I&#39;ve been living in Claude Code, Neovim, and tmux for everything. My entire development workflow happens inside a terminal. It&#39;s fast, focused, and powerful. But there was one glaring problem I kept running into. A problem so annoying that it finally pushed me to build something new. I couldn&#39;t show Claude Code what I was looking at.</description>
+    </item>
     <item>
       <title>Full Circle: Back to the Terminal</title>
       <link>https://spicermatthews.com/blog/full-circle-back-to-the-terminal/</link>
