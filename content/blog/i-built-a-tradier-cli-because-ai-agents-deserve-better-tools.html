@@ -1,0 +1,287 @@
+---
+title: "I Built a Tradier CLI Because AI Agents Deserve Better Tools"
+date: 2026-03-18T08:00:00-07:00
+draft: false
+description: "MCP servers flood your AI agent's context window with massive JSON payloads. A CLI gives it exactly what it needs. Here's why I built a full Tradier brokerage CLI in Go — and why CLIs are the better interface for AI-powered trading workflows."
+og_image: "/images/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools.png"
+---
+
+<!--
+  Date: 2026-03-18
+  Copyright (c) 2026 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">
+  I've been trading options through <a href="https://tradier.com" class="text-blue-600 hover:text-blue-800 underline">Tradier</a> for years. Great API, solid brokerage, reasonable pricing. But as I've shifted more of my workflow into <a href="https://docs.anthropic.com/en/docs/claude-code/overview" class="text-blue-600 hover:text-blue-800 underline">Claude Code</a> and terminal-based AI agents, I kept hitting the same problem: there was no clean way to let my AI assistant interact with my brokerage account.
+</p>
+
+<p>
+  So I built one. A full command-line interface for the entire Tradier API. Every endpoint. Accounts, market data, options chains, trading, watchlists — all of it accessible from a single binary.
+</p>
+
+<p>
+  But the interesting part isn't the CLI itself. It's <em>why</em> a CLI is the right interface when your user is an AI agent.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Problem with MCP Servers for Trading</h2>
+
+<p>
+  The obvious approach to giving an AI agent access to a brokerage API is an <a href="https://modelcontextprotocol.io/" class="text-blue-600 hover:text-blue-800 underline">MCP server</a>. Define some tools, wire them up to the API, and let the agent call them directly. Simple, right?
+</p>
+
+<p>
+  In theory, yes. In practice, MCP servers have a fundamental problem when it comes to financial APIs: they flood the agent's context window.
+</p>
+
+<p>
+  When an MCP server returns data, the entire response gets injected into the conversation context. Ask for your positions? Here's a massive JSON payload with every field Tradier returns — cost basis, gain/loss, individual lots, IDs you don't need, metadata you never asked for. Ask for an options chain? You just blew through thousands of tokens on strike prices you don't care about.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    Every token wasted on irrelevant API data is a token your agent can't use for reasoning about your actual question.
+  </p>
+</div>
+
+<p>
+  Context window size matters. Not just because of cost, but because AI agents reason better with focused, relevant context. Dumping a 50KB JSON blob of market data into a conversation designed around a specific trading question actively degrades the agent's ability to help you.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Why a CLI Is the Better Interface for AI Agents</h2>
+
+<p>
+  A CLI solves this in a way that's almost embarrassingly simple. Instead of injecting entire API responses into context, the agent runs a shell command and gets back a clean, formatted result. The agent sees exactly what a human would see in their terminal — a focused table with the relevant data, nothing more.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">MCP Server Approach</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Agent calls tool → entire JSON response injected into context → thousands of tokens consumed → agent has to parse through noise to find what matters.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">CLI Approach</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Agent runs shell command → gets clean formatted output → minimal token usage → agent can focus on reasoning about the data.</p>
+  </div>
+</div>
+
+<p>
+  And when the agent <em>does</em> need the raw data — maybe for calculations or further processing — every command supports a <code>--json</code> flag. Human-readable by default, machine-readable when you need it.
+</p>
+
+<p>
+  There's another advantage people overlook: debugging. When something goes wrong with an MCP tool, you're digging through logs and server code. When a CLI command gives unexpected results, you run the same command yourself and see exactly what the agent saw. Same input, same output. No abstraction layers to peel back.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What the Tradier CLI Does</h2>
+
+<p>
+  The CLI covers the entire <a href="https://documentation.tradier.com/" class="text-blue-600 hover:text-blue-800 underline">Tradier API</a> — all 37 endpoints across six domains. Here's what you can do:
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Account Management</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Balances, positions, orders, gain/loss history, historical balances, and position groups — everything you need to monitor your account.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Market Data</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Real-time quotes, historical OHLCV data, time and sales, market calendar, clock status, symbol lookup, and company search.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Options</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Full option chains with Greeks, expiration dates, strike prices, and symbol lookup with filtering by type, strike, and expiration.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Trading</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Place equity and options orders, multileg spreads (up to 4 legs), modify and cancel orders, with preview mode for validation before submission.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Watchlists</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Create, update, and manage watchlists. Add or remove symbols. Keep your tracked positions organized.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Streaming</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Create market data and account event streaming sessions for real-time data feeds.</p>
+  </div>
+</div>
+
+<p>
+  A few examples of what this looks like in practice:
+</p>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
+  <p class="m-0 text-gray-500"># Check your account balance</p>
+  <p class="m-0">$ tradier accounts balance</p>
+  <p class="m-0">&nbsp;</p>
+  <p class="m-0 text-gray-500"># Get real-time quotes</p>
+  <p class="m-0">$ tradier markets quotes --symbols AAPL,MSFT,GOOGL</p>
+  <p class="m-0">&nbsp;</p>
+  <p class="m-0 text-gray-500"># Pull an options chain with Greeks</p>
+  <p class="m-0">$ tradier markets options-chains --symbol SPY --expiration 2026-04-17 --greeks true</p>
+  <p class="m-0">&nbsp;</p>
+  <p class="m-0 text-gray-500"># Preview a multileg options order before submitting</p>
+  <p class="m-0">$ tradier trading place --class multileg --symbol SPY --duration day --type credit \</p>
+  <p class="m-0">&nbsp;&nbsp;--option-symbol-0 SPY260417C00520000 --side-0 sell_to_open --quantity-0 1 \</p>
+  <p class="m-0">&nbsp;&nbsp;--option-symbol-1 SPY260417C00530000 --side-1 buy_to_open --quantity-1 1 \</p>
+  <p class="m-0">&nbsp;&nbsp;--price 3.50 --preview true</p>
+  <p class="m-0">&nbsp;</p>
+  <p class="m-0 text-gray-500"># See your top 10 trades by gain/loss</p>
+  <p class="m-0">$ tradier accounts gainloss --sort-by gainloss --sort desc --limit 10</p>
+</div>
+
+<p>
+  Every single one of those commands outputs a cleanly formatted table by default. Add <code>--json</code> to any of them for raw JSON output. This dual-mode output is what makes it work for both humans and AI agents.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>How I Actually Use It with Claude Code</h2>
+
+<p>
+  Here's where it gets interesting. The whole reason this CLI exists is to give Claude Code direct access to my brokerage. And in practice, the workflow is exactly as seamless as I hoped.
+</p>
+
+<p>
+  I can sit in a Claude Code session and say things like:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li><strong>"What are my current positions?"</strong> — Claude runs <code>tradier accounts positions</code> and tells me what I'm holding.</li>
+  <li><strong>"What's the options chain look like for SPY expiring next Friday?"</strong> — Claude pulls the chain, analyzes the premiums, and can discuss strategies.</li>
+  <li><strong>"Place a bull put spread on AAPL"</strong> — Claude can construct the multileg order, preview it for my approval, and execute it.</li>
+  <li><strong>"How have my closed trades performed this month?"</strong> — Claude pulls gain/loss data, sorts it, and gives me a summary.</li>
+</ul>
+
+<p>
+  The AI agent has full context about my account, real-time market data, and the ability to execute trades — all through clean shell commands that don't bloat the conversation. It's like having a trading assistant that can actually see your portfolio and act on it.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    The CLI turns Claude Code from a coding assistant into a trading assistant. Same terminal. Same conversation. Different capabilities.
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Design Decisions That Matter</h2>
+
+<p>
+  A few architectural choices in the CLI that are worth calling out:
+</p>
+
+<h3>Two Dependencies. That's It.</h3>
+
+<p>
+  The entire CLI is built on just two Go libraries: <a href="https://github.com/spf13/cobra" class="text-blue-600 hover:text-blue-800 underline">Cobra</a> for the CLI framework and <a href="https://github.com/jedib0t/go-pretty" class="text-blue-600 hover:text-blue-800 underline">go-pretty</a> for table rendering. Everything else is standard library. Minimal dependencies mean fewer things that can break, fewer supply chain risks, and a single binary that just works.
+</p>
+
+<h3>Raw Bytes, Not Structs</h3>
+
+<p>
+  The HTTP client layer never unmarshals API responses into Go structs. Every method returns raw <code>[]byte</code>. The display layer handles all JSON navigation with generic map helpers. This means adding support for a new Tradier endpoint takes minutes, not hours. No struct definitions, no marshaling logic, no maintaining parity between Go types and API schemas. The API response <em>is</em> the data model.
+</p>
+
+<h3>OCC Option Symbol Formatting</h3>
+
+<p>
+  If you've ever looked at a raw OCC option symbol like <code>SPY260220P00657000</code> and had to mentally decode it, you'll appreciate this one. The CLI automatically formats these into human-readable form: <code>SPY 02/20/26 $657 Put</code>. Small touch, but it makes scanning options data dramatically easier — for humans and AI agents alike.
+</p>
+
+<h3>Sandbox Mode Built In</h3>
+
+<p>
+  Every command supports a <code>--sandbox</code> flag that switches to Tradier's sandbox environment. This is critical for testing. You can let Claude Code experiment with order placement, test strategies, and validate workflows without risking real money. Run <code>tradier init</code>, enter both your production and sandbox credentials, and switch between them with a single flag.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Bigger Picture: CLIs as AI Agent Interfaces</h2>
+
+<p>
+  This project crystallized something I've been thinking about for a while. As AI agents become central to development and workflow automation, the tools we give them matter enormously. And right now, most of the industry is focused on MCP servers and tool definitions — basically, giving AI agents custom function calls.
+</p>
+
+<p>
+  But CLIs already exist. They're the original tool interface. They accept structured input, produce structured output, and they've been debuggable since the 1970s. Every AI coding agent already knows how to run shell commands. You don't need a protocol. You don't need a server. You just need a binary in the PATH.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">CLIs Are Universal</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Any AI agent that can run shell commands can use a CLI. No integration work. No SDK. No server to keep running. It just works.</p>
+  </div>
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">CLIs Are Composable</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Pipe output to jq, grep, awk, or another tool. Chain commands together. The Unix philosophy of small, focused tools applies perfectly to AI agent workflows.</p>
+  </div>
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">CLIs Are Debuggable</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">When an MCP tool gives wrong results, you're reading server logs. When a CLI gives wrong results, you run the same command and see the same output. Instant reproducibility.</p>
+  </div>
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">CLIs Are Context-Efficient</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">The agent sees clean, formatted output — not raw API payloads. Less noise in the context window means better reasoning about the data that matters.</p>
+  </div>
+</div>
+
+<p>
+  I'm not saying MCP servers are bad. They have their place. But for data-heavy APIs like brokerage platforms, where responses can be massive and you need precise control over what enters your agent's context, CLIs are the more practical choice.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Install It and Try It</h2>
+
+<p>
+  The Tradier CLI is open source and available on GitHub: <a href="https://github.com/cloudmanic/tradier" class="text-blue-600 hover:text-blue-800 underline">github.com/cloudmanic/tradier</a>.
+</p>
+
+<p>
+  If you're on macOS or Linux with Homebrew:
+</p>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ brew tap cloudmanic/tradier https://github.com/cloudmanic/tradier</p>
+  <p class="m-0">$ brew install tradier</p>
+  <p class="m-0">$ tradier init</p>
+</div>
+
+<p>
+  Pre-built binaries are also available for macOS (Intel and Apple Silicon), Linux (amd64 and arm64), and Windows on the <a href="https://github.com/cloudmanic/tradier/releases" class="text-blue-600 hover:text-blue-800 underline">releases page</a>.
+</p>
+
+<p>
+  You'll need a <a href="https://tradier.com" class="text-blue-600 hover:text-blue-800 underline">Tradier</a> account with API access. Run <code>tradier init</code> to set up your credentials, and you're ready to go. I'd recommend starting with the sandbox environment to get a feel for things before pointing it at production.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What's Next</h2>
+
+<p>
+  This is the tool I wanted, and now it exists. I'm using it daily with Claude Code to monitor positions, analyze options chains, and execute trades. The workflow is fast, the context stays clean, and the AI agent can actually reason about my portfolio without drowning in JSON noise.
+</p>
+
+<p>
+  If you're a Tradier user who works with AI coding assistants, give it a shot. If you're building tools for AI agents, consider whether a CLI might be a better fit than an MCP server for your use case. And if you have feature requests or find bugs, <a href="https://github.com/cloudmanic/tradier/issues" class="text-blue-600 hover:text-blue-800 underline">open an issue</a>.
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-xl font-medium m-0">
+    The best interface for an AI agent isn't always a new protocol. Sometimes it's the oldest one we have.
+  </p>
+  <p class="text-gray-300 m-0 mt-2 text-lg">
+    A command line. A single binary. Clean output. That's it.
+  </p>
+</div>
+
+<p>
+  If you're interested in the terminal-first AI workflow that led to this project, check out my earlier posts on <a href="/blog/full-circle-back-to-the-terminal/" class="text-blue-600 hover:text-blue-800 underline">going full circle back to the terminal</a> and <a href="/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/" class="text-blue-600 hover:text-blue-800 underline">vibe coding a screenshot tool</a> for Claude Code. They're all part of the same journey — building an AI-native development workflow, one tool at a time.
+</p>
