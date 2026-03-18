@@ -6,8 +6,15 @@
     <description>Recent content on Spicer Matthews Personal Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Feb 2026 12:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2026 08:00:00 -0700</lastBuildDate>
     <atom:link href="https://spicermatthews.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I Built a Tradier CLI Because AI Agents Deserve Better Tools</title>
+      <link>https://spicermatthews.com/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/</link>
+      <pubDate>Wed, 18 Mar 2026 08:00:00 -0700</pubDate>
+      <guid>https://spicermatthews.com/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/</guid>
+      <description>I&#39;ve been trading options through Tradier for years. Great API, solid brokerage, reasonable pricing. But as I&#39;ve shifted more of my workflow into Claude Code and terminal-based AI agents, I kept hitting the same problem: there was no clean way to let my AI assistant interact with my brokerage account. So I built one. A full command-line interface for the entire Tradier API. Every endpoint. Accounts, market data, options chains, trading, watchlists — all of it accessible from a single binary.</description>
+    </item>
     <item>
       <title>I Vibe Coded a Screenshot Tool Because Claude Code Needed One</title>
       <link>https://spicermatthews.com/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/</link>
