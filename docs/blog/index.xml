@@ -2,178 +2,178 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Spicer Matthews Personal Site</title>
-    <link>http://localhost:50627/blog/</link>
+    <link>https://spicermatthews.com/blog/</link>
     <description>Recent content in Blogs on Spicer Matthews Personal Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 30 Apr 2026 12:00:00 -0700</lastBuildDate>
-    <atom:link href="http://localhost:50627/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introducing SpiceEdit: The Mouse-First Terminal Editor for the AI Era</title>
-      <link>http://localhost:50627/blog/introducing-spice-edit/</link>
+      <link>https://spicermatthews.com/blog/introducing-spice-edit/</link>
       <pubDate>Thu, 30 Apr 2026 12:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/introducing-spice-edit/</guid>
+      <guid>https://spicermatthews.com/blog/introducing-spice-edit/</guid>
       <description>I&#39;ve written before about how I went full circle back to the terminal. Claude Code, tmux, SSH into a beefy remote box — that&#39;s where I live now. The whole desktop GUI ecosystem has melted away. The terminal is back, and it&#39;s better than it&#39;s ever been. But there was always one piece of the workflow that never quite fit. The editor. Today I&#39;m releasing the editor I wish existed.</description>
     </item>
     <item>
       <title>I&#39;m Looking for a New CPA</title>
-      <link>http://localhost:50627/blog/looking-for-a-new-cpa/</link>
+      <link>https://spicermatthews.com/blog/looking-for-a-new-cpa/</link>
       <pubDate>Mon, 20 Apr 2026 08:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/looking-for-a-new-cpa/</guid>
+      <guid>https://spicermatthews.com/blog/looking-for-a-new-cpa/</guid>
       <description>For more than 15 years, I worked with a CPA I truly trusted. She worked from home, we handled almost everything digitally, and she made a stressful part of life feel manageable. She retired a few years ago, and ever since, I&#39;ve been trying to find that same kind of working relationship again. I haven&#39;t found it. That&#39;s what this post is about. I&#39;m writing this partly to clarify what I&#39;m looking for, and partly because I&#39;d genuinely like to find the right CPA.</description>
     </item>
     <item>
       <title>I Built a Tradier CLI Because AI Agents Deserve Better Tools</title>
-      <link>http://localhost:50627/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/</link>
+      <link>https://spicermatthews.com/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/</link>
       <pubDate>Wed, 18 Mar 2026 08:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/</guid>
+      <guid>https://spicermatthews.com/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/</guid>
       <description>I&#39;ve been trading options through Tradier for years. Great API, solid brokerage, reasonable pricing. But as I&#39;ve shifted more of my workflow into Claude Code and terminal-based AI agents, I kept hitting the same problem: there was no clean way to let my AI assistant interact with my brokerage account. So I built one. A full command-line interface for the entire Tradier API. Every endpoint. Accounts, market data, options chains, trading, watchlists — all of it accessible from a single binary.</description>
     </item>
     <item>
       <title>I Vibe Coded a Screenshot Tool Because Claude Code Needed One</title>
-      <link>http://localhost:50627/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/</link>
+      <link>https://spicermatthews.com/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/</link>
       <pubDate>Tue, 24 Feb 2026 12:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/</guid>
+      <guid>https://spicermatthews.com/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/</guid>
       <description>If you&#39;ve read my recent post about going full circle back to the terminal, you know I&#39;ve been living in Claude Code, Neovim, and tmux for everything. My entire development workflow happens inside a terminal. It&#39;s fast, focused, and powerful. But there was one glaring problem I kept running into. A problem so annoying that it finally pushed me to build something new. I couldn&#39;t show Claude Code what I was looking at.</description>
     </item>
     <item>
       <title>Full Circle: Back to the Terminal</title>
-      <link>http://localhost:50627/blog/full-circle-back-to-the-terminal/</link>
+      <link>https://spicermatthews.com/blog/full-circle-back-to-the-terminal/</link>
       <pubDate>Thu, 19 Feb 2026 12:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/full-circle-back-to-the-terminal/</guid>
+      <guid>https://spicermatthews.com/blog/full-circle-back-to-the-terminal/</guid>
       <description>I started my computer career in the late 90s. Everything happened in the terminal. I wrote bash scripts, managed servers over SSH, read my email in Pine, edited files in vi, and navigated the world through a blinking cursor on a black screen. That was just how you used a computer if you were a developer. Then, over the next ~30 years, I slowly migrated away. I moved to VS Code for editing.</description>
     </item>
     <item>
       <title>Why I Built a CLI for Massive Financial Data</title>
-      <link>http://localhost:50627/blog/why-i-built-a-cli-for-massive-financial-data/</link>
+      <link>https://spicermatthews.com/blog/why-i-built-a-cli-for-massive-financial-data/</link>
       <pubDate>Mon, 16 Feb 2026 10:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/why-i-built-a-cli-for-massive-financial-data/</guid>
+      <guid>https://spicermatthews.com/blog/why-i-built-a-cli-for-massive-financial-data/</guid>
       <description>I&#39;ve been using the Massive financial data API for a while now. It&#39;s a solid API — real-time and historical market data across stocks, options, crypto, forex, futures, and indices. But every time I wanted to pull data, I was either writing throwaway scripts or wiring up an MCP server so my AI agent could fetch it for me. Both approaches had problems. Scripts are disposable. MCP servers flood your agent&#39;s context window with massive JSON payloads, eating up tokens and degrading response quality.</description>
     </item>
     <item>
       <title>Just Do Stuff</title>
-      <link>http://localhost:50627/blog/just-do-stuff/</link>
+      <link>https://spicermatthews.com/blog/just-do-stuff/</link>
       <pubDate>Tue, 03 Feb 2026 12:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/just-do-stuff/</guid>
+      <guid>https://spicermatthews.com/blog/just-do-stuff/</guid>
       <description>I was recently listening to Aaron Francis on a podcast — he&#39;s a developer, educator, and creator behind High Performance SQLite, Mastering Postgres, and the Mostly Technical podcast. He was talking about how he doesn&#39;t calculate the ROI on things before doing them. He doesn&#39;t weigh the risks and rewards. He just does stuff and puts it into the world. And I thought: wait, that&#39;s what I&#39;ve been doing for 20 years.</description>
     </item>
     <item>
       <title>I Built a Personal AI Assistant That Lives in Slack</title>
-      <link>http://localhost:50627/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/</link>
+      <link>https://spicermatthews.com/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/</link>
       <pubDate>Fri, 30 Jan 2026 10:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/</guid>
+      <guid>https://spicermatthews.com/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/</guid>
       <description>I recently spent a few hours playing with OpenClaw (Clawdbot) — an autonomous AI agent you let loose on your machine. The concept is compelling: give an AI full access to your computer and let it do real work for you. But it does too much. It gets out of control. Their own recommendation is to run it on an isolated machine and keep it away from your personal data.</description>
     </item>
     <item>
       <title>Why 100 Customers at $200 Beats 1,000 at $20</title>
-      <link>http://localhost:50627/blog/why-100-customers-at-200-beats-1000-at-20/</link>
+      <link>https://spicermatthews.com/blog/why-100-customers-at-200-beats-1000-at-20/</link>
       <pubDate>Mon, 19 Jan 2026 10:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/why-100-customers-at-200-beats-1000-at-20/</guid>
+      <guid>https://spicermatthews.com/blog/why-100-customers-at-200-beats-1000-at-20/</guid>
       <description>Here&#39;s a premise I&#39;d put money on: anyone who can build a solid product—something genuinely useful and well-executed—can attract 100 customers. It&#39;s the leap from 100 to 1,000 where founders get crushed. I&#39;ve started multiple SaaS products. I&#39;ve helped build others. And every time, the pattern holds. The first 100 customers? Achievable. Beyond that? A grind that breaks most people. But lately I&#39;ve been obsessed with a different question: what if you didn&#39;t need 1,000 customers at all?</description>
     </item>
     <item>
       <title>You Don&#39;t Lack Time. You Lack a System.</title>
-      <link>http://localhost:50627/blog/you-dont-lack-time-you-lack-a-system/</link>
+      <link>https://spicermatthews.com/blog/you-dont-lack-time-you-lack-a-system/</link>
       <pubDate>Tue, 13 Jan 2026 10:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/you-dont-lack-time-you-lack-a-system/</guid>
+      <guid>https://spicermatthews.com/blog/you-dont-lack-time-you-lack-a-system/</guid>
       <description>I came across a quote from Jesse Itzler recently that stuck with me more than I expected: &#34;You don&#39;t lack time. You lack a system.&#34; — Jesse Itzler At first, it sounded obvious—almost too neat. But the more I sat with it, the more I realized why it bothered me. Not because it was wrong, but because it described how I&#39;ve been living for years without ever quite putting words to it.</description>
     </item>
     <item>
       <title>My New AI-First Development Workflow - Github Issues</title>
-      <link>http://localhost:50627/blog/my-new-ai-first-development-workflow-github-issues/</link>
+      <link>https://spicermatthews.com/blog/my-new-ai-first-development-workflow-github-issues/</link>
       <pubDate>Mon, 29 Dec 2025 10:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/my-new-ai-first-development-workflow-github-issues/</guid>
+      <guid>https://spicermatthews.com/blog/my-new-ai-first-development-workflow-github-issues/</guid>
       <description>Over the last few months, I&#39;ve quietly but completely changed how I build software. This wasn&#39;t a single &#34;aha&#34; moment. It was more like a slow realization that a lot of the friction I&#39;d accepted as normal—planning overhead, missing context, endless clicking, poorly scoped tasks—wasn&#39;t actually required anymore. The biggest shift? I now treat GitHub Issues as both my project management system and my planning document, and I use Claude at the command line as my primary collaborator to get work scoped, built, reviewed, and shipped.</description>
     </item>
     <item>
       <title>Remodeling My Home Proved One Thing: We Need Robots to Build Houses</title>
-      <link>http://localhost:50627/blog/remodeling-my-home-proved-one-thing-we-need-robots-to-build-houses/</link>
+      <link>https://spicermatthews.com/blog/remodeling-my-home-proved-one-thing-we-need-robots-to-build-houses/</link>
       <pubDate>Tue, 02 Dec 2025 10:00:00 -0800</pubDate>
-      <guid>http://localhost:50627/blog/remodeling-my-home-proved-one-thing-we-need-robots-to-build-houses/</guid>
+      <guid>https://spicermatthews.com/blog/remodeling-my-home-proved-one-thing-we-need-robots-to-build-houses/</guid>
       <description>When it comes to building and remodeling, I’ve always thought of myself as a hobbyist builder. Not the weekend “hang a shelf” type, but the kind of person who takes on one major project every year or two. Sometimes it’s new construction from the ground up, sometimes it’s a massive remodel of one of my rental properties, and sometimes it’s a big expansion to my own home. Because I build infrequently, I have some great relationships with subcontractors and vendors—but not many.</description>
     </item>
     <item>
       <title>How I Learned to Spot Inflated Bids (and What You Can Do Too)</title>
-      <link>http://localhost:50627/blog/how-i-learned-to-spot-inflated-bids-and-what-you-can-do-too/</link>
+      <link>https://spicermatthews.com/blog/how-i-learned-to-spot-inflated-bids-and-what-you-can-do-too/</link>
       <pubDate>Wed, 15 Oct 2025 10:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/how-i-learned-to-spot-inflated-bids-and-what-you-can-do-too/</guid>
+      <guid>https://spicermatthews.com/blog/how-i-learned-to-spot-inflated-bids-and-what-you-can-do-too/</guid>
       <description>For the past two decades, I&#39;ve been what you might call a hobbyist builder. Every year, I take on one major construction project—sometimes a new build, sometimes a big renovation. Some are investment properties, others personal. These days, I&#39;ve been buried in projects around my own home, but trust me—this isn&#39;t some HGTV fantasy land. It&#39;s more &#34;sweat equity and YouTube tutorials&#34; than &#34;dream home reveal.&#34; Still, after years of hauling lumber and learning lessons the hard way, the place has started to look.</description>
     </item>
     <item>
       <title>The AI Side Hustle Revolution: Turning Niche Ideas into Income</title>
-      <link>http://localhost:50627/blog/the-ai-side-hustle-revolution-turning-niche-ideas-into-income/</link>
+      <link>https://spicermatthews.com/blog/the-ai-side-hustle-revolution-turning-niche-ideas-into-income/</link>
       <pubDate>Fri, 06 Jun 2025 10:00:00 -0700</pubDate>
-      <guid>http://localhost:50627/blog/the-ai-side-hustle-revolution-turning-niche-ideas-into-income/</guid>
+      <guid>https://spicermatthews.com/blog/the-ai-side-hustle-revolution-turning-niche-ideas-into-income/</guid>
       <description>In early 2023, Oregon updated its rental laws, significantly complicating the eviction process for landlords dealing with tenants who fell behind on rent. As a property owner myself, this translated into hours lost each month manually handling and serving past-due rent notices. It was monotonous, repetitive, and eating away at my evenings and weekends. Clearly, a software solution was needed—but given my demanding day job, the time investment felt prohibitive.</description>
     </item>
     <item>
       <title>Reimagining Real Estate: A Call for Excellence Over Exclusivity</title>
-      <link>http://localhost:50627/blog/reimagining-real-estate-a-call-for-excellence-over-exclusivity/</link>
+      <link>https://spicermatthews.com/blog/reimagining-real-estate-a-call-for-excellence-over-exclusivity/</link>
       <pubDate>Tue, 26 Mar 2024 12:18:58 -0700</pubDate>
-      <guid>http://localhost:50627/blog/reimagining-real-estate-a-call-for-excellence-over-exclusivity/</guid>
+      <guid>https://spicermatthews.com/blog/reimagining-real-estate-a-call-for-excellence-over-exclusivity/</guid>
       <description>Nearly two decades ago, I embarked on my real estate journey with my first property purchase. Over the years, I&#39;ve been involved in more than fifty transactions, working closely with real estate brokers affiliated with The National Association of Realtors (NAR). My extensive experience has led me to a stark realization: the NAR seems to prioritize creating barriers (&#34;moats&#34;) over fostering excellence, a practice I find deeply troubling. This critique is not aimed at individual Realtors or the profession at large, many of whom are exceptional and have provided invaluable insights and assistance throughout my ventures.</description>
     </item>
     <item>
       <title>Streamlining Code Reviews: Maximize Efficiency and Effectiveness</title>
-      <link>http://localhost:50627/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</link>
+      <link>https://spicermatthews.com/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</link>
       <pubDate>Thu, 30 Mar 2023 20:18:58 -0700</pubDate>
-      <guid>http://localhost:50627/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</guid>
+      <guid>https://spicermatthews.com/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</guid>
       <description>As I delve into unconventional approaches to software development, I think it&#39;s worthwhile to share my thoughts on pull requests. While they are undoubtedly helpful, having another developer review your code after you&#39;ve completed it, I find the traditional approach to pull requests to be somewhat cumbersome and potentially demotivating. Throughout my years of experience, I&#39;ve worked with numerous teams, each with a distinct company culture surrounding pull requests. Time and again, I&#39;ve observed common issues such as developers not responding to pull requests promptly, leaving the original author unable to commit code.</description>
     </item>
     <item>
       <title>Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?</title>
-      <link>http://localhost:50627/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</link>
+      <link>https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</link>
       <pubDate>Wed, 22 Mar 2023 13:18:58 -0700</pubDate>
-      <guid>http://localhost:50627/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</guid>
+      <guid>https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</guid>
       <description>I have a close friend, whom we will call Frank, who has been both a work colleague and a close friend for years. However, there are some aspects of code quality on which Frank and I strongly disagree. Before delving into this further, I must admit that there may be something that I am overlooking. Frank has had a long and successful career working at some of the top tech companies.</description>
     </item>
     <item>
       <title>Prioritizing TDD Friendly Languages and Frameworks</title>
-      <link>http://localhost:50627/blog/prioritizing-tdd-friendly-languages-and-frameworks/</link>
+      <link>https://spicermatthews.com/blog/prioritizing-tdd-friendly-languages-and-frameworks/</link>
       <pubDate>Sat, 18 Mar 2023 20:18:58 -0700</pubDate>
-      <guid>http://localhost:50627/blog/prioritizing-tdd-friendly-languages-and-frameworks/</guid>
+      <guid>https://spicermatthews.com/blog/prioritizing-tdd-friendly-languages-and-frameworks/</guid>
       <description>Unit testing and Test-driven development (TDD) are crucial elements of software development. Unit tests ensure individual code units function correctly, while TDD emphasizes writing tests before writing code to meet expected requirements. As someone who enjoys TDD but dislikes writing unit tests, I appreciate the importance of testing and value an efficient development process. Unit tests should make development more enjoyable and not be an extra burden. They should be tools that help developers work faster, rather than additional tasks.</description>
     </item>
     <item>
       <title>The Stock Market Is a Drunken Idiot -- You Should Profit From It</title>
-      <link>http://localhost:50627/blog/the-stock-market-is-a-drunken-idiot-you-should-profit-from-it/</link>
+      <link>https://spicermatthews.com/blog/the-stock-market-is-a-drunken-idiot-you-should-profit-from-it/</link>
       <pubDate>Fri, 24 Feb 2023 20:18:58 -0700</pubDate>
-      <guid>http://localhost:50627/blog/the-stock-market-is-a-drunken-idiot-you-should-profit-from-it/</guid>
+      <guid>https://spicermatthews.com/blog/the-stock-market-is-a-drunken-idiot-you-should-profit-from-it/</guid>
       <description>Have you ever noticed that when someone drinks too much, they become predictable? They might start talking louder or acting crazier than usual. It&#39;s as if the alcohol has unlocked a different side of their personality. Most people are pretty steady and predictable creatures when they&#39;re sober, but when they get drunk, all bets are off. The same can be said for the stock market. Sometimes, stocks in the stock market behave like they&#39;re drunk.</description>
     </item>
     <item>
       <title>Am Over Vendors That Are Not Transparent in Pricing</title>
-      <link>http://localhost:50627/blog/am-over-vendors-that-are-not-transparent-in-pricing/</link>
+      <link>https://spicermatthews.com/blog/am-over-vendors-that-are-not-transparent-in-pricing/</link>
       <pubDate>Tue, 21 Apr 2020 20:18:58 -0700</pubDate>
-      <guid>http://localhost:50627/blog/am-over-vendors-that-are-not-transparent-in-pricing/</guid>
+      <guid>https://spicermatthews.com/blog/am-over-vendors-that-are-not-transparent-in-pricing/</guid>
       <description>Once upon a time, I was a home builder before I turned computer geek. This was a time before the Internet provided a transparent world. To get the materials I needed, at a good price I had to have good relationships and contacts. The key to good service and pricing was making your sales rep like you. Also, doing a lot of business with him (or her) was helpful too.</description>
     </item>
     <item>
       <title>Spicer&#39;s Rules on How and When To Test Your Code</title>
-      <link>http://localhost:50627/blog/spicers-rules-on-how-and-when-to-test-your-code/</link>
+      <link>https://spicermatthews.com/blog/spicers-rules-on-how-and-when-to-test-your-code/</link>
       <pubDate>Sun, 15 Sep 2019 12:18:58 -0700</pubDate>
-      <guid>http://localhost:50627/blog/spicers-rules-on-how-and-when-to-test-your-code/</guid>
+      <guid>https://spicermatthews.com/blog/spicers-rules-on-how-and-when-to-test-your-code/</guid>
       <description>I just marked my 20th year as a professional software developer - meaning I received my first paycheck for writing code 20 years ago. I have to admit it has been a wild ride of successes, failures, crazy ideas, and immense learning. Throughout this journey, the topic of unit tests, or any kind of testing for that matter, has always been front and center for me. This topic has led countless barroom debates and even more IRC fights - yep, showing my age here.</description>
     </item>
     <item>
       <title>Using Hugo with Google Docs</title>
-      <link>http://localhost:50627/blog/using-hugo-with-google-docs/</link>
+      <link>https://spicermatthews.com/blog/using-hugo-with-google-docs/</link>
       <pubDate>Thu, 01 Aug 2019 12:18:58 -0700</pubDate>
-      <guid>http://localhost:50627/blog/using-hugo-with-google-docs/</guid>
+      <guid>https://spicermatthews.com/blog/using-hugo-with-google-docs/</guid>
       <description>Quick tip alert! This is how I import Google docs into Hugo. I am becoming a big fan of Hugo to build static sites like this one and this one. Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you produce your content within your text editor such as Atom.&#xA;Text editors are great but they are not ideal for producing well-thought-out written content.</description>
     </item>
     <item>
       <title>Delighting Customers With Airbnb</title>
-      <link>http://localhost:50627/blog/delighting-customers-with-airbnb/</link>
+      <link>https://spicermatthews.com/blog/delighting-customers-with-airbnb/</link>
       <pubDate>Tue, 30 Jul 2019 12:18:58 -0700</pubDate>
-      <guid>http://localhost:50627/blog/delighting-customers-with-airbnb/</guid>
+      <guid>https://spicermatthews.com/blog/delighting-customers-with-airbnb/</guid>
       <description>This week, we launched bendmountbachelorvillage.com for really no good reason. For years now, we have been using Airbnb to rent out our vacation rental in Bend, OR. The truth is, we designed this website back in 2012 when we were using Craigslist to find nightly renters. Before we had time to launch the site, Airbnb became a thing and changed our rental business in the best possible ways. This past weekend I decided I was sick of looking at this linger todo and I launched the site.</description>
     </item>
     <item>
       <title>Hello World: My New Blog, Hugo, Tailwind CSS, and More</title>
-      <link>http://localhost:50627/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</link>
+      <link>https://spicermatthews.com/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</link>
       <pubDate>Wed, 17 Jul 2019 19:02:38 -0700</pubDate>
-      <guid>http://localhost:50627/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</guid>
+      <guid>https://spicermatthews.com/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</guid>
       <description>Today, I am launching, once again, my personal blog. Starting over. Hopefully, this is my last reboot (more on that below). I could not even begin to count the number of blogs I have had in my life. Currently, I blog for Options Cafe, Skyclerk, and Cloudmanic. However, in the past, I have had all sorts of personal blogs. Just for fun here are some of my past blogs.</description>
     </item>
   </channel>

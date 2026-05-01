@@ -1,0 +1,143 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "Spicer Matthews" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - link "Home" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "Blog" [ref=e9] [cursor=pointer]:
+          - /url: /blog/
+        - link "Projects" [ref=e10] [cursor=pointer]:
+          - /url: /projects/
+        - link "Twitter" [ref=e11] [cursor=pointer]:
+          - /url: https://twitter.com/spicermatthews
+      - button "Toggle menu" [ref=e13]:
+        - img [ref=e14]
+        - img [ref=e16]
+    - generic [ref=e19]:
+      - link "Home" [ref=e20] [cursor=pointer]:
+        - /url: /
+      - link "Blog" [ref=e21] [cursor=pointer]:
+        - /url: /blog/
+      - link "Projects" [ref=e22] [cursor=pointer]:
+        - /url: /projects/
+      - link "Twitter" [ref=e23] [cursor=pointer]:
+        - /url: https://twitter.com/spicermatthews
+  - main [ref=e24]:
+    - generic [ref=e27]:
+      - img "Spicer Matthews" [ref=e29]
+      - generic [ref=e30]:
+        - heading "Hi, I'm Spicer" [level=1] [ref=e31]
+        - paragraph [ref=e32]:
+          - text: I'm a web developer living in
+          - link "Newberg, Oregon" [ref=e33] [cursor=pointer]:
+            - /url: https://www.google.com/maps?q=Newberg,+Oregon
+          - text: . I'm passionate about technology, options trading, snowboarding, skateboarding, and tennis.
+        - paragraph [ref=e34]:
+          - text: I founded
+          - link "Cloudmanic Labs" [ref=e35] [cursor=pointer]:
+            - /url: https://cloudmanic.com
+          - text: ", where we build software products like"
+          - link "Options Cafe" [ref=e36] [cursor=pointer]:
+            - /url: https://options.cafe
+          - text: ","
+          - link "Skyclerk" [ref=e37] [cursor=pointer]:
+            - /url: https://skyclerk.com
+          - text: ", and"
+          - link "Oregon Past Due Rent" [ref=e38] [cursor=pointer]:
+            - /url: https://oregonpastduerent.com
+          - text: . I also invest in various ventures through
+          - link "Matthews Etc." [ref=e39] [cursor=pointer]:
+            - /url: https://matthews-etc.com
+        - generic [ref=e40]:
+          - link "View My Projects" [ref=e41] [cursor=pointer]:
+            - /url: /projects/
+          - link "Read My Blog" [ref=e42] [cursor=pointer]:
+            - /url: /blog/
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - heading "Recent Posts" [level=2] [ref=e46]
+        - link "View all →" [ref=e47] [cursor=pointer]:
+          - /url: /blog/
+      - generic [ref=e48]:
+        - article [ref=e49]:
+          - 'link "Introducing SpiceEdit: The Mouse-First Terminal Editor for the AI Era" [ref=e50] [cursor=pointer]':
+            - /url: http://localhost:50627/blog/introducing-spice-edit/
+            - 'img "Introducing SpiceEdit: The Mouse-First Terminal Editor for the AI Era" [ref=e51]'
+          - generic [ref=e52]:
+            - time [ref=e53]: April 30, 2026
+            - 'heading "Introducing SpiceEdit: The Mouse-First Terminal Editor for the AI Era" [level=3] [ref=e54]':
+              - 'link "Introducing SpiceEdit: The Mouse-First Terminal Editor for the AI Era" [ref=e55] [cursor=pointer]':
+                - /url: http://localhost:50627/blog/introducing-spice-edit/
+            - paragraph [ref=e56]: I went full circle back to the terminal, but Vim never quite fit. So I vibe coded SpiceEdit — a mouse-first terminal code editor for engineers who live in tmux and SSH, without a four-thousand-line vimrc. One Go binary. MIT licensed. Free forever.
+        - article [ref=e57]:
+          - link "I'm Looking for a New CPA" [ref=e58] [cursor=pointer]:
+            - /url: http://localhost:50627/blog/looking-for-a-new-cpa/
+            - img "I'm Looking for a New CPA" [ref=e59]
+          - generic [ref=e60]:
+            - time [ref=e61]: April 20, 2026
+            - heading "I'm Looking for a New CPA" [level=3] [ref=e62]:
+              - link "I'm Looking for a New CPA" [ref=e63] [cursor=pointer]:
+                - /url: http://localhost:50627/blog/looking-for-a-new-cpa/
+            - paragraph [ref=e64]: For 15 years I had a CPA I trusted. She worked from home, we did almost everything by email, and tax season felt manageable. Since she retired I've been trying to find that same relationship — digital-first, responsive, and organized — and I haven't. Here's what I'm looking for.
+        - article [ref=e65]:
+          - link "I Built a Tradier CLI Because AI Agents Deserve Better Tools" [ref=e66] [cursor=pointer]:
+            - /url: http://localhost:50627/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/
+            - img "I Built a Tradier CLI Because AI Agents Deserve Better Tools" [ref=e67]
+          - generic [ref=e68]:
+            - time [ref=e69]: March 18, 2026
+            - heading "I Built a Tradier CLI Because AI Agents Deserve Better Tools" [level=3] [ref=e70]:
+              - link "I Built a Tradier CLI Because AI Agents Deserve Better Tools" [ref=e71] [cursor=pointer]:
+                - /url: http://localhost:50627/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/
+            - paragraph [ref=e72]: MCP servers flood your AI agent's context window with massive JSON payloads. A CLI gives it exactly what it needs. Here's why I built a full Tradier brokerage CLI in Go — and why CLIs are the better interface for AI-powered trading workflows.
+        - article [ref=e73]:
+          - link "I Vibe Coded a Screenshot Tool Because Claude Code Needed One" [ref=e74] [cursor=pointer]:
+            - /url: http://localhost:50627/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/
+            - img "I Vibe Coded a Screenshot Tool Because Claude Code Needed One" [ref=e75]
+          - generic [ref=e76]:
+            - time [ref=e77]: February 24, 2026
+            - heading "I Vibe Coded a Screenshot Tool Because Claude Code Needed One" [level=3] [ref=e78]:
+              - link "I Vibe Coded a Screenshot Tool Because Claude Code Needed One" [ref=e79] [cursor=pointer]:
+                - /url: http://localhost:50627/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/
+            - paragraph [ref=e80]: I've been living in the terminal with Claude Code, Neovim, and tmux. But sharing screenshots with an AI that lives in a terminal session? That was broken. So I vibe coded a macOS screenshot tool that uploads to S3 and gives me a direct URL. Problem solved.
+        - article [ref=e81]:
+          - 'link "Full Circle: Back to the Terminal" [ref=e82] [cursor=pointer]':
+            - /url: http://localhost:50627/blog/full-circle-back-to-the-terminal/
+            - 'img "Full Circle: Back to the Terminal" [ref=e83]'
+          - generic [ref=e84]:
+            - time [ref=e85]: February 19, 2026
+            - 'heading "Full Circle: Back to the Terminal" [level=3] [ref=e86]':
+              - 'link "Full Circle: Back to the Terminal" [ref=e87] [cursor=pointer]':
+                - /url: http://localhost:50627/blog/full-circle-back-to-the-terminal/
+            - paragraph [ref=e88]: I started my career in the late 90s doing everything in the terminal. Over 30 years I migrated to GUIs, web apps, and desktop tools. Now, thanks to Claude Code, Neovim, and tmux, I'm back where I started — and it's never felt better.
+        - article [ref=e89]:
+          - link "Why I Built a CLI for Massive Financial Data" [ref=e90] [cursor=pointer]:
+            - /url: http://localhost:50627/blog/why-i-built-a-cli-for-massive-financial-data/
+            - img "Why I Built a CLI for Massive Financial Data" [ref=e91]
+          - generic [ref=e92]:
+            - time [ref=e93]: February 16, 2026
+            - heading "Why I Built a CLI for Massive Financial Data" [level=3] [ref=e94]:
+              - link "Why I Built a CLI for Massive Financial Data" [ref=e95] [cursor=pointer]:
+                - /url: http://localhost:50627/blog/why-i-built-a-cli-for-massive-financial-data/
+            - paragraph [ref=e96]: MCP servers flood your AI agent's context window. A CLI doesn't. I built Massive CLI — a command-line tool for the Massive financial data API — because a single binary that outputs clean tables or JSON is a better fit for both humans and AI agents.
+    - generic [ref=e98]:
+      - heading "Want to stay updated?" [level=2] [ref=e99]
+      - paragraph [ref=e100]: Follow me on Twitter for thoughts on software, trading, and life.
+      - link "Follow @spicermatthews" [ref=e101] [cursor=pointer]:
+        - /url: https://twitter.com/spicermatthews
+        - img [ref=e102]
+        - text: Follow @spicermatthews
+  - contentinfo [ref=e104]:
+    - generic [ref=e106]:
+      - generic [ref=e107]:
+        - link "Email" [ref=e108] [cursor=pointer]:
+          - /url: mailto:me+website@spicermatthews.com
+          - img [ref=e109]
+        - link "Twitter" [ref=e111] [cursor=pointer]:
+          - /url: https://twitter.com/spicermatthews
+          - img [ref=e112]
+        - link "GitHub" [ref=e114] [cursor=pointer]:
+          - /url: https://github.com/cloudmanic
+          - img [ref=e115]
+      - paragraph [ref=e117]: © 2026 Spicer Matthews. All rights reserved.
