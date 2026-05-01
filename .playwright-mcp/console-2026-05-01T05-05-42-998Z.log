@@ -1,3 +1,0 @@
-[     184ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:50627/css/build.css?v=e40562ba95:0
-[     210ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://spicermatthews.com/livereload.js?mindelay=10&v=2&port=50627&path=livereload:0
-[     416ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:50627/images/favicon.ico:0
