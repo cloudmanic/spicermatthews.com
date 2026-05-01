@@ -2,81 +2,84 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://spicermatthews.com/blog/</loc>
+    <loc>http://localhost:50627/blog/</loc>
+    <lastmod>2026-04-30T12:00:00-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:50627/blog/introducing-spice-edit/</loc>
+    <lastmod>2026-04-30T12:00:00-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:50627/</loc>
+    <lastmod>2026-04-30T12:00:00-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:50627/blog/looking-for-a-new-cpa/</loc>
     <lastmod>2026-04-20T08:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/looking-for-a-new-cpa/</loc>
-    <lastmod>2026-04-20T08:00:00-07:00</lastmod>
-  </url><url>
-    <loc>https://spicermatthews.com/</loc>
-    <lastmod>2026-04-20T08:00:00-07:00</lastmod>
-  </url><url>
-    <loc>https://spicermatthews.com/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/</loc>
+    <loc>http://localhost:50627/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/</loc>
     <lastmod>2026-03-18T08:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/</loc>
+    <loc>http://localhost:50627/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/</loc>
     <lastmod>2026-02-24T12:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/full-circle-back-to-the-terminal/</loc>
+    <loc>http://localhost:50627/blog/full-circle-back-to-the-terminal/</loc>
     <lastmod>2026-02-19T12:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/why-i-built-a-cli-for-massive-financial-data/</loc>
+    <loc>http://localhost:50627/blog/why-i-built-a-cli-for-massive-financial-data/</loc>
     <lastmod>2026-02-16T10:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/just-do-stuff/</loc>
+    <loc>http://localhost:50627/blog/just-do-stuff/</loc>
     <lastmod>2026-02-03T12:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/</loc>
+    <loc>http://localhost:50627/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/</loc>
     <lastmod>2026-01-30T10:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/why-100-customers-at-200-beats-1000-at-20/</loc>
+    <loc>http://localhost:50627/blog/why-100-customers-at-200-beats-1000-at-20/</loc>
     <lastmod>2026-01-19T10:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/you-dont-lack-time-you-lack-a-system/</loc>
+    <loc>http://localhost:50627/blog/you-dont-lack-time-you-lack-a-system/</loc>
     <lastmod>2026-01-13T10:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/my-new-ai-first-development-workflow-github-issues/</loc>
+    <loc>http://localhost:50627/blog/my-new-ai-first-development-workflow-github-issues/</loc>
     <lastmod>2025-12-29T10:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/remodeling-my-home-proved-one-thing-we-need-robots-to-build-houses/</loc>
+    <loc>http://localhost:50627/blog/remodeling-my-home-proved-one-thing-we-need-robots-to-build-houses/</loc>
     <lastmod>2025-12-02T10:00:00-08:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/how-i-learned-to-spot-inflated-bids-and-what-you-can-do-too/</loc>
+    <loc>http://localhost:50627/blog/how-i-learned-to-spot-inflated-bids-and-what-you-can-do-too/</loc>
     <lastmod>2025-10-15T10:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/the-ai-side-hustle-revolution-turning-niche-ideas-into-income/</loc>
+    <loc>http://localhost:50627/blog/the-ai-side-hustle-revolution-turning-niche-ideas-into-income/</loc>
     <lastmod>2025-06-06T10:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/reimagining-real-estate-a-call-for-excellence-over-exclusivity/</loc>
+    <loc>http://localhost:50627/blog/reimagining-real-estate-a-call-for-excellence-over-exclusivity/</loc>
     <lastmod>2024-03-26T12:18:58-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</loc>
+    <loc>http://localhost:50627/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</loc>
     <lastmod>2023-03-30T20:18:58-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</loc>
+    <loc>http://localhost:50627/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/</loc>
     <lastmod>2023-03-22T13:18:58-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/prioritizing-tdd-friendly-languages-and-frameworks/</loc>
+    <loc>http://localhost:50627/blog/prioritizing-tdd-friendly-languages-and-frameworks/</loc>
     <lastmod>2023-03-18T20:18:58-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/the-stock-market-is-a-drunken-idiot-you-should-profit-from-it/</loc>
+    <loc>http://localhost:50627/blog/the-stock-market-is-a-drunken-idiot-you-should-profit-from-it/</loc>
     <lastmod>2023-02-24T20:18:58-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/am-over-vendors-that-are-not-transparent-in-pricing/</loc>
+    <loc>http://localhost:50627/blog/am-over-vendors-that-are-not-transparent-in-pricing/</loc>
     <lastmod>2020-04-21T20:18:58-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/spicers-rules-on-how-and-when-to-test-your-code/</loc>
+    <loc>http://localhost:50627/blog/spicers-rules-on-how-and-when-to-test-your-code/</loc>
     <lastmod>2019-09-15T12:18:58-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/using-hugo-with-google-docs/</loc>
+    <loc>http://localhost:50627/blog/using-hugo-with-google-docs/</loc>
     <lastmod>2019-08-01T12:18:58-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/delighting-customers-with-airbnb/</loc>
+    <loc>http://localhost:50627/blog/delighting-customers-with-airbnb/</loc>
     <lastmod>2019-07-30T12:18:58-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</loc>
+    <loc>http://localhost:50627/blog/hello-world-my-new-blog-hugo-tailwind-css-and-more/</loc>
     <lastmod>2019-07-17T19:02:38-07:00</lastmod>
   </url><url>
-    <loc>https://spicermatthews.com/projects/</loc>
+    <loc>http://localhost:50627/projects/</loc>
   </url>
 </urlset>
