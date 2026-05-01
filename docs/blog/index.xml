@@ -6,8 +6,15 @@
     <description>Recent content in Blogs on Spicer Matthews Personal Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Apr 2026 08:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2026 12:00:00 -0700</lastBuildDate>
     <atom:link href="https://spicermatthews.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducing SpiceEdit: The Mouse-First Terminal Editor for the AI Era</title>
+      <link>https://spicermatthews.com/blog/introducing-spice-edit/</link>
+      <pubDate>Thu, 30 Apr 2026 12:00:00 -0700</pubDate>
+      <guid>https://spicermatthews.com/blog/introducing-spice-edit/</guid>
+      <description>I&#39;ve written before about how I went full circle back to the terminal. Claude Code, tmux, SSH into a beefy remote box — that&#39;s where I live now. The whole desktop GUI ecosystem has melted away. The terminal is back, and it&#39;s better than it&#39;s ever been. But there was always one piece of the workflow that never quite fit. The editor. Today I&#39;m releasing the editor I wish existed.</description>
+    </item>
     <item>
       <title>I&#39;m Looking for a New CPA</title>
       <link>https://spicermatthews.com/blog/looking-for-a-new-cpa/</link>

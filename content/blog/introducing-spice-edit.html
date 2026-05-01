@@ -1,0 +1,219 @@
+---
+title: "Introducing SpiceEdit: The Mouse-First Terminal Editor for the AI Era"
+date: 2026-04-30T12:00:00-07:00
+draft: false
+description: "I went full circle back to the terminal, but Vim never quite fit. So I vibe coded SpiceEdit — a mouse-first terminal code editor for engineers who live in tmux and SSH, without a four-thousand-line vimrc. One Go binary. MIT licensed. Free forever."
+og_image: "/images/blog/introducing-spice-edit.png"
+---
+
+<!--
+  Date: 2026-04-30
+  Copyright (c) 2026 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">
+  I've written before about how I went <a href="/blog/full-circle-back-to-the-terminal/" class="text-blue-600 hover:text-blue-800 underline">full circle back to the terminal</a>. Claude Code, tmux, SSH into a beefy remote box — that's where I live now. The whole desktop GUI ecosystem has melted away. The terminal is back, and it's better than it's ever been.
+</p>
+
+<p>
+  But there was always one piece of the workflow that never quite fit. The editor.
+</p>
+
+<p>
+  Today I'm releasing the editor I wish existed. It's called <a href="https://spice-edit.com/" class="text-blue-600 hover:text-blue-800 underline">SpiceEdit</a>, it's open source under MIT, and it's a terminal code editor designed for the way I actually work in 2026 — letting an AI agent do the heavy lifting while I jump in to tweak a line, save, and get back to steering.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Problem with Vim in 2026</h2>
+
+<p>
+  Let me be clear up front: I have nothing against Vim. I've used it on and off for thirty years. It's an incredible piece of software, and the people who've mastered it are doing god's work.
+</p>
+
+<p>
+  But here's what I noticed about my own workflow: I don't actually edit code that much anymore.
+</p>
+
+<p>
+  Claude Code writes most of it. My job has shifted from "type out implementation details" to "review what the AI did, fix the one weird line, save, run tests, ship it." The actual editing portion of my day measures in minutes, not hours. And when I do edit, it's almost always small surgical changes — fix a typo, change a variable name, tweak a constant.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    Vim's superpower is making expert text manipulation extremely fast. But when you only edit code for ten minutes a day, the ROI on memorizing a four-thousand-line vimrc is brutal.
+  </p>
+</div>
+
+<p>
+  I tried. I really did. I had a Neovim config that I'd been tending for months. LSP plugins. Treesitter. Telescope. Lualine. The whole stack. Every time I needed to do something basic — open a file, find a string across the project, copy a block to my Mac clipboard from a remote SSH session — I'd hit some new wall of configuration and spend twenty minutes yak-shaving.
+</p>
+
+<p>
+  Meanwhile my coworkers using VS Code were just clicking on things and getting work done.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What I Actually Wanted</h2>
+
+<p>
+  I sat down and asked myself: if I were designing a code editor for the way I actually work today, what would it look like?
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Mouse-first, not mouse-hostile</p>
+    <p class="text-green-700 text-sm m-0 mt-1">I want to click on a file, drag to select text, scroll naturally. The terminal supports the mouse. Editors should too.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Lives natively in tmux and SSH</p>
+    <p class="text-green-700 text-sm m-0 mt-1">No fighting with Ctrl+ shortcuts that conflict with my tmux prefix. Copy from a remote server should just hit my local Mac clipboard.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">A single binary, zero config required</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Drop one file on a server. Run it. Edit. No package manager. No plugin manifest. No vimrc.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">Fast. Genuinely fast.</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Fuzzy-find through 50,000 files in 150 milliseconds. No spinners. No "indexing your project."</p>
+  </div>
+</div>
+
+<p>
+  That was the brief. Nothing fancy. Just an editor that respects the fact that I'm an SSH user, a tmux user, and an AI-first developer who needs the editor to get out of the way.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>So I Vibe Coded an Editor</h2>
+
+<p>
+  Yes, I built a code editor by sitting down with Claude Code and describing what I wanted. The irony is not lost on me. I used an AI coding assistant to build the editor I'd then use alongside that same AI coding assistant. The snake eats its tail again.
+</p>
+
+<p>
+  But here's the thing — building an editor in 2026 is dramatically more tractable than it was even five years ago. You don't need to write your own terminal renderer from scratch. You don't need to invent your own syntax highlighting. The Go ecosystem already has battle-tested libraries for everything an editor needs.
+</p>
+
+<p>
+  SpiceEdit is built on top of:
+</p>
+
+<ul class="bg-gray-50 p-4 rounded-lg my-4">
+  <li><strong><a href="https://github.com/charmbracelet/bubbletea" class="text-blue-600 hover:text-blue-800 underline">Bubble Tea</a></strong> — the Charm framework for building terminal UIs in Go. Mouse support, modern rendering, proper key handling.</li>
+  <li><strong><a href="https://github.com/alecthomas/chroma" class="text-blue-600 hover:text-blue-800 underline">Chroma</a></strong> — syntax highlighting for dozens of languages, with a Tokyo Night theme that's easy on the eyes.</li>
+  <li><strong>OSC 52 escape sequences</strong> — the magic that lets a process running on a remote server copy text directly to your local clipboard, through SSH, through tmux. Just works.</li>
+  <li><strong>Plain Go everywhere else</strong> — for the file finder, the formatter integration, the buffer management.</li>
+</ul>
+
+<p>
+  The whole thing compiles to a single static binary, around 10 MB. No runtime. No dependencies. Drop it on any Linux box, any Mac, any Windows machine, and it runs. That's the kind of portability you only get with Go.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What It Feels Like to Use</h2>
+
+<p>
+  Open SpiceEdit in a directory and you get a clean two-pane layout. File tree on the left, editor on the right. Click any file to open it. Click a line to put your cursor there. Drag to select. Scroll wheel scrolls. Right-click for a context menu. It feels like an editor, because it is one.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+  <div class="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+    <p class="font-bold text-purple-800 m-0">Esc-leader hotkeys</p>
+    <p class="text-purple-700 text-sm m-0 mt-1">Press <strong>Esc</strong> then a letter. Esc-p for fuzzy file finder. Esc-s for save. No Ctrl+ that fights with tmux. No mode-switching anxiety.</p>
+  </div>
+  <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg">
+    <p class="font-bold text-indigo-800 m-0">Format on save</p>
+    <p class="text-indigo-700 text-sm m-0 mt-1">Drop a config file mapping extensions to formatters — gofmt, prettier, black, whatever you use. Save, formatted. Done.</p>
+  </div>
+  <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+    <p class="font-bold text-green-800 m-0">SSH-aware clipboard</p>
+    <p class="text-green-700 text-sm m-0 mt-1">Select text on a remote box, hit copy, and it lands on your local clipboard via OSC 52. The way it should have always worked.</p>
+  </div>
+</div>
+
+<p>
+  And the fuzzy file finder is genuinely a joy. Esc-p opens it, you start typing, and matching files surface instantly. I tested it on a repo with over 50,000 files — first match in around 150 milliseconds. No indexing step. No background daemon. Just a fast Go program reading your filesystem.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    The whole UX is built around one assumption: you are not going to spend the next eight hours in this editor. You're going to dip in, fix a thing, save, and get back to your agents.
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Why Not Just Use Helix or Micro?</h2>
+
+<p>
+  Fair question. There are already terminal editors that aim for "easier than Vim." <a href="https://helix-editor.com/" class="text-blue-600 hover:text-blue-800 underline">Helix</a> is gorgeous. <a href="https://micro-editor.github.io/" class="text-blue-600 hover:text-blue-800 underline">Micro</a> is approachable. I tried both.
+</p>
+
+<p>
+  Helix is brilliant but still wants you to learn its modal model. It's faster than Vim for sure, but it's still asking you to invest in a paradigm. For me, in 2026, with most of my code being written by an AI, that investment doesn't pay back.
+</p>
+
+<p>
+  Micro is closer to the spirit of what I wanted, but its mouse support, fuzzy finder, and SSH clipboard story didn't quite hit the bar I had in my head. It's also based on a different stack and different design choices than what I wanted.
+</p>
+
+<p>
+  The real answer is just: I wanted to design exactly the editor I wanted, with the specific defaults I wanted, optimized for the specific workflow I have. The AI-native developer in tmux on SSH. That's the user. SpiceEdit is for them.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Install It</h2>
+
+<p>
+  SpiceEdit is open source on GitHub: <a href="https://github.com/cloudmanic/spice-edit" class="text-blue-600 hover:text-blue-800 underline">github.com/cloudmanic/spice-edit</a>. On Mac and Linux:
+</p>
+
+<div class="bg-gray-800 text-green-400 p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
+  <p class="m-0">$ brew tap cloudmanic/spice-edit https://github.com/cloudmanic/spice-edit</p>
+  <p class="m-0">$ brew install spice-edit</p>
+</div>
+
+<p>
+  Windows builds are available on the <a href="https://spice-edit.com/" class="text-blue-600 hover:text-blue-800 underline">website</a> along with raw binaries for amd64 and arm64.
+</p>
+
+<p>
+  Once installed, just run <code class="bg-gray-100 px-2 py-1 rounded text-sm">spiceedit</code> in any directory. That's it. There's nothing to configure unless you want format-on-save, in which case it's a single config file.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>The Bigger Picture</h2>
+
+<p>
+  I keep coming back to the same observation. The tools we built for the previous era of software development assume a particular kind of user — one who types most of their code, who lives at a single workstation, who switches between graphical apps. That user still exists, and lots of great tools serve them well.
+</p>
+
+<p>
+  But there's a new user emerging fast. They SSH into a remote machine where their AI agent runs. They live inside tmux. They steer more than they type. They need fewer features, but they need them to work flawlessly across a network connection. The friction points in their workflow look different from the friction points of a developer five years ago.
+</p>
+
+<p>
+  SpiceEdit is one tool for that user. The screenshot tool I <a href="/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/" class="text-blue-600 hover:text-blue-800 underline">built earlier this year</a> is another. The Tradier CLI I <a href="/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/" class="text-blue-600 hover:text-blue-800 underline">wrote about in March</a> is another. They're all answers to the same question: what does the workflow actually need now?
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-xl font-medium m-0">
+    The era of the four-thousand-line vimrc is over.
+  </p>
+  <p class="text-gray-300 m-0 mt-2 text-lg">
+    The era of click-a-file, tweak-a-line, get-back-to-your-agents has started. SpiceEdit is for that era.
+  </p>
+</div>
+
+<p>
+  If you've been quietly wondering whether there's a better terminal editor for the AI-first workflow you've drifted into — there is now. Try it, star it, file issues, send PRs. I'd love to hear what's missing.
+</p>
+
+<p>
+  And if you're still happily living in your Neovim config, that's great too. But know that there's a new option for the rest of us, and it's free forever.
+</p>
