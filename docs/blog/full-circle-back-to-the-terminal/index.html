@@ -3,28 +3,53 @@
 <html lang="en"><head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Full Circle: Back to the Terminal</title>
-  <meta name="description" content="I started my career in the late 90s doing everything in the terminal. Over 30 years I migrated to GUIs, web apps, and desktop tools. Now, thanks to Claude Code, Neovim, and tmux, I&#39;m back where I started — and it&#39;s never felt better." />
-  <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
-  <link href="https://spicermatthews.com/css/build.css?v=e40562ba95" media="all" rel="stylesheet" />
 
   
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Full Circle: Back to the Terminal" />
-  <meta property="og:description" content="I started my career in the late 90s doing everything in the terminal. Over 30 years I migrated to GUIs, web apps, and desktop tools. Now, thanks to Claude Code, Neovim, and tmux, I&#39;m back where I started — and it&#39;s never felt better." />
+  <title>Full Circle: Back to the Terminal | Spicer Matthews</title>
+  <meta name="description" content="After 30 years in GUIs, I&#39;m back in the terminal full-time with Claude Code, Neovim, and tmux. Here&#39;s my development workflow and why it feels like home." />
+  <meta name="keywords" content="terminal development workflow, Claude Code tmux Neovim, Neovim vs VS Code, tmux workflow for developers, managing dotfiles with GNU Stow, LazyVim terminal IDE, developer terminal setup 2026, living in the terminal" />
+  <meta name="author" content="Spicer Matthews" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://spicermatthews.com/blog/full-circle-back-to-the-terminal/" />
+
+  <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
+  <link href="https://spicermatthews.com/css/build.css?v=33f2b0ff8a" media="all" rel="stylesheet" />
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Spicer Matthews Personal Site" href="https://spicermatthews.com/index.xml" />
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Full Circle: Back to the Terminal | Spicer Matthews" />
+  <meta property="og:description" content="After 30 years in GUIs, I&#39;m back in the terminal full-time with Claude Code, Neovim, and tmux. Here&#39;s my development workflow and why it feels like home." />
   <meta property="og:site_name" content="Spicer Matthews Personal Site" />
   <meta property="og:url" content="https://spicermatthews.com/blog/full-circle-back-to-the-terminal/" />
-  <meta property="og:locale" content="en" />
-
-   <meta property="og:image" content="https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg" /> <meta property="og:image:secure_url" content="https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg" /> 
-  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg" />
+  <meta property="og:image:secure_url" content="https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg" />
+  <meta property="og:image:alt" content="Full Circle: Back to the Terminal" />
+  <meta property="article:published_time" content="2026-02-19T12:00:00-07:00" />
+  <meta property="article:modified_time" content="2026-02-19T12:00:00-07:00" />
+  <meta property="article:author" content="Spicer Matthews" />
+  <meta property="article:section" content="Blog" />
+  <meta property="article:tag" content="terminal development workflow" />
+  <meta property="article:tag" content="Claude Code tmux Neovim" />
+  <meta property="article:tag" content="Neovim vs VS Code" />
+  <meta property="article:tag" content="tmux workflow for developers" />
+  <meta property="article:tag" content="managing dotfiles with GNU Stow" />
+  <meta property="article:tag" content="LazyVim terminal IDE" />
+  <meta property="article:tag" content="developer terminal setup 2026" />
+  <meta property="article:tag" content="living in the terminal" />
 
   
   <meta name="twitter:card" content="summary_large_image" />
-   <meta name="twitter:image:src" content="https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg" /> 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description" content="I started my career in the late 90s doing everything in the terminal. Over 30 years I migrated to GUIs, web apps, and desktop tools. Now, thanks to Claude Code, Neovim, and tmux, I&#39;m back where I started — and it&#39;s never felt better." />
+  <meta name="twitter:title" content="Full Circle: Back to the Terminal | Spicer Matthews" />
+  <meta name="twitter:description" content="After 30 years in GUIs, I&#39;m back in the terminal full-time with Claude Code, Neovim, and tmux. Here&#39;s my development workflow and why it feels like home." />
+  <meta name="twitter:site" content="@spicermatthews" />
+  <meta name="twitter:creator" content="@spicermatthews" />
+  <meta name="twitter:image" content="https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg" />
 
+  <meta name="theme-color" content="#2563eb" /><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","articleSection":"Blog","author":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"dateModified":"2026-02-19T12:00:00-07:00","datePublished":"2026-02-19T12:00:00-07:00","description":"After 30 years in GUIs, I'm back in the terminal full-time with Claude Code, Neovim, and tmux. Here's my development workflow and why it feels like home.","headline":"Full Circle: Back to the Terminal","image":["https://spicermatthews.com/images/blog/full-circle-back-to-the-terminal.jpg"],"inLanguage":"en-US","keywords":"terminal development workflow, Claude Code tmux Neovim, Neovim vs VS Code, tmux workflow for developers, managing dotfiles with GNU Stow, LazyVim terminal IDE, developer terminal setup 2026, living in the terminal","mainEntityOfPage":{"@id":"https://spicermatthews.com/blog/full-circle-back-to-the-terminal/","@type":"WebPage"},"name":"Full Circle: Back to the Terminal","publisher":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"url":"https://spicermatthews.com/blog/full-circle-back-to-the-terminal/","wordCount":2008}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://spicermatthews.com/","name":"Home","position":1},{"@type":"ListItem","item":"https://spicermatthews.com/blog/","name":"Blog","position":2},{"@type":"ListItem","item":"https://spicermatthews.com/blog/full-circle-back-to-the-terminal/","name":"Full Circle: Back to the Terminal","position":3}]}</script><link rel="preconnect" href="https://plausible.io" />
   <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen font-sans antialiased">
@@ -509,6 +534,28 @@
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
           Tweet
+        </a>
+      </div>
+    </div>
+
+    
+    <div class="mt-12 pt-8 border-t">
+      <h2 class="text-xl font-semibold text-gray-900 mb-6">Related Posts</h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        <a href="https://spicermatthews.com/blog/my-new-ai-first-development-workflow-github-issues/" class="block no-underline group">
+          <img src="/images/github-issues.png" alt="My New AI-First Development Workflow - Github Issues" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">My New AI-First Development Workflow - Github Issues</span>
+          <time class="block text-sm text-gray-500 mt-1">December 29, 2025</time>
+        </a>
+        <a href="https://spicermatthews.com/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/" class="block no-underline group">
+          <img src="/images/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one.png" alt="I Vibe Coded a Screenshot Tool Because Claude Code Needed One" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">I Vibe Coded a Screenshot Tool Because Claude Code Needed One</span>
+          <time class="block text-sm text-gray-500 mt-1">February 24, 2026</time>
+        </a>
+        <a href="https://spicermatthews.com/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/" class="block no-underline group">
+          <img src="/images/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools.png" alt="I Built a Tradier CLI Because AI Agents Deserve Better Tools" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">I Built a Tradier CLI Because AI Agents Deserve Better Tools</span>
+          <time class="block text-sm text-gray-500 mt-1">March 18, 2026</time>
         </a>
       </div>
     </div>

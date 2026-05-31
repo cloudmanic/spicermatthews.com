@@ -3,4 +3,45 @@ languageCode = "en-us"
 publishDir = "docs"
 title = "Spicer Matthews Personal Site"
 disableHugoGeneratorInject = true
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy", "term"]
+
+# Emit a robots.txt (rendered from layouts/robots.txt) so crawlers find the sitemap.
+enableRobotsTXT = true
+
+# Sitewide SEO defaults. These feed the meta tags, Open Graph, Twitter cards, and
+# JSON-LD structured data rendered in layouts/partials/head.html and schema.html.
+[params]
+  brand = "Spicer Matthews"
+  author = "Spicer Matthews"
+  description = "Spicer Matthews is a software developer, entrepreneur, and options trader in Newberg, Oregon — writing about AI-first development, building products, and options trading."
+  og_image = "/images/spicer-matthews-wine-drinking.jpg"
+  twitter = "spicermatthews"
+  locale = "en_US"
+  keywords = ["Spicer Matthews", "software developer", "options trading", "entrepreneur", "AI-first development", "Claude Code", "Hugo static site", "Newberg Oregon"]
+
+[author]
+  name = "Spicer Matthews"
+
+# Default sitemap hints emitted by Hugo's built-in sitemap.xml.
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+# Include every post in the RSS feed (a full feed helps both readers and LLM ingestion).
+[services]
+  [services.rss]
+    limit = -1
+
+# Powers the "Related Posts" section on blog posts (layouts/blog/single.html),
+# matched primarily on shared keywords and recency.
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = true
+  [[related.indices]]
+    name = "keywords"
+    weight = 100
+  [[related.indices]]
+    name = "date"
+    weight = 10

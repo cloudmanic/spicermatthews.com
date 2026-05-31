@@ -1,0 +1,77 @@
+{{/*
+  schema.html - JSON-LD structured data (schema.org) for richer search results and
+  better understanding by AI / LLM crawlers. Emits a Person + WebSite graph on the
+  homepage, BlogPosting + BreadcrumbList on blog posts, and a WebPage elsewhere.
+  Copyright 2026 Spicer Matthews
+  Date: 2026-05-31
+*/}}
+{{- $site := .Site -}}
+{{- $baseURL := $site.BaseURL -}}
+{{- $authorName := $site.Params.author | default "Spicer Matthews" -}}
+{{- $authorImg := "images/spicer-matthews-wine-drinking.jpg" | absURL -}}
+{{- $sameAs := slice "https://twitter.com/spicermatthews" "https://cloudmanic.com" "https://matthews-etc.com" -}}
+{{- $person := dict
+    "@type" "Person"
+    "@id" (printf "%s#person" $baseURL)
+    "name" $authorName
+    "url" $baseURL
+    "image" $authorImg
+    "jobTitle" "Software Developer & Entrepreneur"
+    "homeLocation" (dict "@type" "Place" "name" "Newberg, Oregon")
+    "sameAs" $sameAs
+-}}
+{{- $website := dict
+    "@type" "WebSite"
+    "@id" (printf "%s#website" $baseURL)
+    "url" $baseURL
+    "name" $site.Title
+    "description" $site.Params.description
+    "inLanguage" "en-US"
+    "publisher" (dict "@id" (printf "%s#person" $baseURL))
+-}}
+{{- if .IsHome -}}
+{{- $graph := dict "@context" "https://schema.org" "@graph" (slice $person $website) -}}
+<script type="application/ld+json">{{ $graph | jsonify | safeJS }}</script>
+{{- else if and .IsPage (eq .Section "blog") -}}
+{{- $ogImage := .Params.og_image | default $site.Params.og_image -}}
+{{- $img := $ogImage | absURL -}}
+{{- $desc := or .Description $site.Params.description -}}
+{{- $posting := dict
+    "@context" "https://schema.org"
+    "@type" "BlogPosting"
+    "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+    "headline" .Title
+    "name" .Title
+    "description" $desc
+    "image" (slice $img)
+    "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+    "author" $person
+    "publisher" $person
+    "url" .Permalink
+    "inLanguage" "en-US"
+    "wordCount" .WordCount
+    "articleSection" "Blog"
+    "keywords" (delimit .Keywords ", ")
+-}}
+<script type="application/ld+json">{{ $posting | jsonify | safeJS }}</script>
+{{- $crumbs := slice
+    (dict "@type" "ListItem" "position" 1 "name" "Home" "item" $baseURL)
+    (dict "@type" "ListItem" "position" 2 "name" "Blog" "item" (printf "%sblog/" $baseURL))
+    (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)
+-}}
+{{- $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $crumbs -}}
+<script type="application/ld+json">{{ $breadcrumb | jsonify | safeJS }}</script>
+{{- else -}}
+{{- $desc := or .Description $site.Params.description -}}
+{{- $webpage := dict
+    "@context" "https://schema.org"
+    "@type" "WebPage"
+    "url" .Permalink
+    "name" .Title
+    "description" $desc
+    "isPartOf" (dict "@id" (printf "%s#website" $baseURL))
+    "inLanguage" "en-US"
+-}}
+<script type="application/ld+json">{{ $webpage | jsonify | safeJS }}</script>
+{{- end -}}

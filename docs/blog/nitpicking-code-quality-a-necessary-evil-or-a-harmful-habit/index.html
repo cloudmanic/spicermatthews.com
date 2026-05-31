@@ -3,28 +3,53 @@
 <html lang="en"><head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?</title>
-  <meta name="description" content="While Frank and I would agree on almost every software development principle in a perfect world, for me, the perfect world comes at a cost that I don&#39;t believe is worth it for most projects." />
-  <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
-  <link href="https://spicermatthews.com/css/build.css?v=e40562ba95" media="all" rel="stylesheet" />
 
   
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?" />
-  <meta property="og:description" content="While Frank and I would agree on almost every software development principle in a perfect world, for me, the perfect world comes at a cost that I don&#39;t believe is worth it for most projects." />
+  <title>Nitpicking Code Quality: A Necessary Evil or a Harmful Habit? | Spicer Matthews</title>
+  <meta name="description" content="I think nitpicking in code reviews kills developer motivation. Here&#39;s why blocking PRs over style issues costs small teams more than it ever saves." />
+  <meta name="keywords" content="nitpicking in code reviews, code review nitpicks, pull request nitpicking, code quality vs developer motivation, blocking PRs over style issues, code review culture at small companies, big tech vs startup engineering culture, keeping developers in flow" />
+  <meta name="author" content="Spicer Matthews" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/" />
+
+  <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
+  <link href="https://spicermatthews.com/css/build.css?v=33f2b0ff8a" media="all" rel="stylesheet" />
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Spicer Matthews Personal Site" href="https://spicermatthews.com/index.xml" />
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Nitpicking Code Quality: A Necessary Evil or a Harmful Habit? | Spicer Matthews" />
+  <meta property="og:description" content="I think nitpicking in code reviews kills developer motivation. Here&#39;s why blocking PRs over style issues costs small teams more than it ever saves." />
   <meta property="og:site_name" content="Spicer Matthews Personal Site" />
   <meta property="og:url" content="https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/" />
-  <meta property="og:locale" content="en" />
-
-   <meta property="og:image" content="https://spicermatthews.com/images/computer-code.jpg" /> <meta property="og:image:secure_url" content="https://spicermatthews.com/images/computer-code.jpg" /> 
-  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://spicermatthews.com/images/computer-code.jpg" />
+  <meta property="og:image:secure_url" content="https://spicermatthews.com/images/computer-code.jpg" />
+  <meta property="og:image:alt" content="Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?" />
+  <meta property="article:published_time" content="2023-03-22T13:18:58-07:00" />
+  <meta property="article:modified_time" content="2023-03-22T13:18:58-07:00" />
+  <meta property="article:author" content="Spicer Matthews" />
+  <meta property="article:section" content="Blog" />
+  <meta property="article:tag" content="nitpicking in code reviews" />
+  <meta property="article:tag" content="code review nitpicks" />
+  <meta property="article:tag" content="pull request nitpicking" />
+  <meta property="article:tag" content="code quality vs developer motivation" />
+  <meta property="article:tag" content="blocking PRs over style issues" />
+  <meta property="article:tag" content="code review culture at small companies" />
+  <meta property="article:tag" content="big tech vs startup engineering culture" />
+  <meta property="article:tag" content="keeping developers in flow" />
 
   
   <meta name="twitter:card" content="summary_large_image" />
-   <meta name="twitter:image:src" content="https://spicermatthews.com/images/computer-code.jpg" /> 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description" content="While Frank and I would agree on almost every software development principle in a perfect world, for me, the perfect world comes at a cost that I don&#39;t believe is worth it for most projects." />
+  <meta name="twitter:title" content="Nitpicking Code Quality: A Necessary Evil or a Harmful Habit? | Spicer Matthews" />
+  <meta name="twitter:description" content="I think nitpicking in code reviews kills developer motivation. Here&#39;s why blocking PRs over style issues costs small teams more than it ever saves." />
+  <meta name="twitter:site" content="@spicermatthews" />
+  <meta name="twitter:creator" content="@spicermatthews" />
+  <meta name="twitter:image" content="https://spicermatthews.com/images/computer-code.jpg" />
 
+  <meta name="theme-color" content="#2563eb" /><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","articleSection":"Blog","author":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"dateModified":"2023-03-22T13:18:58-07:00","datePublished":"2023-03-22T13:18:58-07:00","description":"I think nitpicking in code reviews kills developer motivation. Here's why blocking PRs over style issues costs small teams more than it ever saves.","headline":"Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?","image":["https://spicermatthews.com/images/computer-code.jpg"],"inLanguage":"en-US","keywords":"nitpicking in code reviews, code review nitpicks, pull request nitpicking, code quality vs developer motivation, blocking PRs over style issues, code review culture at small companies, big tech vs startup engineering culture, keeping developers in flow","mainEntityOfPage":{"@id":"https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/","@type":"WebPage"},"name":"Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?","publisher":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"url":"https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/","wordCount":674}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://spicermatthews.com/","name":"Home","position":1},{"@type":"ListItem","item":"https://spicermatthews.com/blog/","name":"Blog","position":2},{"@type":"ListItem","item":"https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/","name":"Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?","position":3}]}</script><link rel="preconnect" href="https://plausible.io" />
   <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen font-sans antialiased">
@@ -234,6 +259,28 @@
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
           Tweet
+        </a>
+      </div>
+    </div>
+
+    
+    <div class="mt-12 pt-8 border-t">
+      <h2 class="text-xl font-semibold text-gray-900 mb-6">Related Posts</h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        <a href="https://spicermatthews.com/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/" class="block no-underline group">
+          <img src="/images/code-review.jpg" alt="Streamlining Code Reviews: Maximize Efficiency and Effectiveness" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">Streamlining Code Reviews: Maximize Efficiency and Effectiveness</span>
+          <time class="block text-sm text-gray-500 mt-1">March 30, 2023</time>
+        </a>
+        <a href="https://spicermatthews.com/blog/spicers-rules-on-how-and-when-to-test-your-code/" class="block no-underline group">
+          <img src="/images/talk-code-to-me.png" alt="Spicer&#39;s Rules on How and When To Test Your Code" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">Spicer&#39;s Rules on How and When To Test Your Code</span>
+          <time class="block text-sm text-gray-500 mt-1">September 15, 2019</time>
+        </a>
+        <a href="https://spicermatthews.com/blog/prioritizing-tdd-friendly-languages-and-frameworks/" class="block no-underline group">
+          <img src="/images/computer-code.jpg" alt="Prioritizing TDD Friendly Languages and Frameworks" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">Prioritizing TDD Friendly Languages and Frameworks</span>
+          <time class="block text-sm text-gray-500 mt-1">March 18, 2023</time>
         </a>
       </div>
     </div>
