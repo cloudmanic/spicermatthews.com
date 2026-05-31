@@ -66,6 +66,37 @@
         </a>
       </div>
     </div>
+
+    <!-- Related Posts (internal linking). Prefer curated `related` slugs from
+         frontmatter; fall back to Hugo's keyword/recency related content. -->
+    {{- $related := slice -}}
+    {{- with .Params.related }}
+      {{- range . }}
+        {{- with $.Site.GetPage (printf "/blog/%s" .) }}
+          {{- $related = $related | append . }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- if not $related }}
+      {{- $blog := where .Site.RegularPages "Section" "blog" -}}
+      {{- $related = first 3 ($blog.Related .) -}}
+    {{- end }}
+    {{- with $related }}
+    <div class="mt-12 pt-8 border-t">
+      <h2 class="text-xl font-semibold text-gray-900 mb-6">Related Posts</h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        {{- range . }}
+        <a href="{{ .Permalink }}" class="block no-underline group">
+          {{- if .Params.og_image }}
+          <img src="{{ .Params.og_image }}" alt="{{ .Title }}" class="w-full h-32 object-cover rounded-lg mb-3" />
+          {{- end }}
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">{{ .Title }}</span>
+          <time class="block text-sm text-gray-500 mt-1">{{ .Date.Format "January 2, 2006" }}</time>
+        </a>
+        {{- end }}
+      </div>
+    </div>
+    {{- end }}
   </div>
 </article>
 

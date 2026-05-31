@@ -1,28 +1,79 @@
+{{/*
+  head.html - Document head: SEO meta, canonical, Open Graph, Twitter cards, and JSON-LD.
+  Copyright 2026 Spicer Matthews
+  Date: 2026-05-31
+*/}}
+{{- $brand := .Site.Params.brand | default .Site.Title -}}
+{{- $desc := or .Description .Site.Params.description -}}
+{{- $ogImage := .Params.og_image | default .Site.Params.og_image -}}
+{{- $ogImageAbs := $ogImage | absURL -}}
+{{- $isArticle := and .IsPage (eq .Section "blog") -}}
+{{- $fullTitle := cond .IsHome .Title (printf "%s | %s" .Title $brand) -}}
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>{{ .Title }}</title>
-  <meta name="description" content="{{ .Description }}" />
+
+  <!-- Primary SEO meta -->
+  <title>{{ $fullTitle }}</title>
+  <meta name="description" content="{{ $desc }}" />
+  {{- $keywords := .Keywords }}{{ if not $keywords }}{{ $keywords = .Site.Params.keywords }}{{ end }}
+  {{- with $keywords }}
+  <meta name="keywords" content="{{ delimit . ", " }}" />
+  {{- end }}
+  <meta name="author" content="{{ .Site.Params.author | default $brand }}" />
+  {{- if eq .Kind "404" }}
+  <meta name="robots" content="noindex, follow" />
+  {{- else }}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  {{- end }}
+  <link rel="canonical" href="{{ .Permalink }}" />
+
   <link rel="shortcut icon" type="image/png" href="{{ .Site.BaseURL }}images/favicon.ico" />
   <link href="{{ .Site.BaseURL }}css/build.css?v={{ slicestr (readFile "static/css/build.css" | md5) 0 10 }}" media="all" rel="stylesheet" />
 
-  <!-- open graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{ .Title }}" />
-  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <!-- RSS feed -->
+  {{- with .Site.Home.OutputFormats.Get "rss" }}
+  <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}" />
+  {{- end }}
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="{{ cond $isArticle "article" "website" }}" />
+  <meta property="og:title" content="{{ $fullTitle }}" />
+  <meta property="og:description" content="{{ $desc }}" />
   <meta property="og:site_name" content="{{ .Site.Title }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
-  <meta property="og:locale" content="en" />
+  <meta property="og:locale" content="{{ .Site.Params.locale | default "en_US" }}" />
+  {{- with $ogImageAbs }}
+  <meta property="og:image" content="{{ . }}" />
+  <meta property="og:image:secure_url" content="{{ . }}" />
+  <meta property="og:image:alt" content="{{ $.Title }}" />
+  {{- end }}
+  {{- if $isArticle }}
+  <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" />
+  <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}" />
+  <meta property="article:author" content="{{ .Site.Params.author | default $brand }}" />
+  <meta property="article:section" content="Blog" />
+  {{- range .Keywords }}
+  <meta property="article:tag" content="{{ . }}" />
+  {{- end }}
+  {{- end }}
 
-  {{ if $.Param "og_image" }} <meta property="og:image" content="{{ $.Param "og_image" | absURL }}" /> <meta property="og:image:secure_url" content="{{ $.Param "og_image" | absURL
-  }}" /> {{ end }}
-  <meta property="og:type" content="website" />
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="{{ cond (ne $ogImage "") "summary_large_image" "summary" }}" />
+  <meta name="twitter:title" content="{{ $fullTitle }}" />
+  <meta name="twitter:description" content="{{ $desc }}" />
+  {{- with .Site.Params.twitter }}
+  <meta name="twitter:site" content="@{{ . }}" />
+  <meta name="twitter:creator" content="@{{ . }}" />
+  {{- end }}
+  {{- with $ogImageAbs }}
+  <meta name="twitter:image" content="{{ . }}" />
+  {{- end }}
 
-  <!-- twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  {{ if $.Param "og_image" }} <meta name="twitter:image:src" content="{{ $.Param "og_image" | absURL }}" /> {{ end }}
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <meta name="theme-color" content="#2563eb" />
 
+  {{- partial "schema.html" . -}}
+
+  <link rel="preconnect" href="https://plausible.io" />
   <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
 </head>
