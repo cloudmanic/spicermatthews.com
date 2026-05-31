@@ -27,6 +27,8 @@ og_image: "/images/computer-code.jpg"
 
 <p>This post is not about Frank's "dumb" ideas versus my "brilliant" ideas. Instead, it's about the difference between the big corporate mindset and the small business mindset.</p>
 
+<h2>A Concrete Example: Ordering Go Imports</h2>
+
 <p>
   To illustrate this point, let's use an example. Frank strongly believes that not properly ordering your
   <a href="https://stackoverflow.com/questions/38704769/golang-import-grouping-by-package">imports</a> at the top of a <a href="https://go.dev/">Golang</a> file is a sign of poor
@@ -44,6 +46,8 @@ og_image: "/images/computer-code.jpg"
   While I am using Golang imports as an example, I am highlighting all sorts of nitpicky code quality issues. Poorly designed code is undoubtedly a showstopper that can snowball
   into more significant problems and should be addressed at the PR level.
 </p>
+
+<h2>Why Nitpicking Demotivates Developers</h2>
 
 <p>
   My biggest argument against nitpicky style issues is that it demotivates developers. When a developer is in flow, you want to maximize their focus on the problem they are trying
@@ -63,12 +67,16 @@ og_image: "/images/computer-code.jpg"
   keeping a developer motivated.
 </p>
 
+<h2>Leave Every File Better Than You Found It</h2>
+
 <p>
   You may ask how not being nitpicky in the early days will not snowball into unreadable code. I combat this by subscribing to a philosophy that you should never open a file
   without leaving it better. During my development cycles, I often browse code, maybe even code I have never written, to understand what I need to do to complete a task. It is
   during these non-flow states that I might notice things like import orders not being proper, and I'll fix them. If everyone on your team has the philosophy that they never open a
   file without leaving it better, code quality will naturally improve over time.
 </p>
+
+<h2>Big Tech vs. Small Business</h2>
 
 <p>
   If you're a big tech company with a large budget and many developers, you may be able to afford not to groom every software engineer to be a 10x engineer. However, if you are a

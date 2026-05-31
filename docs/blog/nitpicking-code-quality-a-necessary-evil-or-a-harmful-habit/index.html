@@ -49,7 +49,7 @@
   <meta name="twitter:creator" content="@spicermatthews" />
   <meta name="twitter:image" content="https://spicermatthews.com/images/computer-code.jpg" />
 
-  <meta name="theme-color" content="#2563eb" /><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","articleSection":"Blog","author":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"dateModified":"2023-03-22T13:18:58-07:00","datePublished":"2023-03-22T13:18:58-07:00","description":"I think nitpicking in code reviews kills developer motivation. Here's why blocking PRs over style issues costs small teams more than it ever saves.","headline":"Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?","image":["https://spicermatthews.com/images/computer-code.jpg"],"inLanguage":"en-US","keywords":"nitpicking in code reviews, code review nitpicks, pull request nitpicking, code quality vs developer motivation, blocking PRs over style issues, code review culture at small companies, big tech vs startup engineering culture, keeping developers in flow","mainEntityOfPage":{"@id":"https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/","@type":"WebPage"},"name":"Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?","publisher":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"url":"https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/","wordCount":674}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://spicermatthews.com/","name":"Home","position":1},{"@type":"ListItem","item":"https://spicermatthews.com/blog/","name":"Blog","position":2},{"@type":"ListItem","item":"https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/","name":"Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?","position":3}]}</script><link rel="preconnect" href="https://plausible.io" />
+  <meta name="theme-color" content="#2563eb" /><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","articleSection":"Blog","author":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"dateModified":"2023-03-22T13:18:58-07:00","datePublished":"2023-03-22T13:18:58-07:00","description":"I think nitpicking in code reviews kills developer motivation. Here's why blocking PRs over style issues costs small teams more than it ever saves.","headline":"Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?","image":["https://spicermatthews.com/images/computer-code.jpg"],"inLanguage":"en-US","keywords":"nitpicking in code reviews, code review nitpicks, pull request nitpicking, code quality vs developer motivation, blocking PRs over style issues, code review culture at small companies, big tech vs startup engineering culture, keeping developers in flow","mainEntityOfPage":{"@id":"https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/","@type":"WebPage"},"name":"Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?","publisher":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"url":"https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/","wordCount":697}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://spicermatthews.com/","name":"Home","position":1},{"@type":"ListItem","item":"https://spicermatthews.com/blog/","name":"Blog","position":2},{"@type":"ListItem","item":"https://spicermatthews.com/blog/nitpicking-code-quality-a-necessary-evil-or-a-harmful-habit/","name":"Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?","position":3}]}</script><link rel="preconnect" href="https://plausible.io" />
   <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen font-sans antialiased">
@@ -148,6 +148,8 @@
 
 <p>This post is not about Frank's "dumb" ideas versus my "brilliant" ideas. Instead, it's about the difference between the big corporate mindset and the small business mindset.</p>
 
+<h2>A Concrete Example: Ordering Go Imports</h2>
+
 <p>
   To illustrate this point, let's use an example. Frank strongly believes that not properly ordering your
   <a href="https://stackoverflow.com/questions/38704769/golang-import-grouping-by-package">imports</a> at the top of a <a href="https://go.dev/">Golang</a> file is a sign of poor
@@ -165,6 +167,8 @@
   While I am using Golang imports as an example, I am highlighting all sorts of nitpicky code quality issues. Poorly designed code is undoubtedly a showstopper that can snowball
   into more significant problems and should be addressed at the PR level.
 </p>
+
+<h2>Why Nitpicking Demotivates Developers</h2>
 
 <p>
   My biggest argument against nitpicky style issues is that it demotivates developers. When a developer is in flow, you want to maximize their focus on the problem they are trying
@@ -184,12 +188,16 @@
   keeping a developer motivated.
 </p>
 
+<h2>Leave Every File Better Than You Found It</h2>
+
 <p>
   You may ask how not being nitpicky in the early days will not snowball into unreadable code. I combat this by subscribing to a philosophy that you should never open a file
   without leaving it better. During my development cycles, I often browse code, maybe even code I have never written, to understand what I need to do to complete a task. It is
   during these non-flow states that I might notice things like import orders not being proper, and I'll fix them. If everyone on your team has the philosophy that they never open a
   file without leaving it better, code quality will naturally improve over time.
 </p>
+
+<h2>Big Tech vs. Small Business</h2>
 
 <p>
   If you're a big tech company with a large budget and many developers, you may be able to afford not to groom every software engineer to be a 10x engineer. However, if you are a
