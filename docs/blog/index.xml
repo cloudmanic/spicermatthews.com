@@ -118,7 +118,7 @@
       <link>https://spicermatthews.com/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</link>
       <pubDate>Thu, 30 Mar 2023 20:18:58 -0700</pubDate>
       <guid>https://spicermatthews.com/blog/streamlining-code-reviews-maximize-efficiency-and-effectiveness/</guid>
-      <description>As I delve into unconventional approaches to software development, I think it&#39;s worthwhile to share my thoughts on pull requests. While they are undoubtedly helpful, having another developer review your code after you&#39;ve completed it, I find the traditional approach to pull requests to be somewhat cumbersome and potentially demotivating. Throughout my years of experience, I&#39;ve worked with numerous teams, each with a distinct company culture surrounding pull requests. Time and again, I&#39;ve observed common issues such as developers not responding to pull requests promptly, leaving the original author unable to commit code.</description>
+      <description>As I delve into unconventional approaches to software development, I think it&#39;s worthwhile to share my thoughts on pull requests. While they are undoubtedly helpful, having another developer review your code after you&#39;ve completed it, I find the traditional approach to pull requests to be somewhat cumbersome and potentially demotivating. Where Traditional Pull Requests Fall Short Throughout my years of experience, I&#39;ve worked with numerous teams, each with a distinct company culture surrounding pull requests.</description>
     </item>
     <item>
       <title>Nitpicking Code Quality: A Necessary Evil or a Harmful Habit?</title>
@@ -160,7 +160,7 @@
       <link>https://spicermatthews.com/blog/using-hugo-with-google-docs/</link>
       <pubDate>Thu, 01 Aug 2019 12:18:58 -0700</pubDate>
       <guid>https://spicermatthews.com/blog/using-hugo-with-google-docs/</guid>
-      <description>Quick tip alert! This is how I import Google docs into Hugo. I am becoming a big fan of Hugo to build static sites like this one and this one. Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you produce your content within your text editor such as Atom.&#xA;Text editors are great but they are not ideal for producing well-thought-out written content.</description>
+      <description>Quick tip alert! This is how I import Google docs into Hugo. I am becoming a big fan of Hugo to build static sites like this one and this one. Since Hugo does not ship with any fancy GUI as other content management systems do -- typically you produce your content within your text editor such as Atom.&#xA;How to Import Google Docs into Hugo Text editors are great but they are not ideal for producing well-thought-out written content.</description>
     </item>
     <item>
       <title>Delighting Customers With Airbnb</title>
