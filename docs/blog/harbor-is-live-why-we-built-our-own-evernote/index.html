@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Harbor Is Live: Why We Built Our Own Evernote | Spicer Matthews</title>
+  <meta name="description" content="Harbor launched August 1, 2026. After 15 years on Evernote — and years building apps for its marketplace — I stopped trusting it with my second brain. Here&#39;s what we built instead." />
+  <meta name="keywords" content="Harbor notes app, Evernote alternative, Evernote replacement, Bending Spoons Evernote, Evernote price increase, private notes app with encryption, notes app with API CLI and MCP, second brain app" />
+  <meta name="author" content="Spicer Matthews" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://spicermatthews.com/blog/harbor-is-live-why-we-built-our-own-evernote/" />
+
+  <link rel="shortcut icon" type="image/png" href="https://spicermatthews.com/images/favicon.ico" />
+  <link href="https://spicermatthews.com/css/build.css?v=f98e14aa8e" media="all" rel="stylesheet" />
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Spicer Matthews Personal Site" href="https://spicermatthews.com/index.xml" />
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Harbor Is Live: Why We Built Our Own Evernote | Spicer Matthews" />
+  <meta property="og:description" content="Harbor launched August 1, 2026. After 15 years on Evernote — and years building apps for its marketplace — I stopped trusting it with my second brain. Here&#39;s what we built instead." />
+  <meta property="og:site_name" content="Spicer Matthews Personal Site" />
+  <meta property="og:url" content="https://spicermatthews.com/blog/harbor-is-live-why-we-built-our-own-evernote/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://spicermatthews.com/images/blog/harbor-is-live.png" />
+  <meta property="og:image:secure_url" content="https://spicermatthews.com/images/blog/harbor-is-live.png" />
+  <meta property="og:image:alt" content="Harbor Is Live: Why We Built Our Own Evernote" />
+  <meta property="article:published_time" content="2026-08-20T09:00:00-07:00" />
+  <meta property="article:modified_time" content="2026-08-20T09:00:00-07:00" />
+  <meta property="article:author" content="Spicer Matthews" />
+  <meta property="article:section" content="Blog" />
+  <meta property="article:tag" content="Harbor notes app" />
+  <meta property="article:tag" content="Evernote alternative" />
+  <meta property="article:tag" content="Evernote replacement" />
+  <meta property="article:tag" content="Bending Spoons Evernote" />
+  <meta property="article:tag" content="Evernote price increase" />
+  <meta property="article:tag" content="private notes app with encryption" />
+  <meta property="article:tag" content="notes app with API CLI and MCP" />
+  <meta property="article:tag" content="second brain app" />
+
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Harbor Is Live: Why We Built Our Own Evernote | Spicer Matthews" />
+  <meta name="twitter:description" content="Harbor launched August 1, 2026. After 15 years on Evernote — and years building apps for its marketplace — I stopped trusting it with my second brain. Here&#39;s what we built instead." />
+  <meta name="twitter:site" content="@spicermatthews" />
+  <meta name="twitter:creator" content="@spicermatthews" />
+  <meta name="twitter:image" content="https://spicermatthews.com/images/blog/harbor-is-live.png" />
+
+  <meta name="theme-color" content="#2563eb" /><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","articleSection":"Blog","author":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"dateModified":"2026-08-20T09:00:00-07:00","datePublished":"2026-08-20T09:00:00-07:00","description":"Harbor launched August 1, 2026. After 15 years on Evernote — and years building apps for its marketplace — I stopped trusting it with my second brain. Here's what we built instead.","headline":"Harbor Is Live: Why We Built Our Own Evernote","image":["https://spicermatthews.com/images/blog/harbor-is-live.png"],"inLanguage":"en-US","keywords":"Harbor notes app, Evernote alternative, Evernote replacement, Bending Spoons Evernote, Evernote price increase, private notes app with encryption, notes app with API CLI and MCP, second brain app","mainEntityOfPage":{"@id":"https://spicermatthews.com/blog/harbor-is-live-why-we-built-our-own-evernote/","@type":"WebPage"},"name":"Harbor Is Live: Why We Built Our Own Evernote","publisher":{"@id":"https://spicermatthews.com/#person","@type":"Person","homeLocation":{"@type":"Place","name":"Newberg, Oregon"},"image":"https://spicermatthews.com/images/spicer-matthews-wine-drinking.jpg","jobTitle":"Software Developer \u0026 Entrepreneur","name":"Spicer Matthews","sameAs":["https://twitter.com/spicermatthews","https://cloudmanic.com","https://matthews-etc.com"],"url":"https://spicermatthews.com/"},"url":"https://spicermatthews.com/blog/harbor-is-live-why-we-built-our-own-evernote/","wordCount":1469}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://spicermatthews.com/","name":"Home","position":1},{"@type":"ListItem","item":"https://spicermatthews.com/blog/","name":"Blog","position":2},{"@type":"ListItem","item":"https://spicermatthews.com/blog/harbor-is-live-why-we-built-our-own-evernote/","name":"Harbor Is Live: Why We Built Our Own Evernote","position":3}]}</script><link rel="preconnect" href="https://plausible.io" />
+  <script defer data-domain="spicermatthews.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans antialiased">
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      
+      <div class="flex items-center">
+        <a href="/" class="text-xl font-bold text-gray-900 hover:text-blue-600 no-underline">
+          Spicer Matthews
+        </a>
+      </div>
+
+      
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-700 hover:text-blue-600 font-medium no-underline ">Home</a>
+        <a href="/blog/" class="text-gray-700 hover:text-blue-600 font-medium no-underline text-blue-600">Blog</a>
+        <a href="/projects/" class="text-gray-700 hover:text-blue-600 font-medium no-underline ">Projects</a>
+        <a href="https://twitter.com/spicermatthews" target="_blank" class="text-gray-700 hover:text-blue-600 font-medium no-underline">Twitter</a>
+      </div>
+
+      
+      <div class="md:hidden flex items-center">
+        <button type="button" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600 focus:outline-none" aria-label="Toggle menu">
+          <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <div class="px-4 py-3 space-y-3">
+      <a href="/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Home</a>
+      <a href="/blog/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Blog</a>
+      <a href="/projects/" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Projects</a>
+      <a href="https://twitter.com/spicermatthews" target="_blank" class="block text-gray-700 hover:text-blue-600 font-medium no-underline py-2">Twitter</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const closeIcon = document.getElementById('close-icon');
+      menu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+  </script>
+</nav>
+<main>
+
+<article class="bg-white">
+  
+  <header class="bg-gray-50 border-b">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <a href="/blog/" class="inline-flex items-center text-blue-600 hover:underline mb-6 no-underline">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Blog
+      </a>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Harbor Is Live: Why We Built Our Own Evernote</h1>
+      <div class="flex items-center text-gray-600">
+        <time>August 20, 2026</time>
+        
+        <span class="mx-2">&middot;</span>
+        <span>7 min read</span>
+        
+      </div>
+    </div>
+  </header>
+
+  
+  
+  <div class="max-w-4xl mx-auto">
+    <img src="/images/blog/harbor-is-live.png" alt="Harbor Is Live: Why We Built Our Own Evernote" class="w-full h-64 md:h-96 object-cover" />
+  </div>
+  
+
+  
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg max-w-none">
+      
+<!--
+  Date: 2026-08-20
+  Copyright (c) 2026 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">
+  On August 1st, <a href="https://harbor.my/" class="text-blue-600 hover:text-blue-800 underline">Harbor</a> went live.
+  It's a private, own-it-for-life note-taking and document app — notes, scans, photos, PDFs, recordings, web clips — built
+  by <a href="https://cloudmanic.com" class="text-blue-600 hover:text-blue-800 underline">Cloudmanic Labs</a>, the company
+  I founded and still run. I'm the lead developer on it, but this was never a one-person project. A full team spent the
+  better part of a year on it.
+</p>
+
+<p>
+  It's also the most personal thing I've built in a long time, because I spent 15 years as an Evernote customer before I
+  finally admitted I didn't trust it anymore.
+</p>
+
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded-r">
+  <p class="text-xl font-medium text-blue-900 m-0 italic">
+    "I didn't want to build another notes app. I wanted the one I already had to keep its promise."
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>I Didn't Just Use Evernote. I Built On It.</h2>
+
+<p>
+  This wasn't a casual relationship. I was in that ecosystem as a developer, not just a customer.
+</p>
+
+<p>
+  Back when Evernote had a real platform and a real marketplace, Cloudmanic Labs shipped apps on top of it.
+  <a href="https://cloudmanic.com/photomanic/" class="text-blue-600 hover:text-blue-800 underline">Photomanic</a> was a
+  photo gallery built entirely on the Evernote API — we went from concept to launch in under 30 days and entered it in the
+  Evernote DevCup. <a href="https://cloudmanic.com/evermanic/" class="text-blue-600 hover:text-blue-800 underline">Evermanic</a>
+  was an iPhone app for capturing repeatable note templates straight into Evernote. I even open-sourced an
+  <a href="https://packagist.org/packages/cloudmanic/evernote-php" class="text-blue-600 hover:text-blue-800 underline">Evernote PHP library</a>
+  so other developers could build on it too.
+</p>
+
+<p>
+  I believed in the thing. One private place for everything you keep, forever. That was the pitch, and it was the right pitch.
+  My whole life went in there — scanned contracts, receipts, my kids' drawings, meeting recordings, 15 years of notes I
+  assumed would outlive whatever laptop I happened to be holding.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>Then It Stopped Being the Product I Signed Up For</h2>
+
+<p>
+  Evernote was sold to <a href="https://bendingspoons.com/" class="text-blue-600 hover:text-blue-800 underline">Bending Spoons</a>,
+  and the incentives changed. Not overnight, and not maliciously — just predictably, the way they always change when a
+  product becomes an asset to squeeze.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">The price roughly doubled</p>
+    <p class="text-red-700 text-sm m-0 mt-1">I could live with paying more for something getting better. That's not what happened.</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">The bugs never got fixed</p>
+    <p class="text-red-700 text-sm m-0 mt-1">The Web Clipper — arguably the reason to use Evernote at all — has been broken for me for something like five years.</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">AI I never asked for</p>
+    <p class="text-red-700 text-sm m-0 mt-1">Feature after feature bolted on, then used to justify charging more. I already pay for Claude. I don't need a weaker one in my notes app.</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+    <p class="font-bold text-red-800 m-0">It never got faster</p>
+    <p class="text-red-700 text-sm m-0 mt-1">The native apps I loved became heavy software that pins my CPU and feels like a web page in a costume.</p>
+  </div>
+</div>
+
+<p>
+  Here's the part that actually bothered me, though. None of that is a feature complaint. It's a trust problem.
+</p>
+
+<p>
+  A second brain only works if you believe it will still be there, still be affordable, and still be yours in ten years.
+  The day I stopped believing that, Evernote stopped doing its job — even though every note was still sitting right where
+  I left it. And leaving felt impossible, because leaving meant abandoning 15 years of my life. That's not loyalty.
+  That's gravity.
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-xl font-medium m-0">
+    That's not a second brain.
+  </p>
+  <p class="text-gray-300 m-0 mt-2 text-lg">
+    That's a hostage situation.
+  </p>
+</div>
+
+<hr class="my-8 border-gray-300">
+
+<h2>So We Built Harbor</h2>
+
+<p>
+  I was committed to this community — note-taking, document archiving, the whole "keep everything, find anything" idea —
+  for over 15 years. Watching it get worse while I had a company perfectly capable of doing something about it started to
+  feel ridiculous.
+</p>
+
+<p>
+  So Cloudmanic Labs built Harbor. I set the direction and wrote a lot of the code, but the apps, the sync engine, the
+  OCR pipeline, the clipper, the design — that's a team, and it's the reason this shipped as a real product instead of a
+  weekend hack.
+</p>
+
+<div class="my-8">
+  <img src="/images/blog/harbor-app.jpg" alt="The Harbor desktop app showing notebooks, a note list, and a voice memo note with a searchable transcript" class="w-full rounded-lg shadow-lg" />
+  <p class="text-sm text-gray-500 italic mt-2">Harbor on the desktop — notebooks and notes, plus recordings that get transcribed and become searchable.</p>
+</div>
+
+<p>
+  The baseline goal was unglamorous: <strong>feature parity with Evernote.</strong> Notebooks and notes. Tags. Document
+  scanning. OCR that reads the words inside your photos, scanned PDFs, and even handwriting. A Web Clipper that actually
+  works. Tasks, reminders, templates, version history, shared links. Offline on every device. If you're moving 15 years of
+  your life, "almost everything you had" isn't good enough.
+</p>
+
+<p>
+  Parity gets you considered. It doesn't get you trusted. So there are four places where Harbor deliberately doesn't work
+  the way Evernote does.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>1. Encryption Is a First-Class Citizen</h2>
+
+<p>
+  Your Evernote notes sit on their servers in a form their employees can read. That's normal for the industry, and it's
+  been quietly true the entire time you've been scanning tax documents into it.
+</p>
+
+<p>
+  Harbor offers zero-knowledge encryption on any note or notebook you choose. Content is encrypted on your device before
+  it ever reaches us, which means we genuinely cannot read it.
+</p>
+
+<p>
+  And we say the trade-off out loud, because pretending there isn't one is how you lose people: an encrypted note drops
+  out of OCR, out of search, and out of reach of any AI you connect. So you lock down the sensitive things and leave the
+  rest fully powered. It's a switch you control, per item — not a marketing checkbox and not an all-or-nothing default
+  that quietly makes the product worse.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>2. A Price Promise, in Writing</h2>
+
+<p>
+  I've <a href="/blog/am-over-vendors-that-are-not-transparent-in-pricing/" class="text-blue-600 hover:text-blue-800 underline">written before</a>
+  about how much I hate vendors who won't be straight about pricing. Getting my own note-taking bill doubled made it personal.
+</p>
+
+<div class="bg-green-50 border border-green-200 p-6 rounded-lg my-6">
+  <p class="text-lg text-green-800 font-semibold m-0">
+    $99 a year (or $9.99 a month). No increase for three years. After that, capped at 10% a year.
+  </p>
+  <p class="text-green-700 m-0 mt-2">
+    Published on the site, not buried in a terms update.
+  </p>
+</div>
+
+<p>
+  There's a corollary that matters just as much: stop paying and your memories don't vanish. Your account goes read-only
+  and free, and you can still export or delete everything. We want people to stay because Harbor is good, not because the
+  exit is painful.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>3. Getting In and Out Is Genuinely Easy</h2>
+
+<p>
+  Exporting from Evernote is harder than it should be, and I don't think that's an accident. It's the single biggest
+  reason people who hate it keep paying for it.
+</p>
+
+<p>
+  Moving into Harbor is one step: export your ENEX file, import it, and your notebooks, tags, checklists, and attachments
+  come across intact. The door out is exactly as wide — full export to ENEX, HTML, or ZIP, anytime, plus a complete account
+  export.
+</p>
+
+<p>
+  Building an easy exit into your own product feels backwards until you realize it's the only version of the promise that's
+  actually credible.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>4. A Real API, CLI, and MCP Server</h2>
+
+<p>
+  This one's the developer in me refusing to let go. Evernote had a public API and a genuine developer ecosystem once —
+  I know, because I built on it — and then it was left to rot.
+</p>
+
+<p>
+  Harbor ships with a REST API, a command-line tool, and an <a href="https://modelcontextprotocol.io/" class="text-blue-600 hover:text-blue-800 underline">MCP</a>
+  server. That last one is the interesting part in 2026: it means the AI you already pay for can read and write your notes
+  directly. I use it constantly — my
+  <a href="/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/" class="text-blue-600 hover:text-blue-800 underline">personal assistant</a>
+  and my coding agents file notes into Harbor and pull context back out of it without me touching a UI.
+</p>
+
+<p>
+  That's the philosophy: Harbor doesn't ship a built-in AI to pad the bill. It opens the door to yours, on tokens you
+  create and revoke.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>And One Thing That Isn't a Feature</h2>
+
+<p>
+  Cloudmanic Labs is independent. No outside investors, no board pushing for an exit, nobody whose returns depend on
+  finding out how much more you'll tolerate paying.
+</p>
+
+<p>
+  That's not a moral claim, it's a structural one. It's the reason a three-year price lock is something we can actually
+  promise — and the reason "personal, never enterprise" is a decision instead of a phase.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>What's Live Today</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+    <p class="font-bold text-blue-800 m-0">Desktop</p>
+    <p class="text-blue-700 text-sm m-0 mt-1">Native Mac and Windows apps, including a Windows on ARM build. No Electron.</p>
+  </div>
+  <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+    <p class="font-bold text-blue-800 m-0">Mobile</p>
+    <p class="text-blue-700 text-sm m-0 mt-1">iPhone, iPad, and Android — camera scanning, widgets, share sheet, Face ID lock.</p>
+  </div>
+  <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+    <p class="font-bold text-blue-800 m-0">Web</p>
+    <p class="text-blue-700 text-sm m-0 mt-1">A real app in the browser with a database inside it, so even the web works offline.</p>
+  </div>
+  <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+    <p class="font-bold text-blue-800 m-0">Web Clipper</p>
+    <p class="text-blue-700 text-sm m-0 mt-1">Chrome, Edge, Firefox, and Safari. Articles, full pages, bookmarks, screenshots — annotate before it lands.</p>
+  </div>
+</div>
+
+<p>
+  Plus email-to-notes, OCR search across everything, audio transcription with speaker labels, and the API, CLI, and MCP
+  server. There's a free plan to start, and the paid plan is one plan — no "Pro vs. Premium" maze where the feature you
+  need is always one tier up.
+</p>
+
+<hr class="my-8 border-gray-300">
+
+<h2>My Notes Live There Now</h2>
+
+<p>
+  The real test wasn't the launch. It was moving my own 15 years in and deleting the old app, which I've now done.
+</p>
+
+<p>
+  We're not chasing an exit with this one. Harbor is meant to be the place we keep our own lives, and it needs to still be
+  here in twenty years for that to mean anything. If you've been sitting on a note library you don't love anymore because
+  leaving felt like too much work, the import is one step and the free plan doesn't need a credit card.
+</p>
+
+<div class="bg-gray-800 text-white p-6 rounded-lg my-8">
+  <p class="text-xl font-medium m-0 text-center">
+    Anchored. Private. Yours.
+  </p>
+</div>
+
+<p class="text-lg">
+  Take a look at <a href="https://harbor.my/" class="text-blue-600 hover:text-blue-800 underline font-medium">harbor.my</a> —
+  and hold us to every word of it.
+</p>
+
+    </div>
+
+    
+    <div class="mt-12 pt-8 border-t">
+      <div class="flex items-center">
+        <img src="/images/spicer-matthews-wine-drinking.jpg" alt="Spicer Matthews" class="w-16 h-16 rounded-full object-cover mr-4" />
+        <div>
+          <h3 class="font-semibold text-gray-900 my-0">Spicer Matthews</h3>
+          <p class="text-gray-600 my-1">Developer, entrepreneur, and options trader based in Oregon.</p>
+          <a href="https://twitter.com/spicermatthews" target="_blank" class="text-blue-600 hover:underline text-sm no-underline">@spicermatthews</a>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 md:p-8 mt-8">
+  <form action="https://sendy.cloudmanic.com/subscribe" method="POST" accept-charset="utf-8">
+    <h3 class="text-xl font-bold text-gray-900 mb-2 mt-0">Join My Newsletter</h3>
+    <p class="text-gray-600 mb-4">1,000+ people have joined to follow along as I share on software and business.</p>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <input
+        type="email"
+        name="email"
+        class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+        placeholder="your@email.com"
+        required
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Subscribe
+      </button>
+    </div>
+
+    
+    <div style="display:none;">
+      <label for="hp">HP</label><br />
+      <input type="text" name="hp" id="hp" />
+    </div>
+
+    <input type="hidden" name="name" id="name" />
+    <input type="hidden" name="list" value="d6NCbNvNND97RBlw7B67cA" />
+    <input type="hidden" name="subform" value="yes" />
+  </form>
+</div>
+
+    <div class="mt-8 pt-8 border-t">
+      <h3 class="font-semibold text-gray-900 mb-4">Share this post</h3>
+      <div class="flex space-x-4">
+        <a href="https://twitter.com/intent/tweet?text=Harbor&#43;Is&#43;Live%3A&#43;Why&#43;We&#43;Built&#43;Our&#43;Own&#43;Evernote&url=https%3A%2F%2Fspicermatthews.com%2Fblog%2Fharbor-is-live-why-we-built-our-own-evernote%2F&via=spicermatthews" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 no-underline">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          Tweet
+        </a>
+      </div>
+    </div>
+
+    
+    <div class="mt-12 pt-8 border-t">
+      <h2 class="text-xl font-semibold text-gray-900 mb-6">Related Posts</h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        <a href="https://spicermatthews.com/blog/am-over-vendors-that-are-not-transparent-in-pricing/" class="block no-underline group">
+          <img src="/images/vendor-sales-person.png" alt="I&#39;m Over Vendors That Aren&#39;t Transparent About Pricing" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">I&#39;m Over Vendors That Aren&#39;t Transparent About Pricing</span>
+          <time class="block text-sm text-gray-500 mt-1">April 21, 2020</time>
+        </a>
+        <a href="https://spicermatthews.com/blog/why-100-customers-at-200-beats-1000-at-20/" class="block no-underline group">
+          <img src="/images/200-month.jpg" alt="Why 100 Customers at $200 Beats 1,000 at $20" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">Why 100 Customers at $200 Beats 1,000 at $20</span>
+          <time class="block text-sm text-gray-500 mt-1">January 19, 2026</time>
+        </a>
+        <a href="https://spicermatthews.com/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/" class="block no-underline group">
+          <img src="/images/autumn-ai-assistant.png" alt="I Built a Personal AI Assistant That Lives in Slack" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <span class="block text-gray-900 font-medium leading-snug group-hover:text-blue-600">I Built a Personal AI Assistant That Lives in Slack</span>
+          <time class="block text-sm text-gray-500 mt-1">January 30, 2026</time>
+        </a>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+  </main>
+<footer class="bg-white border-t mt-auto">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      
+      <div class="flex space-x-6">
+        <a href="mailto:me+website@spicermatthews.com" class="text-gray-500 hover:text-gray-700 no-underline" title="Email">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 2 37 30">
+            <path d="M17.9864841,17.7442683 L35.9560572,4.24918119 C35.9560572,2.99963608 34.9577476,2 33.7098606,2 L2.26310764,2 C1.01522062,2 0.0169109976,2.99963608 0.0169109976,4.24918119 L17.9864841,17.7442683 Z M17.9864841,21.7844641 L0.0169109976,8.28937702 L0.0777647581,29.7508188 C0.0777647581,31.0003639 1.07607438,32 2.3239614,32 L33.7707144,32 C35.0186014,32 36.016911,31.0003639 36.016911,29.7508188 L35.9560572,8.28937702 L17.9864841,21.7844641 Z" />
+          </svg>
+        </a>
+        <a href="https://twitter.com/spicermatthews" target="_blank" class="text-gray-500 hover:text-gray-700 no-underline" title="Twitter">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/cloudmanic" target="_blank" class="text-gray-500 hover:text-gray-700 no-underline" title="GitHub">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+
+      
+      <p class="text-gray-500 text-sm my-0">
+        &copy; 2026 Spicer Matthews. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>

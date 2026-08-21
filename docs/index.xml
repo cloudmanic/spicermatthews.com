@@ -6,8 +6,15 @@
     <description>Recent content in Spicer Matthews — Software Developer &amp; Options Trader on Spicer Matthews Personal Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 10:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 09:00:00 -0700</lastBuildDate>
     <atom:link href="https://spicermatthews.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Harbor Is Live: Why We Built Our Own Evernote</title>
+      <link>https://spicermatthews.com/blog/harbor-is-live-why-we-built-our-own-evernote/</link>
+      <pubDate>Thu, 20 Aug 2026 09:00:00 -0700</pubDate>
+      <guid>https://spicermatthews.com/blog/harbor-is-live-why-we-built-our-own-evernote/</guid>
+      <description>On August 1st, Harbor went live. It&#39;s a private, own-it-for-life note-taking and document app — notes, scans, photos, PDFs, recordings, web clips — built by Cloudmanic Labs, the company I founded and still run. I&#39;m the lead developer on it, but this was never a one-person project. A full team spent the better part of a year on it. It&#39;s also the most personal thing I&#39;ve built in a long time, because I spent 15 years as an Evernote customer before I finally admitted I didn&#39;t trust it anymore.</description>
+    </item>
     <item>
       <title>Should CEOs Fire Their Software Developers?</title>
       <link>https://spicermatthews.com/blog/should-ceos-fire-software-developers/</link>
