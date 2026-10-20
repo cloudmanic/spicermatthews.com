@@ -2,10 +2,13 @@
 title: "I Took a Shower With My Personal Assistant"
 date: 2026-10-19T17:00:00-07:00
 draft: false
-description: "After trying ChatGPT Dot and other personal AI agents, I'm sticking with Autumn, my Claude Code assistant. Voice is amazing. Permission friction still gets in the way."
+aliases:
+  - /blog/personal-ai-agents-why-im-sticking-with-autumn/
+description: "My comparison of ChatGPT Dot, Grok Bot, and Autumn: natural voice, fewer permission prompts, and why my custom Claude Code assistant remains my primary agent."
 keywords:
   - "personal AI agents"
   - "ChatGPT Dot"
+  - "Grok Bot"
   - "Claude Code personal assistant"
   - "Autumn AI assistant"
   - "AI agent permissions"
@@ -28,9 +31,13 @@ og_image: "/images/blog/personal-ai-agents-shower.jpg"
 
 <p>It's also a good example of why I find this whole category so exciting and so frustrating. The conversation feels like the future. Getting the agent to finish ordinary work can still involve a surprising amount of going back to a screen and pressing buttons.</p>
 
-<h2>Talking to an agent is the feature I want to keep</h2>
+<h2>Three agents, three different tradeoffs</h2>
 
-<p>I've been trying ChatGPT Dot, another hosted personal agent, and my own setup, which I call <a href="/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/">Autumn</a>. These are impressions from using them for my own work, not a controlled benchmark or an exhaustive product review.</p>
+<p>I've been trying ChatGPT Dot, Grok Bot, and my own setup, which I call <a href="/blog/i-built-a-personal-ai-assistant-that-lives-in-slack/">Autumn</a>. These are impressions from using them for my own work, not a controlled benchmark or an exhaustive product review.</p>
+
+<p>The short version: Grok Bot has been more useful to me than Dot for getting work done with fewer interruptions. Dot has felt smarter and is better to talk to. Autumn gives me the control and custom workflows I want, so it remains my primary assistant. There are things I want to keep from all three.</p>
+
+<h2>ChatGPT Dot: the conversation is the best part</h2>
 
 <p>The thing I really like about Dot is being able to call it and have a conversation. I can talk through an idea while driving or doing something where my hands are busy. I don't have to sit down at a keyboard, organize my thoughts, and write a perfect prompt. I can just start talking.</p>
 
@@ -38,7 +45,7 @@ og_image: "/images/blog/personal-ai-agents-shower.jpg"
 
 <p>And I can ask for several things at once. Start looking into one thing, bring up another, then come back to the first. That ability to have work happening in parallel is a big part of the appeal. It feels like having an assistant rather than another application to manage.</p>
 
-<p>Of the hosted tools I've tried, ChatGPT has felt smarter, more detailed, and better at being an assistant. The other agent has been less restrictive in my experience, but I haven't found its reasoning or voice conversation as good. I keep wanting the strengths of both in the same product.</p>
+<p>Compared with Grok Bot, ChatGPT has felt smarter, more detailed, and better at working through an idea with me. This post is a pretty good example. But a great conversation doesn't automatically make it the agent I want handling my day-to-day work.</p>
 
 <h2>The permission prompts keep breaking the flow</h2>
 
@@ -58,7 +65,17 @@ og_image: "/images/blog/personal-ai-agents-shower.jpg"
 
 <p>A capable model is only part of what makes an agent useful. I also need it to finish the job without pulling me back into the process at every step.</p>
 
-<h2>Why I'm sticking with Autumn</h2>
+<h2>Grok Bot: fewer interruptions, more work getting done</h2>
+
+<p>As a rule of thumb, I've found Grok Bot better than Dot for the practical side of being an agent. It has been less restrictive in my experience, which means fewer interruptions and less of me having to jump back in to move a task along. That's a big deal. The point of delegating something is to get it off my plate.</p>
+
+<p>Grok Bot still has limitations. I'm not saying it will do anything I ask or that it never needs my help. But compared with Dot, I've found the balance more useful when I want an agent to go do something rather than keep bringing the task back to me.</p>
+
+<p>The tradeoff is that it can feel less smart. I don't find its answers or its ability to work through things with me as good as ChatGPT's. Grok Bot also has audio chat, so I can talk to it, but the voice and the back-and-forth haven't felt as natural as Dot's.</p>
+
+<p>If I could combine Dot's conversation and reasoning with Grok Bot's willingness to get on with the work, I'd have something much closer to the hosted assistant I want. For now, neither has replaced my own setup.</p>
+
+<h2>Autumn: why I'm sticking with my own agent</h2>
 
 <p>I started building my own agent over a year ago. Autumn is essentially <a href="https://code.claude.com/docs/en/overview">Claude Code</a> with a collection of instructions and custom skills that teach it how I do things. I've added more of those skills this week as I've been comparing the hosted alternatives.</p>
 
@@ -89,20 +106,20 @@ og_image: "/images/blog/personal-ai-agents-shower.jpg"
 
 <h2>A hybrid setup might be the interesting middle ground</h2>
 
-<p>One experiment I've found promising is connecting a hosted agent to my own tools instead of asking it to handle everything itself.</p>
+<p>One experiment I've found promising is connecting Grok Bot to my own tools instead of asking it to handle everything itself.</p>
 
-<p>I've used the other hosted agent with <a href="https://tailscale.com/">Tailscale</a> to SSH into my home computer and interact with my Claude Code instances. <a href="https://herdr.dev/">Herdr</a> and its MCP connection to those sessions are part of the workflow I'm exploring.</p>
+<p>I've used Grok Bot with <a href="https://tailscale.com/">Tailscale</a> to SSH into my home computer and interact with my Claude Code instances. <a href="https://herdr.dev/">Herdr</a> and its MCP connection to those sessions are part of the workflow I'm exploring.</p>
 
-<p>That gives me a way to combine the hosted assistant's interface with the custom skills and setup I already have. The conversational agent can coordinate the request, while Claude Code handles work in the environment I've built for it.</p>
+<p>That gives me a way to combine Grok Bot's interface and more flexible execution with the custom skills and setup I already have. Grok Bot can coordinate the request, while Claude Code handles work in the environment I've built for it.</p>
 
 <p>I've had enough success with that combination to think it's worth exploring. It hasn't convinced me to switch my primary setup, but it shows how you can string these tools together into something useful rather than waiting for one product to do everything.</p>
 
 <h2>Who I'd recommend these agents to</h2>
 
-<p>I hate the word <em>normies</em>, but for lack of a better word, I'm going to use it here. If you're not a technical person, the hosted personal agents are absolutely worth checking out. There's a lot of power available without having to build a Go app, wire up Slack, or maintain a collection of Claude Code skills.</p>
+<p>I hate the word <em>normies</em>, but for lack of a better word, I'm going to use it here. If you're not a technical person, both ChatGPT Dot and Grok Bot are absolutely worth checking out. There's a lot of power available without having to build a Go app, wire up Slack, or maintain a collection of Claude Code skills.</p>
 
 <p>If you're a software engineer willing to put some effort into your own setup, I still think building your own is worth it. You can tailor it to the work you actually do. You can run it where your tools are. And you have much more control over how the pieces fit together.</p>
 
-<p>For now, Autumn is staying my primary agent. I'll keep experimenting with Dot and the other hosted options because there's a lot I like, especially the voice experience.</p>
+<p>For now, Autumn is staying my primary agent. Grok Bot is the hosted option I've found more useful for getting things done with less friction. Dot is the one I most enjoy talking to. I'll keep experimenting with both, because I'd love to have that easy conversation and reliable execution in one place.</p>
 
 <p>After all, I just talked through a blog post with one while taking a shower. I'd love for the rest of the experience to feel that effortless.</p>
