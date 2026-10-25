@@ -1,0 +1,101 @@
+---
+title: "I Built an Apple Store Watcher So I Could Stop Checking for an iPhone"
+date: 2026-10-24T22:00:00-07:00
+draft: false
+description: "After days of checking for an iPhone Duo, I built an open-source Go watcher that checks Apple pickup inventory and sends Twilio texts. Here's how it works."
+keywords:
+  - "Apple Store inventory watcher"
+  - "iPhone stock alerts"
+  - "Twilio SMS"
+  - "Go inventory checker"
+  - "open source developer tools"
+related:
+  - "i-took-a-shower-with-my-personal-assistant"
+  - "i-built-a-tradier-cli-because-ai-agents-deserve-better-tools"
+  - "i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one"
+og_image: "/images/blog/apple-store-watcher.jpg"
+---
+
+<!--
+  Date: 2026-10-25
+  Copyright (c) 2026 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">I've spent days trying to buy an iPhone Duo. At some point, repeatedly checking Apple Store inventory started feeling like a pretty stupid use of a software developer's time.</p>
+
+<p>Friday morning, I woke up at 5 a.m. to try the old-fashioned approach: go wait in line at an Apple Store. That didn't get me a phone.</p>
+
+<p>Then there was the online approach. Wake up around midnight. Check local pickup inventory. Wake up again in the early morning. Check again. Maybe something would show up. And when stock does show up, it goes quickly.</p>
+
+<p>I like a new gadget as much as the next person, but this was getting ridiculous.</p>
+
+<p>So I built <a href="https://github.com/cloudmanic/apple-store-watcher">apple-store-watcher</a>, a little open-source Go application that checks pickup inventory and texts me through <a href="https://www.twilio.com/en-us/messaging/channels/sms">Twilio</a> when something I'm watching is available.</p>
+
+<h2>Let the computer do the checking</h2>
+
+<p>The job is simple. Tell it which products I want and which stores I'm willing to drive to. Have it check periodically. If it sees stock, make my phone obnoxious enough that I'll wake up and do something about it.</p>
+
+<p>I've configured a loud, obnoxious notification and a Do Not Disturb bypass on my phone for these alerts. That part is my phone setup. The application sends an ordinary SMS; it doesn't reach into iOS and change notification settings.</p>
+
+<p>When the text comes, I still need to open Apple's store and place the order myself. The watcher doesn't buy anything or reserve a phone. It gives me a reason to look instead of making me keep looking just in case.</p>
+
+<p>And no, this isn't the part of the story where I tell you I finally got one. I'm still trying.</p>
+
+<h2>What it actually checks</h2>
+
+<p>The watcher uses Apple's store pickup lookup, the same <code>/shop/retail/pickup-message</code> endpoint you can see in your browser's network requests while checking pickup availability. It searches near a ZIP code, then filters the response down to the stores in your configuration.</p>
+
+<p>Products are identified by Apple part numbers, so you can watch the specific configurations you'd actually buy. The example config has stores around Portland and several iPhone Duo configurations. Replace those with your own choices. The code batches up to eight part numbers in a request; adding more products means more requests per check.</p>
+
+<p>If a store isn't in Apple's response, the watcher logs that rather than assuming it has no stock. You may need a ZIP code closer to that store.</p>
+
+<p>By default it checks every five minutes. That's a compromise. Inventory can appear and disappear between checks, and an SMS can take time to arrive. This isn't instant detection, and being alerted doesn't mean you'll win the race to checkout.</p>
+
+<h2>Checking faster isn't automatically better</h2>
+
+<p>One lesson from building this: Apple will block these lookups if you ask too often. Once a minute was too often. The response can be an HTTP 541 with a misleading "Page Not Found" page.</p>
+
+<p>The watcher recognizes that block, along with HTTP 429 and 503 responses, and waits longer before trying again: five minutes, then ten, then twenty, up to thirty. A successful lookup clears the backoff.</p>
+
+<p>I'd leave the five-minute default alone rather than turn this into a contest to hit Apple more often. Even that interval isn't a promise that Apple will accept every request. This is a small tool using a storefront endpoint, not an official inventory API with an availability guarantee. Apple can change it.</p>
+
+<h2>Getting it running</h2>
+
+<p>If you're comfortable with a terminal, the setup is pretty small. You'll need Git, Go compatible with the repository's <code>go.mod</code> (currently Go 1.27), Make, and your own Twilio account with an SMS-capable sending number.</p>
+
+<pre><code>git clone https://github.com/cloudmanic/apple-store-watcher.git
+cd apple-store-watcher
+cp config.example.json config.json
+cp .env.example .env</code></pre>
+
+<p>Edit <code>config.json</code> with your destination phone number in international format, a nearby ZIP code in <code>search_location</code>, your store numbers, and the product part numbers. You can find the store IDs and part numbers in the browser's network panel when you check pickup on Apple's site. The optional <code>text_link</code> adds a link to the message so you have somewhere convenient to start ordering.</p>
+
+<p>In <code>.env</code>, replace the example values with your own <code>TWILIO_ACCOUNT_SID</code>, <code>TWILIO_AUTH_TOKEN</code>, and <code>TWILIO_FROM_NUMBER</code>. Use your own account and sending number, not the example's values. Twilio account restrictions and messaging charges still apply.</p>
+
+<p>On a Mac, start it with:</p>
+
+<pre><code>make run caffeine</code></pre>
+
+<p>That builds the application and uses macOS's <code>caffeinate</code> command to keep an idle Mac awake while it runs. Leave the machine on and connected. <code>make run</code> starts it without that wrapper. Press Ctrl-C to stop it. It verifies the Twilio account at startup, and writes logs to both the terminal and <code>watcher.log</code>.</p>
+
+<p>The <a href="https://github.com/cloudmanic/apple-store-watcher#readme">README</a> has the configuration details. Keep <code>.env</code>, <code>config.json</code>, and <code>watcher.log</code> private. They're ignored by Git, but that doesn't encrypt them. The config contains phone numbers, and the logs can contain recipients and message details. Don't paste them into a public issue or commit your credentials.</p>
+
+<h2>A text I actually want to wake up for</h2>
+
+<p>The first detected stock can trigger a text on that check, subject to the global text interval. After that, the watcher repeats alerts on checks while the stock alert remains active. The defaults allow at most one outgoing message per recipient every three minutes, with a limit of thirty texts per store-and-product alert. With five-minute stock checks, that normally means repeats every five minutes, not every three.</p>
+
+<p>Multiple items are combined into a message, subject to a length limit. If an item sells out and later returns, that starts a new alert. The limit keeps one alert from texting forever, though a new run starts with fresh alert state.</p>
+
+<p>Errors and blocks are logged instead of becoming their own wake-up texts. There's an important wrinkle: the program keeps existing alerts through failed checks or missing store responses, so it can repeat a text based on the last known availability. Always check Apple before treating an alert as current stock.</p>
+
+<p>That's also why I want to look at the logs occasionally. Silence might mean no inventory, but it could also mean a blocked lookup, a stopped process, or a messaging problem. Twilio accepting a message doesn't guarantee it has reached my phone.</p>
+
+<h2>This is one of the fun parts of being a developer</h2>
+
+<p>I spend a lot of time building software for work. Sometimes it's nice to build something because a small, annoying thing in my own life has an obvious software-shaped solution.</p>
+
+<p>I've written about that with <a href="/blog/i-built-a-tradier-cli-because-ai-agents-deserve-better-tools/">my Tradier CLI</a> and <a href="/blog/i-vibe-coded-a-screenshot-tool-because-claude-code-needed-one/">my screenshot tool</a>. Different problems, same impulse: I keep doing something repetitive, realize the computer could handle it, and build the missing piece.</p>
+
+<p>This one happens to involve losing sleep over a phone. Maybe that's a silly reason to write software. It was still more interesting than refreshing the same inventory page again.</p>
+
+<p>The code is <a href="https://github.com/cloudmanic/apple-store-watcher">on GitHub</a> if you want to use it or see how it works. I'm hoping the next time I wake up to check for an iPhone, it's because there's a text worth waking up for.</p>
