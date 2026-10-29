@@ -3,16 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://spicermatthews.com/blog/</loc>
-    <lastmod>2026-10-24T22:00:00-07:00</lastmod>
+    <lastmod>2026-10-29T11:00:00-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://spicermatthews.com/blog/i-built-an-apple-store-watcher-so-i-could-stop-checking-for-an-iphone/</loc>
-    <lastmod>2026-10-24T22:00:00-07:00</lastmod>
+    <loc>https://spicermatthews.com/blog/dont-tell-your-customers-you-dont-trust-them/</loc>
+    <lastmod>2026-10-29T11:00:00-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://spicermatthews.com/</loc>
+    <lastmod>2026-10-29T11:00:00-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://spicermatthews.com/blog/i-built-an-apple-store-watcher-so-i-could-stop-checking-for-an-iphone/</loc>
     <lastmod>2026-10-24T22:00:00-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
