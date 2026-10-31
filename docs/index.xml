@@ -6,8 +6,15 @@
     <description>Recent content in Spicer Matthews — Software Developer &amp; Options Trader on Spicer Matthews Personal Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Oct 2026 11:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 12:00:00 -0700</lastBuildDate>
     <atom:link href="https://spicermatthews.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I Replaced My GitHub Actions Bill With Broken MacBooks</title>
+      <link>https://spicermatthews.com/blog/i-replaced-my-github-actions-bill-with-broken-macbooks/</link>
+      <pubDate>Sat, 31 Oct 2026 12:00:00 -0700</pubDate>
+      <guid>https://spicermatthews.com/blog/i-replaced-my-github-actions-bill-with-broken-macbooks/</guid>
+      <description>My GitHub Actions bill was over $1,000 a month. I replaced it with about $1,000 of used M1 Macs, most of them MacBooks with cracked screens from eBay. That&#39;s roughly $12,000 a year back in my pocket, and the builds run on hardware I own.&#xA;I first mentioned this in a reply on X back in August. It got about 250,000 views, which tells me a lot of developers are staring at the same bill.</description>
+    </item>
     <item>
       <title>Don&#39;t Tell Your Customers You Don&#39;t Trust Them</title>
       <link>https://spicermatthews.com/blog/dont-tell-your-customers-you-dont-trust-them/</link>
