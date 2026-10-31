@@ -1,0 +1,105 @@
+---
+title: "I Replaced My GitHub Actions Bill With Broken MacBooks"
+date: 2026-10-31T12:00:00-07:00
+draft: false
+description: "My GitHub Actions bill was over $1,000 a month. About $1,000 of used M1 Macs with cracked screens replaced it. Here's the setup, and the three gotchas that cost me real time."
+keywords:
+  - "self-hosted GitHub Actions runners"
+  - "GitHub Actions macOS runner cost"
+  - "MacBook as a server"
+  - "broken screen MacBook build server"
+  - "Mac mini alternative"
+  - "Apple silicon CI runner"
+related:
+  - "harbor-is-live-why-we-built-our-own-evernote"
+  - "full-circle-back-to-the-terminal"
+  - "i-built-an-apple-store-watcher-so-i-could-stop-checking-for-an-iphone"
+og_image: "/images/blog/broken-macbooks-build-servers.jpg"
+---
+
+<!--
+  Date: 2026-10-31
+  Copyright (c) 2026 Spicer Matthews
+-->
+
+<p class="text-lg text-gray-700 leading-relaxed">My GitHub Actions bill was over $1,000 a month. I replaced it with about $1,000 of used M1 Macs, most of them MacBooks with cracked screens from eBay. That's roughly $12,000 a year back in my pocket, and the builds run on hardware I own.</p>
+
+<p>I first mentioned this in a reply on X back in August. It got about 250,000 views, which tells me a lot of developers are staring at the same bill. So here's the whole setup, including the parts that bit me.</p>
+
+<h2>Why a bill like that happens</h2>
+
+<p>We build <a href="https://harbor.my">Harbor</a>, a notes app, for the web, Mac, iPhone, iPad, Android, and Windows. That's a lot of code, and every pull request runs tests and builds across it. Apple builds have to run on a Mac, and hosted Mac minutes are the most expensive minutes GitHub sells.</p>
+
+<p>AI made it worse. Claude Code opens pull requests all day for us now. Every one of them kicks off CI. More code shipped is great. Paying for every minute of it adds up fast.</p>
+
+<p>
+  <img src="/images/blog/broken-macbooks-build-servers-cost.jpg" alt="Bar chart: GitHub-hosted runners cost $12,000 over 12 months, compared with a one-time $1,000 for used M1 Macs" class="rounded-lg w-full" />
+</p>
+
+<h2>Why broken laptops and not Mac minis</h2>
+
+<p>The obvious answer is a Mac mini. Everyone building AI agents had the same idea this year. Apple dropped the $599 base model in May, so the Mac mini now starts at $799, and some configurations have waits measured in months.</p>
+
+<p>Meanwhile, eBay and Facebook Marketplace are full of M1 MacBook Pros and Airs with a cracked screen. A broken screen kills a laptop's resale value. It doesn't matter at all to a machine that nobody will ever look at.</p>
+
+<p>A MacBook with a cracked screen is basically a Mac mini with a built-in UPS, at about a third of the price. The battery turns out to be a real feature. More on that in a minute.</p>
+
+<h2>The fleet</h2>
+
+<p>Three M1 Macs: a MacBook Air, a MacBook Pro, and one Mac mini. Each one runs two GitHub Actions runners, so that's six runners shared by every repo in the Harbor org. GitHub hands a job to whichever runner is free.</p>
+
+<p>A few choices made this easy to live with:</p>
+
+<ul>
+  <li><strong>No public IPs.</strong> The Macs sit on Tailscale. Nothing on the internet can reach them.</li>
+  <li><strong>Everything is Ansible.</strong> One <code>make</code> command brings a box to a known state. Re-running it changes nothing, so it's also how I maintain them.</li>
+  <li><strong>Dumb machines.</strong> A box gets the runner and Xcode, and that's it. Each workflow installs its own Go, Node, JDK, or Android SDK. Swapping a Mac out means registering the new one and removing the old one. No workflow changes.</li>
+  <li><strong>Spotlight off.</strong> Otherwise the Mac burns CPU indexing build folders and <code>node_modules</code> that nobody will ever search.</li>
+</ul>
+
+<p>Memory, not heat, is what caps each box at two runners. Even with no fan, the Air's limit is RAM.</p>
+
+<h2>Gotcha 1: run them lid open</h2>
+
+<p>Apple silicon laptops can't cold boot with the lid closed. Apple confirms it, and I confirmed it on my own box. Lid up, it boots. Lid down, it doesn't.</p>
+
+<p>A closed laptop survives a short power outage on battery. A long one drains the battery, the Mac shuts down, and when the power comes back it stays off until someone walks over and opens the lid. There's no software fix for that.</p>
+
+<p>So they run open. My son 3D printed me a stand that holds the lid up. It works great.</p>
+
+<h2>Gotcha 2: the battery is a UPS only if the Mac stays awake</h2>
+
+<p>One of the MacBooks came set to never sleep on power, but to sleep one minute after switching to battery. The first outage would have frozen it a minute in, with jobs half done.</p>
+
+<p>Now a small script on each laptop handles power:</p>
+
+<ul>
+  <li>Sleep is disabled outright, and the setup fails if it can't verify that.</li>
+  <li>It sends me a Slack message when power drops, when it comes back, and when the Mac boots.</li>
+  <li>It shuts down cleanly at 15% battery instead of getting cut off.</li>
+  <li>When power comes back, the laptop boots by itself. Apple silicon laptops power on when you plug them in.</li>
+</ul>
+
+<p>One more: turn FileVault off on these. With it on, a Mac that reboots after an outage sits at the unlock screen forever, waiting for a password nobody is there to type.</p>
+
+<h2>Gotcha 3: Xcode fails silently</h2>
+
+<p>A fresh Xcode install needs one more step before it's really ready:</p>
+
+<pre><code>sudo xcodebuild -runFirstLaunch</code></pre>
+
+<p>It installs system components, and it needs admin rights to do it. A runner works unattended, so it can never type that password. Skip the step and nothing looks wrong. <code>xcode-select</code> works. The version prints fine. Then every simulator build fails.</p>
+
+<p>One runner was missing it, and it broke our Apple builds for over a day, including releases. Because jobs land on random runners, it didn't look like a broken machine. It looked like flaky CI. Now the setup checks for it and refuses to finish until it's fixed.</p>
+
+<h2>The bonus I didn't plan for</h2>
+
+<p>These are real Macs, so they can do Mac things. One of them now also runs Harbor's OCR in production, the feature that makes text in your photos and scans searchable.</p>
+
+<p>Apple's Vision framework reads printed text for free, right on the machine. Only the harder images go to Google's paid API. A cloud Linux server can't do that. A used laptop with a cracked screen can.</p>
+
+<h2>Should you do this?</h2>
+
+<p>If you build for Apple platforms and your CI bill keeps growing, yes. Check eBay before you check Mac mini wait times.</p>
+
+<p>It isn't free. You own the hardware now, and the gotchas above are real. But they're one-time problems. You hit each one once, write it into your setup, and never think about it again. The bill was a problem every single month.</p>
