@@ -98,12 +98,6 @@ og_image: "/images/blog/broken-macbooks-build-servers.jpg"
 
 <p>One runner was missing it, and it broke our Apple builds for over a day, including releases. Because jobs land on random runners, it didn't look like a broken machine. It looked like flaky CI. Now the setup checks for it and refuses to finish until it's fixed.</p>
 
-<h2>The bonus I didn't plan for</h2>
-
-<p>These are real Macs, so they can do Mac things. One of them now also runs Harbor's OCR in production, the feature that makes text in your photos and scans searchable.</p>
-
-<p>Apple's Vision framework reads printed text for free, right on the machine. Only the harder images go to Google's paid API. A cloud Linux server can't do that. A used laptop with a cracked screen can.</p>
-
 <h2>Should you do this?</h2>
 
 <p>If you build for Apple platforms and your CI bill keeps growing, yes. Check eBay before you check Mac mini wait times.</p>
